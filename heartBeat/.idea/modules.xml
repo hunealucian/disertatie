@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/clusterNode/clusterNode.iml" filepath="$PROJECT_DIR$/clusterNode/clusterNode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/managerModule/manager.iml" filepath="$PROJECT_DIR$/managerModule/manager.iml" />
+    </modules>
+  </component>
+</project>
+

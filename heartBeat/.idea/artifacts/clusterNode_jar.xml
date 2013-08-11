@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="clusterNode:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/clusterNode_jar</output-path>
+    <root id="archive" name="clusterNode.jar">
+      <element id="module-output" name="clusterNode" />
+      <element id="module-output" name="commons" />
+    </root>
+  </artifact>
+</component>
