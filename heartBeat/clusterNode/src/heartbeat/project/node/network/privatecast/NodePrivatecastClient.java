@@ -1,7 +1,7 @@
 package heartbeat.project.node.network.privatecast;
 
 import heartbeat.project.commons.model.Node;
-import heartbeat.project.node.network.privatecast.threads.ReceiveMsgFromManagerThread;
+import heartbeat.project.node.network.privatecast.threads.NodeReceiveRequestsThread;
 
 /**
  * User: luc  | Date: 8/5/13  |  Time: 1:44 PM
@@ -13,11 +13,14 @@ public class NodePrivatecastClient {
     public NodePrivatecastClient(Node currentNode) {
         this.currentNode = currentNode;
 
+		System.out.println("Initialiazing receiver client...");
+
         startClientService();
     }
 
     private void startClientService() {
-        ReceiveMsgFromManagerThread receiverService = new ReceiveMsgFromManagerThread(currentNode);
+        NodeReceiveRequestsThread receiverService = new NodeReceiveRequestsThread(currentNode);
+		receiverService.start();
     }
 
 

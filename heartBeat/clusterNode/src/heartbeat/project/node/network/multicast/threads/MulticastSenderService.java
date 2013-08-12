@@ -25,7 +25,7 @@ public class MulticastSenderService<T extends Node> extends MulticastService<Nod
 
         while (true) {
             try {
-                System.out.println("----> Sending nodes info's by multicast [" + multicastObject.getMulticastIp() + "]");
+//                System.out.println("----> Sending nodes info's by multicast [" + multicastObject.getMulticastIp() + "]");
 
 
                 buf = NodeAppUtil.SERIALIZABLE.serializeThis(multicastObject);

@@ -5,14 +5,10 @@ import heartbeat.project.commons.model.Node;
 import heartbeat.project.commons.model.socketmsg.ChainInfo;
 import heartbeat.project.commons.model.socketmsg.FileInfo;
 import heartbeat.project.commons.model.socketmsg.MessageInfo;
-import heartbeat.project.commons.model.socketmsg.WaitingPortInfo;
 import heartbeat.project.commons.network.privatecast.HeaderMessage;
-import heartbeat.project.commons.network.privatecast.newImplementation.SocketReaderMessageExecutor;
-import heartbeat.project.commons.network.privatecast.newImplementation.receive.ReceiveData;
-import heartbeat.project.commons.network.privatecast.newImplementation.send.SendData;
-import heartbeat.project.commons.network.privatecast.newImplementation.socket.ChunkReceivedListener;
-import heartbeat.project.commons.network.privatecast.newImplementation.socket.receive.stream.StreamReader;
-import heartbeat.project.commons.network.privatecast.newImplementation.threads.ReceiveDataThread;
+import heartbeat.project.commons.network.privatecast.factory.SocketReaderMessageExecutor;
+import heartbeat.project.commons.network.privatecast.factory.socket.ChunkReceivedListener;
+import heartbeat.project.commons.network.privatecast.factory.socket.receive.stream.StreamReader;
 
 import java.io.IOException;
 
@@ -49,6 +45,7 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 					streamReader.fetchFile(fileInfo.getName(), currentNode.getNodePath() + "/" +fileInfo.getPath(), fileInfo.getReplication());
 
 
+					streamReader.closeConnection();
 				}
 
 				if (headerMessage == HeaderMessage.SAVE_CHAIN) {
@@ -59,7 +56,7 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 
 					final ChainLink nextChain;
 					if( chainInfo.leftChains() > 1 ){
-						//todo make new connection with next chain
+						//todo make new connection with next chain node
 						nextChain = chainInfo.getNextNode();
 
                         SendData<ChainInfo> sendDataToNextNode = new SendData<ChainInfo>(nextChain.getNodeIpAddrs(), nextChain.getNodePort(), headerMessage, chainInfo);
