@@ -39,14 +39,7 @@ public class ReceiveData<T extends MessageInfo> {
 				@Override
 				public void onDataArrives(Socket clientSocket) throws IOException {
 
-					try {
-
-						messageExecutor.execute(new StreamReader<T>(clientSocket));
-
-					} catch (ClassNotFoundException e) {
-						e.printStackTrace();
-						//this is not a valid message received
-					}
+					messageExecutor.start(new StreamReader<T>(clientSocket));
 
 				}
 			});

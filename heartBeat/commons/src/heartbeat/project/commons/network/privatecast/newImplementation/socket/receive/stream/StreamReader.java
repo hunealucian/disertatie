@@ -20,12 +20,15 @@ public class StreamReader<T> extends ObjectInputStream {
 	private String receivedFromIp;
 	private int receivedFromPort;
 
+	private Socket socket;
+
 	private HeaderMessage headerMessage;
 	private T messageInfo;
 
 	public StreamReader(Socket socket) throws IOException {
 		super(socket.getInputStream());
 
+		this.socket = socket;
 		receivedFromIp = socket.getInetAddress().getHostAddress();
 		receivedFromPort = socket.getPort();
 	}
@@ -88,5 +91,9 @@ public class StreamReader<T> extends ObjectInputStream {
 
 	public int getReceivedFromPort() {
 		return receivedFromPort;
+	}
+
+	public Socket getSocket() {
+		return socket;
 	}
 }

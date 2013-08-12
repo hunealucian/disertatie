@@ -1,12 +1,16 @@
 package heartbeat.project.node.network.privatecast;
 
+import heartbeat.project.commons.model.ChainLink;
 import heartbeat.project.commons.model.Node;
+import heartbeat.project.commons.model.socketmsg.ChainInfo;
 import heartbeat.project.commons.model.socketmsg.FileInfo;
 import heartbeat.project.commons.model.socketmsg.MessageInfo;
 import heartbeat.project.commons.model.socketmsg.WaitingPortInfo;
 import heartbeat.project.commons.network.privatecast.HeaderMessage;
 import heartbeat.project.commons.network.privatecast.newImplementation.SocketReaderMessageExecutor;
+import heartbeat.project.commons.network.privatecast.newImplementation.receive.ReceiveData;
 import heartbeat.project.commons.network.privatecast.newImplementation.send.SendData;
+import heartbeat.project.commons.network.privatecast.newImplementation.socket.ChunkReceivedListener;
 import heartbeat.project.commons.network.privatecast.newImplementation.socket.receive.stream.StreamReader;
 import heartbeat.project.commons.network.privatecast.newImplementation.threads.ReceiveDataThread;
 
@@ -38,43 +42,41 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 
 			if (headerMessage != null) {
 
-				if (headerMessage == HeaderMessage.WAIT_FILE) {
-
-
-					ReceiveDataThread<FileInfo> newThread = new ReceiveDataThread<FileInfo>(new NodeMessageExecutor(currentNode));
-					newThread.start();
-
-					int listening = newThread.getReceiveData().getReceivePort();
-
-					SendData<WaitingPortInfo> sendData = new SendData<WaitingPortInfo>(
-							streamReader.getReceivedFromIp(), streamReader.getReceivedFromPort(), HeaderMessage.OK, new WaitingPortInfo(listening)
-					);
-
-					sendData.send();
-				}
-
 				if (headerMessage == HeaderMessage.SAVE_FILE) {
 
+					FileInfo fileInfo = (FileInfo) streamReader.getMessageInfo();
+
+					streamReader.fetchFile(fileInfo.getName(), currentNode.getNodePath() + "/" +fileInfo.getPath(), fileInfo.getReplication());
+
+
 				}
 
-				if (headerMessage == HeaderMessage.WAIT_CHAIN) {
+				if (headerMessage == HeaderMessage.SAVE_CHAIN) {
 
-					//todo
+					ChainInfo chainInfo = (ChainInfo) streamReader.getMessageInfo();
+
+					ChainLink chainLink = chainInfo.getFirstNode();
+
+					final ChainLink nextChain;
+					if( chainInfo.leftChains() > 1 ){
+						//todo make new connection with next chain
+						nextChain = chainInfo.getNextNode();
+					}
+
+					FileInfo fileInfo = chainLink.getFileInfo();
+
+					streamReader.fetchFile(fileInfo.getName(), currentNode.getNodePath() + "/" +fileInfo.getPath(), fileInfo.getReplication(), new ChunkReceivedListener() {
+						@Override
+						public void onDataArrives(byte[] bytes, int n, int len) {
+							//todo
+//							if( nextChain != null ){
+//
+//							}
+						}
+					});
 				}
 
 			}
-
-
-//			if( receiver.getMessage().getHeader() == HeaderMessage.SAVE_FILE || receiver.getMessage().getHeader() == HeaderMessage.SAVE_CHAIN ){
-//				int waitingPort = ThreadFactory.waitFileAndSaveThread(currentNode.getNodePath());
-//
-//				//respond to request with listening port
-//				Message okMsg = new Message(HeaderMessage.OK, waitingPort);
-//				SendMessage sender = new SendMessage(clientSocket.getInetAddress().getHostAddress(), clientSocket.getPort(), okMsg);
-//				sender.push();
-//
-//			}
-
 
 		} catch (IOException e) {
 			e.printStackTrace();

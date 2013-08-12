@@ -8,10 +8,10 @@ import java.io.Serializable;
  */
 public enum HeaderMessage implements Serializable {
     SAVE_FILE("saveFile"),
-    WAIT_FILE("saveFile"),
+	DELETE_FILE("deleteFile"),
 
-	WAIT_CHAIN("waitChain"),
-    DELETE_FILE("deleteFile"),
+	SAVE_CHAIN("saveChain"),
+
     OK("ok");
 
     private String name;

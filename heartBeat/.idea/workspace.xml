@@ -92,7 +92,6 @@
     <file path="/NodeMain.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376123875109" ignored="false" />
     <file path="/SendPrivateFile.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376125885211" ignored="false" />
     <file path="/ManagerMain.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376126534181" ignored="false" />
-    <file path="$PROJECT_DIR$/clusterNode/test/SendMessageTest.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376132688613" ignored="false" />
     <file path="/ReceivePrivateMessage.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376134354657" ignored="false" />
     <file path="/SendPrivateMessageWithConfirmation.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376134645385" ignored="false" />
     <file path="/SendMessage.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376136094610" ignored="false" />
@@ -182,15 +181,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NodeMessageExecutor.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="NodeMessageExecutor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/NodeMessageExecutor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="81" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1461#1471#0" expanded="true" />
-                <element signature="e#1657#1674#0" expanded="true" />
-              </folding>
+            <state line="56" column="0" selection-start="2027" selection-end="2027" vertical-scroll-proportion="0.66292137">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChainInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/ChainInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="16" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChainLink.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/ChainLink.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="13" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/FileInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="12" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StreamReader.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/receive/stream/StreamReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="16" selection-start="947" selection-end="947" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -198,30 +229,8 @@
       <file leaf-file-name="ReceiveData.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/receive/ReceiveData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="60" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0">
+            <state line="30" column="11" selection-start="1096" selection-end="1096" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StreamReader.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/receive/stream/StreamReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="1058" selection-end="1058" vertical-scroll-proportion="0.46191648">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReceiveMsgFromManagerThread.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/threads/ReceiveMsgFromManagerThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="38" selection-start="592" selection-end="592" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -238,19 +247,19 @@
       <list>
         <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/NodeInfo.java" />
         <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/SocketMessageExecutor.java" />
-        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/HeaderMessage.java" />
         <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/receive/ReceiveDataSocket.java" />
-        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/receive/ReceiveData.java" />
         <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/threads/ReceiveDataThread.java" />
-        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/SocketReaderMessageExecutor.java" />
         <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/WaitingPortInfo.java" />
         <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/send/SendResponse.java" />
         <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/send/SendDataSocket.java" />
         <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/send/stream/StreamWriter.java" />
         <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/send/SendData.java" />
         <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/ChunkReceivedListener.java" />
-        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/receive/stream/StreamReader.java" />
         <option value="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/threads/ReceiveMsgFromManagerThread.java" />
+        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/receive/stream/StreamReader.java" />
+        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/receive/ReceiveData.java" />
+        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/SocketReaderMessageExecutor.java" />
+        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/HeaderMessage.java" />
         <option value="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/NodeMessageExecutor.java" />
       </list>
     </option>
@@ -288,6 +297,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartBeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Production">
           <PATH>
@@ -310,16 +329,6 @@
             <PATH_ELEMENT USER_OBJECT="Root">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="heartBeat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -641,6 +650,308 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="newImplementation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartBeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartbeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="network" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="privatecast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newImplementation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="threads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartBeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartbeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="network" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="privatecast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newImplementation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="send" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartBeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartbeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="network" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="privatecast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newImplementation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="receive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartBeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartbeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="network" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="privatecast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="factory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartBeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartbeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="network" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="privatecast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="factory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="privatecast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartBeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartbeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="network" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="privatecast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="factory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="privatecast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sockets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartBeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartbeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="network" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="privatecast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="factory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="privatecast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sockets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="receive" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1237,12 +1548,12 @@
       <method />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="1" class="java.lang.String" itemvalue="Application.ReceiveTest" />
-      <item index="2" class="java.lang.String" itemvalue="Application.SenderTest" />
-      <item index="3" class="java.lang.String" itemvalue="Application.NodeMain" />
-      <item index="4" class="java.lang.String" itemvalue="Application.ReceiveMessageTest" />
-      <item index="5" class="java.lang.String" itemvalue="Application.SendMessageTest" />
+      <item index="0" class="java.lang.String" itemvalue="Application.ReceiveTest" />
+      <item index="1" class="java.lang.String" itemvalue="Application.SenderTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.NodeMain" />
+      <item index="3" class="java.lang.String" itemvalue="Application.ReceiveMessageTest" />
+      <item index="4" class="java.lang.String" itemvalue="Application.SendMessageTest" />
+      <item index="5" class="java.lang.String" itemvalue="Application.Main" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -1250,7 +1561,7 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -1260,6 +1571,7 @@
     <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
     <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
     <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="DETECT_NESTED_COPIES" value="true" />
     <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
@@ -1277,7 +1589,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="33" width="1680" height="992" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1290,12 +1602,11 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26289925" sideWeight="0.67142856" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26228502" sideWeight="0.67142856" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="2063" y="411" width="793" height="329" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1305,6 +1616,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32711306" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1390,131 +1702,113 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/SocketReaderMessageExecutor.java">
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/ChunkReceivedListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="33" selection-start="363" selection-end="363" vertical-scroll-proportion="0.37717602">
-          <folding />
-        </state>
+        <state line="9" column="58" selection-start="274" selection-end="274" vertical-scroll-proportion="0.1702396" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/WaitingPortInfo.java">
+    <entry file="file://$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/threads/ReceiveMsgFromManagerThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="35" selection-start="351" selection-end="351" vertical-scroll-proportion="0.27641279">
+        <state line="20" column="38" selection-start="592" selection-end="592" vertical-scroll-proportion="0.3404792">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/receive/ReceiveDataSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="35" selection-start="929" selection-end="929" vertical-scroll-proportion="0.6431274">
+        <state line="30" column="34" selection-start="816" selection-end="816" vertical-scroll-proportion="0.497543">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/send/SendDataSocket.java">
+    <entry file="jar:///home/lucian/_Apps/Java/jdk1.7.0_10/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="5" selection-start="583" selection-end="583" vertical-scroll-proportion="0.3593947">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/FileInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="192" selection-end="192" vertical-scroll-proportion="0.18427518">
+        <state line="672" column="29" selection-start="25242" selection-end="25242" vertical-scroll-proportion="0.33292383">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/send/stream/StreamWriter.java">
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/SocketReaderMessageExecutor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="16" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.81336695">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="20" column="8" selection-start="581" selection-end="581" vertical-scroll-proportion="0.36855036">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/streams/receive/ReceiveFileStream.java">
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/threads/ReceiveDataThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="17" selection-start="1130" selection-end="1886" vertical-scroll-proportion="0.61664563">
+        <state line="13" column="0" selection-start="505" selection-end="505" vertical-scroll-proportion="0.2027027">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/send/SendData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="33" selection-start="1233" selection-end="1233" vertical-scroll-proportion="0.62653565">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/sockets/receive/ReceiveFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="33" selection-start="1345" selection-end="1345" vertical-scroll-proportion="0.47288775">
+        <state line="44" column="30" selection-start="1245" selection-end="1245" vertical-scroll-proportion="0.43611795">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/SocketListener.java">
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/HeaderMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="4" selection-start="267" selection-end="333" vertical-scroll-proportion="0.22698613">
+        <state line="12" column="20" selection-start="267" selection-end="267" vertical-scroll-proportion="0.22113022">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/ChunkReceivedListener.java">
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/streams/receive/ReceiveFileStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="58" selection-start="274" selection-end="274" vertical-scroll-proportion="0.1702396">
+        <state line="67" column="63" selection-start="2487" selection-end="2487" vertical-scroll-proportion="0.497543">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/threads/ReceiveMsgFromManagerThread.java">
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/ChainInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="38" selection-start="592" selection-end="592" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="13" column="16" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/send/SendData.java">
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/ChainLink.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="33" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.7186732">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="9" column="13" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/NodeMessageExecutor.java">
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/FileInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="81" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1461#1471#0" expanded="true" />
-            <element signature="e#1657#1674#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/threads/ReceiveDataThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="31" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/receive/ReceiveData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="60" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0">
+        <state line="10" column="12" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/receive/stream/StreamReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1058" selection-end="1058" vertical-scroll-proportion="0.46191648">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="35" column="16" selection-start="947" selection-end="947" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/receive/ReceiveData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="11" selection-start="1096" selection-end="1096" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/NodeMessageExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="0" selection-start="2027" selection-end="2027" vertical-scroll-proportion="0.66292137">
+          <folding />
         </state>
       </provider>
     </entry>
