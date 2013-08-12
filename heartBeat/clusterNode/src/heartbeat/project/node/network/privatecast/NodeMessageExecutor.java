@@ -61,6 +61,9 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 					if( chainInfo.leftChains() > 1 ){
 						//todo make new connection with next chain
 						nextChain = chainInfo.getNextNode();
+
+                        SendData<ChainInfo> sendDataToNextNode = new SendData<ChainInfo>(nextChain.getNodeIpAddrs(), nextChain.getNodePort(), headerMessage, chainInfo);
+                        sendDataToNextNode.send();
 					}
 
 					FileInfo fileInfo = chainLink.getFileInfo();

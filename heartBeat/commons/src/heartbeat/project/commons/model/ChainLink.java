@@ -9,13 +9,13 @@ import java.io.Serializable;
  */
 public class ChainLink implements Serializable {
     private String nodeIpAddrs;
-    private int messagesListeninPort;
+    private int nodePort;
 
     private FileInfo fileInfo;
 
-    public ChainLink(String nodeIpAddrs, int messagesListeninPort, FileInfo fileInfo) {
+    public ChainLink(String nodeIpAddrs, int nodePort, FileInfo fileInfo) {
         this.nodeIpAddrs = nodeIpAddrs;
-        this.messagesListeninPort = messagesListeninPort;
+        this.nodePort = nodePort;
 		this.fileInfo = fileInfo;
     }
 
@@ -27,7 +27,7 @@ public class ChainLink implements Serializable {
 		return fileInfo;
 	}
 
-	public int getMessagesListeninPort() {
-        return messagesListeninPort;
+	public int getNodePort() {
+        return nodePort;
     }
 }

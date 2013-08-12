@@ -66,7 +66,7 @@ public class ReceiveFileStream extends ReceiveStream {
 
                     nextChainLink = message.getChain().getNextNode();
                     Message response = ThreadFactory.sendMessageOnNewThreadAndWaitConfirmationOnActualThread(
-                            chainLink.getNodeIpAddrs(), chainLink.getMessagesListeninPort(), message
+                            chainLink.getNodeIpAddrs(), chainLink.getNodePort(), message
                     );
 
                     if( response != null && response.getHeader() == HeaderMessage.OK ){
