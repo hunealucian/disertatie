@@ -75,6 +75,7 @@ public class StreamReader<T> extends ObjectInputStream {
 
 	public void closeConnection() throws IOException {
 		close();
+        socket.close();
 	}
 
 	public HeaderMessage getHeaderMessage() {

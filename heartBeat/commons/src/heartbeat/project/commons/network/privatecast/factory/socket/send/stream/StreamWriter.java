@@ -27,6 +27,8 @@ public class StreamWriter<T> extends ObjectOutputStream {
 		try {
 			writeUTF(headerMessage.getName());
 			writeObject(message);
+
+            flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -35,13 +37,14 @@ public class StreamWriter<T> extends ObjectOutputStream {
 	public void push(byte[] bytes, int off, int len){
 		try {
 			write(bytes, off, len);
+            flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void closeConnection() throws IOException {
-		flush();
+
 		close();
 	}
 }

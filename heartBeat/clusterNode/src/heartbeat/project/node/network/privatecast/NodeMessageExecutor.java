@@ -7,6 +7,7 @@ import heartbeat.project.commons.model.socketmsg.FileInfo;
 import heartbeat.project.commons.model.socketmsg.MessageInfo;
 import heartbeat.project.commons.network.privatecast.HeaderMessage;
 import heartbeat.project.commons.network.privatecast.factory.SocketReaderMessageExecutor;
+import heartbeat.project.commons.network.privatecast.factory.send.SendData;
 import heartbeat.project.commons.network.privatecast.factory.socket.ChunkReceivedListener;
 import heartbeat.project.commons.network.privatecast.factory.socket.receive.stream.StreamReader;
 
@@ -40,40 +41,59 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 
 				if (headerMessage == HeaderMessage.SAVE_FILE) {
 
-					FileInfo fileInfo = (FileInfo) streamReader.getMessageInfo();
+                    System.out.println("Saving file...");
+                    FileInfo fileInfo = (FileInfo) streamReader.getMessageInfo();
 
-					streamReader.fetchFile(fileInfo.getName(), currentNode.getNodePath() + "/" +fileInfo.getPath(), fileInfo.getReplication());
+					streamReader.fetchFile(fileInfo.getName(), currentNode.getNodePath() + "/" +fileInfo.getUserPath(), fileInfo.getReplication());
 
 
 					streamReader.closeConnection();
-				}
+                    System.out.println("File saved on : " + currentNode.getNodePath() + "/" +fileInfo.getUserPath());
+                }
 
 				if (headerMessage == HeaderMessage.SAVE_CHAIN) {
 
-					ChainInfo chainInfo = (ChainInfo) streamReader.getMessageInfo();
+                    System.out.println("Saving file from chain...");
+                    ChainInfo chainInfo = (ChainInfo) streamReader.getMessageInfo();
 
 					ChainLink chainLink = chainInfo.getFirstNode();
 
-					final ChainLink nextChain;
-					if( chainInfo.leftChains() > 1 ){
-						//todo make new connection with next chain node
+					ChainLink nextChain = null;
+                    SendData<ChainInfo> sendDataToNextNode = null;
+					if( chainInfo.leftChains() >= 1 ){
+                        System.out.println("Initializaing connection with next node from chain...");
+                        // make new connection with next chain node
 						nextChain = chainInfo.getNextNode();
 
-                        SendData<ChainInfo> sendDataToNextNode = new SendData<ChainInfo>(nextChain.getNodeIpAddrs(), nextChain.getNodePort(), headerMessage, chainInfo);
+                        sendDataToNextNode = new SendData<ChainInfo>(nextChain.getNodeIpAddrs(), nextChain.getNodePort(), headerMessage, chainInfo);
                         sendDataToNextNode.send();
-					}
+
+                        System.out.println("Connection established with " + nextChain.getNodeIpAddrs() + " on port " + nextChain.getNodePort());
+                    }
+
 
 					FileInfo fileInfo = chainLink.getFileInfo();
 
-					streamReader.fetchFile(fileInfo.getName(), currentNode.getNodePath() + "/" +fileInfo.getPath(), fileInfo.getReplication(), new ChunkReceivedListener() {
+                    System.out.println("Starting saving file...");
+                    final ChainLink finalNextChain = nextChain;
+                    final SendData<ChainInfo> finalSendDataToNextNode = sendDataToNextNode;
+                    streamReader.fetchFile(fileInfo.getName(), currentNode.getNodePath() + "/" +fileInfo.getUserPath(), fileInfo.getReplication(), new ChunkReceivedListener() {
 						@Override
 						public void onDataArrives(byte[] bytes, int n, int len) {
-							//todo
-//							if( nextChain != null ){
-//
-//							}
+							if( finalNextChain != null ){
+//                                System.out.println("\rsending chunks to next node...");
+                                finalSendDataToNextNode.send(bytes, n, len);
+							}
 						}
 					});
+
+                    System.out.println("File saved on : " + currentNode.getNodePath() + "/" +fileInfo.getUserPath());
+
+                    if( sendDataToNextNode != null ){
+                        sendDataToNextNode.closeConnection();
+                    }
+
+//                    streamReader.closeConnection();
 				}
 
 			}

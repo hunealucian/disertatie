@@ -13,12 +13,15 @@ public class ChainInfo implements MessageInfo {
 
     ArrayDeque<ChainLink> chain = Queues.newArrayDeque();
 
-    public ChainInfo(ArrayDeque<ChainLink> chain) {
-        this.chain = chain;
+    public ChainInfo() {
+    }
+
+    public void addNode(ChainLink chainLink){
+        chain.add(chainLink);
     }
 
     public ChainLink getFirstNode(){
-        return chain.peekFirst();
+        return chain.pollFirst();
     }
 
     public ChainLink getNextNode(){

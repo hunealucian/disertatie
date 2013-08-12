@@ -1,7 +1,5 @@
 package heartbeat.project.commons.model.socketmsg;
 
-import java.io.Serializable;
-
 /**
  * Description
  * <p/>
@@ -11,14 +9,14 @@ import java.io.Serializable;
 public class FileInfo implements MessageInfo {
 
 	private String name;
-	private String path;
+	private String userPath;
 	private String checksum;
 	private long size;
 	private int replication;
 
-	public FileInfo(String name, String path, String checksum, long size, int replication) {
+	public FileInfo(String name, String userPath, String checksum, long size, int replication) {
 		this.name = name;
-		this.path = path;
+		this.userPath = userPath;
 		this.checksum = checksum;
 		this.size = size;
 		this.replication = replication;
@@ -32,12 +30,12 @@ public class FileInfo implements MessageInfo {
 		this.name = name;
 	}
 
-	public String getPath() {
-		return path;
+	public String getUserPath() {
+		return userPath;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setUserPath(String userPath) {
+		this.userPath = userPath;
 	}
 
 	public String getChecksum() {

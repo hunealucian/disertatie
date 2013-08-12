@@ -18,53 +18,58 @@ import java.io.IOException;
  */
 public class SendData<T extends MessageInfo> {
 
-	private SendDataSocket dataSocket;
+    private SendDataSocket dataSocket;
 
-	private String destinationIp;
-	private int destinationPort;
+    private String destinationIp;
+    private int destinationPort;
 
-	private HeaderMessage headerMessage;
-	private T message;
+    private HeaderMessage headerMessage;
+    private T message;
 
-	private File fileToSend;
+    private File fileToSend;
 
-	public SendData(String destinationIp, int destinationPort, HeaderMessage headerMessage, T message) {
-		this.destinationIp = destinationIp;
-		this.destinationPort = destinationPort;
-		this.headerMessage = headerMessage;
-		this.message = message;
-	}
+    public SendData(String destinationIp, int destinationPort, HeaderMessage headerMessage, T message) {
+        this.destinationIp = destinationIp;
+        this.destinationPort = destinationPort;
+        this.headerMessage = headerMessage;
+        this.message = message;
+    }
 
-	public SendData(String destinationIp, int destinationPort, HeaderMessage headerMessage, T message, File fileToSend) {
-		this.destinationIp = destinationIp;
-		this.destinationPort = destinationPort;
-		this.headerMessage = headerMessage;
-		this.message = message;
-		this.fileToSend = fileToSend;
-	}
+    public SendData(String destinationIp, int destinationPort, HeaderMessage headerMessage, T message, File fileToSend) {
+        this.destinationIp = destinationIp;
+        this.destinationPort = destinationPort;
+        this.headerMessage = headerMessage;
+        this.message = message;
+        this.fileToSend = fileToSend;
+    }
 
+    private StreamWriter<T> writer;
 
+    public void send() throws IOException {
+        dataSocket = new SendDataSocket(destinationIp, destinationPort);
 
-	public void send() throws IOException {
-		dataSocket = new SendDataSocket(destinationIp, destinationPort);
+        writer = new StreamWriter<>(dataSocket, headerMessage, message);
 
-		StreamWriter<T> writer = new StreamWriter<>(dataSocket, headerMessage, message);
+        writer.push();
 
-		writer.push();
+        if (fileToSend != null) {
+            FileInputStream fis = new FileInputStream(fileToSend);
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            int n = -1;
+            byte[] buffer = new byte[8192];
+            while ((n = bis.read(buffer)) > -1)
+                writer.push(buffer, 0, n);
+        }
 
-		if( fileToSend != null ){
-			FileInputStream fis = new FileInputStream(fileToSend);
-			BufferedInputStream bis = new BufferedInputStream(fis);
-			int n=-1;
-			byte[] buffer = new byte[8192];
-			while((n = bis.read(buffer))>-1)
-				writer.push(buffer,0,n);
-		}
+    }
 
-		writer.closeConnection();
+    public void send(byte[] buffer, int n, int len){
+        writer.push(buffer, 0, n);
+    }
 
-		dataSocket.close();
-	}
-
+    public void closeConnection() throws IOException {
+        writer.closeConnection();
+        dataSocket.close();
+    }
 
 }
