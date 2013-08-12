@@ -7,46 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5acf446c-8c97-43d9-9201-22d02718d245" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/MessageExecutorFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/send/SendDataSocket.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webTest/src/testScenarios/SaveFile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webTest/webTest.iml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/clusterNode/test/SendMessageTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/clusterNode/test/heartbeat/project/network/privatecast/streams/ReceiveMessageTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/WaitingPortInfo.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/sockets/receive/ReceiveFile.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/sockets/receive/ReceiveMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/sockets/send/SendFile.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/sockets/send/SendMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/streams/receive/ReceiveFileStream.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/streams/receive/ReceiveMessageStream.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/streams/receive/ReceiveStream.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/streams/send/SendFileStream.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/streams/send/SendMessageStream.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/privatecast/streams/send/SendStream.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/threads/ThreadFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/threads/receive/ReceiveFileThread.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/threads/send/SendMessageThread.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/send/SendDataSocket.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/threads/ReceiveDataThread.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/clusterNode/heartbeat/project/node/util/nodeInfoConfigurations.properties" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/threads/ReceiveMsgFromManagerThread.java" afterPath="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/threads/NodeReceiveRequestsThread.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/SocketReaderMessageExecutor.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/SocketReaderMessageExecutor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/receive/ReceiveData.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/receive/ReceiveData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/send/SendData.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/send/SendData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/ChunkReceivedListener.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/ChunkReceivedListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/SocketListener.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/SocketListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/receive/ReceiveDataSocket.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/receive/ReceiveDataSocket.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/receive/stream/StreamReader.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/receive/stream/StreamReader.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/newImplementation/socket/send/stream/StreamWriter.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/send/stream/StreamWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/multicast/threads/MulticastSenderService.java" afterPath="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/multicast/threads/MulticastSenderService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/NodeMessageExecutor.java" afterPath="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/NodeMessageExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/NodePrivatecastClient.java" afterPath="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/NodePrivatecastClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/Node.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/Node.java" />
     </list>
     <list id="9d2fe713-8901-443e-8b1f-d408c9dc4519" name="ignore" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/clusterNode_jar/clusterNode.jar" afterPath="" />
@@ -1721,7 +1682,11 @@
       <created>1375628269394</created>
       <updated>1375628269394</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="-new implementations">
+      <created>1376330016703</created>
+      <updated>1376330016703</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1794,7 +1759,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="-new implementations" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1807,6 +1772,7 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="-new implementations" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
