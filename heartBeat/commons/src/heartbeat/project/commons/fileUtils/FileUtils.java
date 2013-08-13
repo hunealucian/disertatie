@@ -32,6 +32,18 @@ public class FileUtils {
         return false;
     }
 
+    public static boolean saveFile(byte[] bytes, String fileName, String filePath){
+        return saveFile(bytes, fileName, filePath, -1);
+    }
+
+    public static boolean deleteFile(File file){
+        if( file.exists() )
+            if( file.delete())
+                return true;
+
+        return false;
+    }
+
     public static void generateVersionFile(File file, int fileReplication) throws IOException, NoSuchAlgorithmException {
         StringBuffer buffer = new StringBuffer();
         buffer.append(getFileChecksum(file));
@@ -41,9 +53,7 @@ public class FileUtils {
         Files.write(buffer.toString().getBytes(), new File(file.getAbsolutePath() + ".version"));
     }
 
-    public static boolean saveFile(byte[] bytes, String fileName, String filePath){
-        return saveFile(bytes, fileName, filePath, -1);
-    }
+
 
     /**
      * Calculates a file checksum

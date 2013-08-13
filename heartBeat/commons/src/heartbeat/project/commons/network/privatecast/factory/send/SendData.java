@@ -64,7 +64,7 @@ public class SendData<T extends MessageInfo> {
     }
 
     public void send(byte[] buffer, int n, int len){
-        writer.push(buffer, 0, n);
+        writer.push(buffer, n, len);
     }
 
     public void closeConnection() throws IOException {

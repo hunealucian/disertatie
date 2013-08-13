@@ -25,6 +25,7 @@ public class StreamWriter<T> extends ObjectOutputStream {
 
 	public void push(){
 		try {
+
 			writeUTF(headerMessage.getName());
 			writeObject(message);
 
@@ -44,7 +45,7 @@ public class StreamWriter<T> extends ObjectOutputStream {
 	}
 
 	public void closeConnection() throws IOException {
-
+        flush();
 		close();
 	}
 }

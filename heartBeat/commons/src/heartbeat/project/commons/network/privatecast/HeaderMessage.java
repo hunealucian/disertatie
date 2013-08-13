@@ -7,10 +7,11 @@ import java.io.Serializable;
  * User: luc  | Date: 8/6/13  |  Time: 8:08 PM
  */
 public enum HeaderMessage implements Serializable {
-    SAVE_FILE("saveFile"),
+    SAVE_FILE("saveFile"),    // used for upload of file
 	DELETE_FILE("deleteFile"),
+	SEND_FILE("sendFile"),   //used for download of file
 
-	SAVE_CHAIN("saveChain"),
+	SAVE_CHAIN("saveChain"),  // used for upload of file on multiple nodes
 
     OK("ok");
 

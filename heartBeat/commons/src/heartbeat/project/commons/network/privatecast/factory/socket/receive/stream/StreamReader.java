@@ -61,7 +61,7 @@ public class StreamReader<T> extends ObjectInputStream {
 			FileOutputStream fos = new FileOutputStream(fileReceived);
 			int n;
 			byte[] buffer = new byte[8192];
-			while ((n = this.read(buffer)) > 0) {
+			while ((n = this.read(buffer)) >= 0) {
 				fos.write(buffer, 0, n);
 
 				if (listener != null)
