@@ -11,6 +11,8 @@ public class ManagerMulticastClientService {
 
     public ManagerMulticastClientService(Manager manager) {
         this.manager = manager;
+
+        startMulticastService();
     }
 
     private void startMulticastService(){

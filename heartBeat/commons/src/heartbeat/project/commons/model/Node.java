@@ -11,7 +11,7 @@ import java.util.UUID;
 /**
  * User: luc  | Date: 8/4/13  |  Time: 7:00 PM
  */
-public class Node implements IMulticastObject {
+public class Node implements IMulticastObject<Node> {
 
     private String id = UUID.randomUUID().toString();
 
@@ -32,7 +32,7 @@ public class Node implements IMulticastObject {
     public Node() {
     }
 
-    public void refreshMachineData() {
+    public Node refreshMachineData() {
         if (machineInfoSystem == null)
             machineInfoSystem = new MachineInfoSystem(nodePath);
 
@@ -42,6 +42,8 @@ public class Node implements IMulticastObject {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return this;
     }
 
     //region getters and setters

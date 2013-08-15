@@ -13,6 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class ClusterSystemInfo {
 
     private static CopyOnWriteArrayList<Node> NODES_TABLE = new CopyOnWriteArrayList<Node>(new ArrayList<Node>());
+    private static CopyOnWriteArrayList<Node> DEAD_NODES_TABLE = new CopyOnWriteArrayList<Node>(new ArrayList<Node>());
     /**
      * Synchronized method for update Or insert commons in table
      *
@@ -44,7 +45,7 @@ public class ClusterSystemInfo {
         }
     }
 
-    public static CopyOnWriteArrayList<Node> getNODES_TABLE() {
+    public static synchronized CopyOnWriteArrayList<Node> getNODES_TABLE() {
         return NODES_TABLE;
     }
 }

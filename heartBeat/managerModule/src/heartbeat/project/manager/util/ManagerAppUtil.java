@@ -10,6 +10,9 @@ import java.util.Properties;
  */
 public class ManagerAppUtil extends AppUtils {
 
+    public static final int MAX_THREADS = 10;
+
+
     public static String getProperty(String propName){
         if( properties == null )
             initProperties();

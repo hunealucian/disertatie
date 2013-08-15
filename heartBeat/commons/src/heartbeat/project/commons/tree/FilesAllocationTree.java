@@ -57,6 +57,34 @@ public class FilesAllocationTree<T extends FATFolder> {
         return childNode;
     }
 
+    public FATFile getLeaf(String folderPath, String fileName){
+        for (FATFile fatFile : getLeafs()) {
+            if( fatFile.getName().equalsIgnoreCase(fileName) && fatFile.getPath().endsWith(folderPath + "/" + fileName) ){
+                return fatFile;
+            }
+        }
+
+        return null;
+    }
+
+    private List<FATFile> getLeafs(){
+        List<FATFile> result = new LinkedList<>();
+
+        for (FilesAllocationTree<T> child : children) {
+            if( child.getData() instanceof FATFolder ){
+                result.addAll(child.getLeafs());
+            } else {
+                result.add((FATFile) child.getData());
+            }
+        }
+
+        return result;
+    }
+
+    public T getData() {
+        return data;
+    }
+
     @Override
     public String toString() {
         return data != null ? data.toString() : "[data null]";

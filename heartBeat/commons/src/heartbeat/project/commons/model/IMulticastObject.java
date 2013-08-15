@@ -5,7 +5,9 @@ import java.io.Serializable;
 /**
  * User: luc  | Date: 8/8/13  |  Time: 1:10 PM
  */
-public interface IMulticastObject extends Serializable {
+public interface IMulticastObject<T> extends Serializable {
+
+    public T refreshMachineData();
 
     public String getMulticastIp();
     public void setMulticastIp(String multicastIp);
