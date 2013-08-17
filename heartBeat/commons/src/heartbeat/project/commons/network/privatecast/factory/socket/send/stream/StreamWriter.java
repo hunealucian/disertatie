@@ -2,8 +2,7 @@ package heartbeat.project.commons.network.privatecast.factory.socket.send.stream
 
 import heartbeat.project.commons.network.privatecast.HeaderMessage;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -34,6 +33,17 @@ public class StreamWriter<T> extends ObjectOutputStream {
 			e.printStackTrace();
 		}
 	}
+
+    public void push(File file) throws IOException {
+        FileInputStream fis = new FileInputStream(file);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        int n = -1;
+        byte[] buffer = new byte[8192];
+        while ((n = bis.read(buffer)) > -1)
+            push(buffer, 0, n);
+
+        flush();
+    }
 
 	public void push(byte[] bytes, int off, int len){
 		try {

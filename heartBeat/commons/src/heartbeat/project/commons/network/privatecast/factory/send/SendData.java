@@ -53,17 +53,12 @@ public class SendData<T extends MessageInfo> {
         writer.push();
 
         if (fileToSend != null) {
-            FileInputStream fis = new FileInputStream(fileToSend);
-            BufferedInputStream bis = new BufferedInputStream(fis);
-            int n = -1;
-            byte[] buffer = new byte[8192];
-            while ((n = bis.read(buffer)) > -1)
-                writer.push(buffer, 0, n);
+            writer.push(fileToSend);
         }
 
     }
 
-    public void send(byte[] buffer, int n, int len){
+    public void send(byte[] buffer, int n, int len) {
         writer.push(buffer, n, len);
     }
 

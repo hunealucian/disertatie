@@ -1,16 +1,20 @@
 package heartbeat.project.commons.fileUtils;
 
+import com.google.common.base.Charsets;
 import com.google.common.io.Files;
+import heartbeat.project.commons.model.socketmsg.FileVersionInfo;
 import heartbeat.project.commons.tree.FilesAllocationTree;
 import heartbeat.project.commons.tree.treeutils.FATFile;
 import heartbeat.project.commons.tree.treeutils.FATFolder;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  * User: luc  | Date: 8/7/13  |  Time: 10:40 PM
@@ -53,7 +57,25 @@ public class FileUtils {
         Files.write(buffer.toString().getBytes(), new File(file.getAbsolutePath() + ".version"));
     }
 
+    public static FileVersionInfo getFileVersionInfo(File file) throws IOException {
+        FileVersionInfo fileVersionInfo = new FileVersionInfo();
 
+        String fileContent = getFileContent(new File(file.getAbsolutePath() + ".version"));
+        if( fileVersionInfo != null ){
+
+            String[] rows = fileContent.split(System.getProperty("line.separator"));
+            if( rows != null && rows.length >= 2 ){
+                fileVersionInfo.setChecksum(rows[0].replace("\r", ""));
+                fileVersionInfo.setReplication(Integer.parseInt(rows[1].replace("\r", "")));
+            }
+        }
+
+        return fileVersionInfo;
+    }
+
+    public static String getFileContent(File file) throws IOException {
+        return Files.toString(file, Charsets.UTF_8);
+    }
 
     /**
      * Calculates a file checksum
@@ -119,7 +141,8 @@ public class FileUtils {
         if (parrent.isDirectory() && parrent.listFiles().length > 0) {
             for (File file : parrent.listFiles()) {
                 if (file.isFile()) {
-                    tree.addChild(new FATFile(file.getName(), file.getAbsolutePath(), file.length(), new Date(file.lastModified()), getFileChecksum(file) ));
+                    if( !file.getName().contains(".version") )
+                        tree.addChild(new FATFile(file.getName(), file.getAbsolutePath(), file.length(), new Date(file.lastModified()), FileUtils.getFileVersionInfo(file) ));
                 } else {
                     getChilds(file, tree.addChild(new FATFolder(file.getName(), file.getAbsolutePath(), folderSize(file), new Date(file.lastModified()))));
                 }

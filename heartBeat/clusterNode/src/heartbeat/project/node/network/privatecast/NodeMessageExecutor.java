@@ -11,6 +11,8 @@ import heartbeat.project.commons.network.privatecast.factory.SocketReaderMessage
 import heartbeat.project.commons.network.privatecast.factory.send.SendData;
 import heartbeat.project.commons.network.privatecast.factory.socket.ChunkReceivedListener;
 import heartbeat.project.commons.network.privatecast.factory.socket.receive.stream.StreamReader;
+import heartbeat.project.commons.network.privatecast.factory.socket.send.stream.StreamWriter;
+import heartbeat.project.commons.tree.treeutils.FATFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,15 +51,30 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
                 } else if( headerMessage == HeaderMessage.DELETE_FILE ){
                     deleteFile(streamReader);
                 } else if( headerMessage == HeaderMessage.SEND_FILE ){
-
-                    //todo sendFile
-
+                    sendFile(streamReader);
                 }
 
             }
 
         } catch (IOException | NoSuchAlgorithmException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void sendFile(StreamReader streamReader) throws IOException {
+        System.out.println("Received request : SEND FILE...");
+        FileInfo fileInfo = (FileInfo) streamReader.getMessageInfo();
+
+        FATFile f = currentNode.getMachineFAT().getLeaf(fileInfo.getUserPath(), fileInfo.getName());
+        if( f != null ){
+            System.out.println("\rSending file : " + f.getPath() + " to " + streamReader.getSocket().getInetAddress().getHostAddress());
+            StreamWriter<FileInfo> writer = new StreamWriter<FileInfo>(streamReader.getSocket(), HeaderMessage.OK, fileInfo);
+            writer.push(new File(f.getPath()));
+            writer.closeConnection();
+        } else {
+            System.out.println("\rERROR: could not find file " + fileInfo.getUserPath() + "/" + fileInfo.getName() + " on this machine!");
+            StreamWriter<FileInfo> writer = new StreamWriter<FileInfo>(streamReader.getSocket(), HeaderMessage.ERROR, fileInfo);
+            writer.closeConnection();
         }
     }
 

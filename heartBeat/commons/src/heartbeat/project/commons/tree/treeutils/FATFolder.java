@@ -1,11 +1,12 @@
 package heartbeat.project.commons.tree.treeutils;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * User: luc  | Date: 8/7/13  |  Time: 9:47 PM
  */
-public class FATFolder {
+public class FATFolder implements Serializable {
     private String name;
     private String path;
     private long size;

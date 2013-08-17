@@ -14,7 +14,12 @@ public class FileInfo implements MessageInfo {
 	private long size;
 	private int replication;
 
-	public FileInfo(String name, String userPath, String checksum, long size, int replication) {
+    public FileInfo(String name, String userPath) {
+        this.name = name;
+        this.userPath = userPath;
+    }
+
+    public FileInfo(String name, String userPath, String checksum, long size, int replication) {
 		this.name = name;
 		this.userPath = userPath;
 		this.checksum = checksum;

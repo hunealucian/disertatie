@@ -21,33 +21,9 @@ public class FilesAllocationTree<T extends FATFolder> {
     private FilesAllocationTree<T> parent;
     List<FilesAllocationTree<T>> children;
 
-    public FilesAllocationTree(File folder) throws Exception {
-
-        if( folder != null && folder.exists() && folder.isDirectory() ){
-
-        } else {
-            throw new Exception("The selected folder is not a directory");
-        }
-
-    }
-
     public FilesAllocationTree(T data) {
         this.data = data;
         this.children = new LinkedList<FilesAllocationTree<T>>();
-    }
-
-    private static FilesAllocationTree getChilds(File parrent, FilesAllocationTree tree) throws IOException, NoSuchAlgorithmException {
-        if (parrent.isDirectory() && parrent.listFiles().length > 0) {
-            for (File file : parrent.listFiles()) {
-                if (file.isFile()) {
-                    tree.addChild(new FATFile(file.getName(), file.getAbsolutePath(), file.length(), new Date(file.lastModified()), FileUtils.getFileChecksum(file) ));
-                } else {
-                    getChilds(file, tree.addChild(new FATFolder(file.getName(), file.getAbsolutePath(), FileUtils.folderSize(file), new Date(file.lastModified()))));
-                }
-
-            }
-        }
-        return tree;
     }
 
     public FilesAllocationTree<T> addChild(T child) {
@@ -71,10 +47,10 @@ public class FilesAllocationTree<T extends FATFolder> {
         List<FATFile> result = new LinkedList<>();
 
         for (FilesAllocationTree<T> child : children) {
-            if( child.getData() instanceof FATFolder ){
-                result.addAll(child.getLeafs());
-            } else {
+            if( child.getData() instanceof FATFile ){
                 result.add((FATFile) child.getData());
+            } else {
+                result.addAll(child.getLeafs());
             }
         }
 
