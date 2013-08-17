@@ -1,6 +1,7 @@
 package heartbeat.project.commons.model;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 
@@ -10,7 +11,7 @@ import java.nio.file.Files;
  * User: Hunea Lucian | Email : hunea@synygy.net
  * Date: 8/11/13
  */
-public class MachineInfoSystem {
+public class MachineInfoSystem implements Serializable {
 
 	private int openedThreads;
 

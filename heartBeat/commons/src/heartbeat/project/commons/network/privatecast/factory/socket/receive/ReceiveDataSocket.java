@@ -23,9 +23,6 @@ public class ReceiveDataSocket extends ServerSocket {
 		super(port);
 		this.listener = socketListener;
 
-
-
-
 		listeningPort = getLocalPort();
 
 		System.out.println("Initializing receiver socket");

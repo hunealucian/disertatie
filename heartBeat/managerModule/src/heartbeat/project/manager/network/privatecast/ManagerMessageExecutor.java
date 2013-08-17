@@ -44,7 +44,7 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
                 } else if (headerMessage == HeaderMessage.DELETE_FILE) {
                     deleteFile(streamReader);
                 } else if (headerMessage == HeaderMessage.GIVE_FILE_NODE_CONNECTION) {
-                    returnNodeConnectionInfos(streamReader);
+                    returnNodeConnectionInfo(streamReader);
                 } else if (headerMessage == HeaderMessage.GIVE_NODE_INFO) {
                     returnNodeInfo(streamReader);
                 } else if (headerMessage == HeaderMessage.GIVE_NODES_LIST) {
@@ -93,7 +93,7 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
     }
 
     // Method used to get a node connection data for a specific file in a path
-    private void returnNodeConnectionInfos(StreamReader streamReader) throws IOException {
+    private void returnNodeConnectionInfo(StreamReader streamReader) throws IOException {
 
         FileInfo fileInfo = (FileInfo) messageInfo;
 

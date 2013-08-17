@@ -32,7 +32,7 @@ public class DownloadFile {
 
 
             while (true){
-                sender.
+//                sender.
             }
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.

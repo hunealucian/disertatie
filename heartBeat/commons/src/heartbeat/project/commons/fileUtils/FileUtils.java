@@ -2,19 +2,16 @@ package heartbeat.project.commons.fileUtils;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
-import heartbeat.project.commons.model.socketmsg.FileVersionInfo;
 import heartbeat.project.commons.tree.FilesAllocationTree;
 import heartbeat.project.commons.tree.treeutils.FATFile;
 import heartbeat.project.commons.tree.treeutils.FATFolder;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
-import java.util.Scanner;
 
 /**
  * User: luc  | Date: 8/7/13  |  Time: 10:40 PM
@@ -26,7 +23,7 @@ public class FileUtils {
             Files.write(bytes, new File(filePath + "/" + fileName));
 
             if( fileReplication != -1 ){
-                generateVersionFile(new File(filePath + "/" + fileName), fileReplication);
+                generateVersionFile(new File(filePath + "/" + fileName));
             }
 
             return true;
@@ -48,29 +45,29 @@ public class FileUtils {
         return false;
     }
 
-    public static void generateVersionFile(File file, int fileReplication) throws IOException, NoSuchAlgorithmException {
+    public static void generateVersionFile(File file) throws IOException, NoSuchAlgorithmException {
+
+        int fileVersion = getFileVersionInfo(file);
+
         StringBuffer buffer = new StringBuffer();
-        buffer.append(getFileChecksum(file));
-        buffer.append("\r\n");
-        buffer.append(fileReplication);
+        buffer.append(fileVersion == -1 ? 1 : (fileVersion + 1));
 
         Files.write(buffer.toString().getBytes(), new File(file.getAbsolutePath() + ".version"));
     }
 
-    public static FileVersionInfo getFileVersionInfo(File file) throws IOException {
-        FileVersionInfo fileVersionInfo = new FileVersionInfo();
+    public static int getFileVersionInfo(File file) throws IOException {
+        int result = -1;
 
         String fileContent = getFileContent(new File(file.getAbsolutePath() + ".version"));
-        if( fileVersionInfo != null ){
+        if( fileContent != null ){
 
             String[] rows = fileContent.split(System.getProperty("line.separator"));
-            if( rows != null && rows.length >= 2 ){
-                fileVersionInfo.setChecksum(rows[0].replace("\r", ""));
-                fileVersionInfo.setReplication(Integer.parseInt(rows[1].replace("\r", "")));
+            if( rows != null && rows.length >= 1 ){
+                result = Integer.parseInt(rows[0].replace("\r", ""));
             }
         }
 
-        return fileVersionInfo;
+        return result;
     }
 
     public static String getFileContent(File file) throws IOException {
@@ -142,7 +139,7 @@ public class FileUtils {
             for (File file : parrent.listFiles()) {
                 if (file.isFile()) {
                     if( !file.getName().contains(".version") )
-                        tree.addChild(new FATFile(file.getName(), file.getAbsolutePath(), file.length(), new Date(file.lastModified()), FileUtils.getFileVersionInfo(file) ));
+                        tree.addChild(new FATFile(file.getName(), file.getAbsolutePath(), file.length(), new Date(file.lastModified()), FileUtils.getFileVersionInfo(file), FileUtils.getFileChecksum(file) ));
                 } else {
                     getChilds(file, tree.addChild(new FATFolder(file.getName(), file.getAbsolutePath(), folderSize(file), new Date(file.lastModified()))));
                 }

@@ -12,8 +12,9 @@ import java.io.IOException;
 
 /**
  * Description
+ *  Sends a message Header object and a message object with attached file
  * <p/>
- * User: Hunea Lucian | Email : hunea@synygy.net
+ * User: Hunea Lucian | Email : hunealucian@gmail.com
  * Date: 8/11/13
  */
 public class SendData<T extends MessageInfo> {

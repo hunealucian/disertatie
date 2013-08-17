@@ -1,7 +1,5 @@
 package heartbeat.project.commons.tree.treeutils;
 
-import heartbeat.project.commons.model.socketmsg.FileVersionInfo;
-
 import java.util.Date;
 
 /**
@@ -9,22 +7,32 @@ import java.util.Date;
  */
 public class FATFile extends FATFolder {
 
-    private FileVersionInfo fileVersionInfo;
+    private int version;
+    private String checksum;
 
     public FATFile(String name, String path, long size, Date lastModified) {
         super(name, path, size, lastModified);
     }
 
-    public FATFile(String name, String path, long size, Date lastModified, FileVersionInfo fileVersionInfo) {
+    public FATFile(String name, String path, long size, Date lastModified, int version, String checksum) {
         super(name, path, size, lastModified);
-        this.fileVersionInfo = fileVersionInfo;
+        this.version = version;
+        this.checksum = checksum;
     }
 
-    public FileVersionInfo getFileVersionInfo() {
-        return fileVersionInfo;
+    public int getVersion() {
+        return version;
     }
 
-    public void setFileVersionInfo(FileVersionInfo fileVersionInfo) {
-        this.fileVersionInfo = fileVersionInfo;
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public String getChecksum() {
+        return checksum;
+    }
+
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
     }
 }

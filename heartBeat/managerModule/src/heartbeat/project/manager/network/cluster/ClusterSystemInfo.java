@@ -1,6 +1,8 @@
 package project.manager.network.cluster;
 
 import heartbeat.project.commons.model.Node;
+import heartbeat.project.commons.tree.FilesAllocationTree;
+import heartbeat.project.commons.tree.treeutils.FATFolder;
 import project.manager.util.ManagerAppUtil;
 
 import java.util.ArrayList;
@@ -14,6 +16,9 @@ public class ClusterSystemInfo {
 
     private static CopyOnWriteArrayList<Node> NODES_TABLE = new CopyOnWriteArrayList<Node>(new ArrayList<Node>());
     private static CopyOnWriteArrayList<Node> DEAD_NODES_TABLE = new CopyOnWriteArrayList<Node>(new ArrayList<Node>());
+
+    private static FilesAllocationTree<FATFolder> FATSystem;
+
     /**
      * Synchronized method for update Or insert commons in table
      *
@@ -23,6 +28,7 @@ public class ClusterSystemInfo {
 
         synchronized (NODES_TABLE) {
             for (Node node1 : NODES_TABLE) {
+                //todo : USE NODE IP
                 if (node1.getId().equalsIgnoreCase(node.getId())) {
                     node1.setLastPing(node.getLastPing());
                     return;
@@ -36,7 +42,7 @@ public class ClusterSystemInfo {
     /**
      * Synchronizes method to update NodesTable
      */
-    public static void clearNodesTable() {
+    public static synchronized void clearNodesTable() {
 
         for (Node node : NODES_TABLE) {
             if (new Date().getTime() >= (node.getLastPing().getTime() + ManagerAppUtil.secondsToDead)) {

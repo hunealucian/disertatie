@@ -12,6 +12,7 @@ public class FATFolder implements Serializable {
     private long size;
     private Date lastModified;
 
+    private int replication;
 
     public FATFolder(String name, String path, long size, Date lastModified) {
         this.name = name;
@@ -50,5 +51,13 @@ public class FATFolder implements Serializable {
 
     public void setLastModified(Date lastModified) {
         this.lastModified = lastModified;
+    }
+
+    public int getReplication() {
+        return replication;
+    }
+
+    public void setReplication(int replication) {
+        this.replication = replication;
     }
 }

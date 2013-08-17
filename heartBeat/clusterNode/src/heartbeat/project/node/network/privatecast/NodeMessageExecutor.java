@@ -101,7 +101,7 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
         streamReader.closeConnection();
         System.out.println("File saved on : " + currentNode.getNodePath() + "/" + fileInfo.getUserPath());
 
-        FileUtils.generateVersionFile(new File(filePath + "/" + fileInfo.getName()), fileInfo.getReplication());
+        FileUtils.generateVersionFile(new File(filePath + "/" + fileInfo.getName()));
         System.out.println("Versioning file info has been generated for : " + fileInfo.getName());
     }
 
@@ -149,7 +149,7 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 
         streamReader.closeConnection();
 
-        FileUtils.generateVersionFile(new File(filePath + "/" + fileInfo.getName()), fileInfo.getReplication());
+        FileUtils.generateVersionFile(new File(filePath + "/" + fileInfo.getName()));
         System.out.println("Versioning file info has been generated for : " + fileInfo.getName());
     }
 }

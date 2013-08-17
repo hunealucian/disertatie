@@ -22,11 +22,12 @@ public class ManagerReceiveMessagesThread extends Thread {
 
     @Override
     public void run() {
-        ReceiveData<MessageInfo, ManagerMessageExecutor> receiver = new ReceiveData<MessageInfo, ManagerMessageExecutor>(manager.getMessagesListeningPort(), new MessageExecutorFactory<ManagerMessageExecutor>() {
-            @Override
-            public ManagerMessageExecutor create() {
-                return new ManagerMessageExecutor(manager);
-            }
-        });
+        ReceiveData<MessageInfo, ManagerMessageExecutor> receiver = new ReceiveData<MessageInfo, ManagerMessageExecutor>(manager.getMessagesListeningPort(),
+                new MessageExecutorFactory<ManagerMessageExecutor>() {
+                    @Override
+                    public ManagerMessageExecutor create() {
+                        return new ManagerMessageExecutor(manager);
+                    }
+                });
     }
 }
