@@ -6,20 +6,24 @@ import project.manager.network.cluster.ClusterSystemInfo;
 import java.util.List;
 
 /**
- * User: luc  | Date: 8/5/13  |  Time: 12:31 PM
+ * Description
+ * <p/>
+ * User: Hunea Lucian | Email : hunealucian@gmail.com
+ * Date: 8/17/13
  */
-public class ClusterReplicationCheckService extends Thread {
+public class ClusterCheckNodesHeartBeatServiceThread extends Thread {
 
-    public ClusterReplicationCheckService() {
-        System.out.println("Cluster replication check service is up and running!");
+    public ClusterCheckNodesHeartBeatServiceThread() {
+        System.out.println("Check Nodes Heart-Beat service is initialized");
     }
 
     @Override
     public void run() {
+        System.out.println("Check Nodes Heart-Beat service is up and running...");
         while (true) {
             try {
                 Thread.sleep(30000);
-
+                System.out.println("\rChecking if nodes are alive...");
                 ClusterSystemInfo.clearNodesTable();
 
                 showToTerminalNodesTable(ClusterSystemInfo.getNODES_TABLE());
@@ -46,4 +50,3 @@ public class ClusterReplicationCheckService extends Thread {
         System.out.println("<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>\n");
     }
 }
-

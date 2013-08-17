@@ -1,6 +1,6 @@
 package testScenarios;
 
-import heartbeat.project.commons.fileUtils.FileUtils;
+import heartbeat.project.commons.utils.FileUtils;
 import heartbeat.project.commons.tree.FilesAllocationTree;
 import heartbeat.project.commons.tree.treeutils.FATFile;
 import heartbeat.project.commons.tree.treeutils.FATFolder;
@@ -17,7 +17,7 @@ public class TestFAT {
     public static void main(String[] args) {
 
         try {
-            FilesAllocationTree<FATFolder> tree = FileUtils.getFolderTree(new File(nodePath));
+            FilesAllocationTree<FATFolder, FATFile> tree = FileUtils.getFolderTree(new File(nodePath));
 
             FATFile f = tree.getLeaf("normal/user1/folder1", "teamviewer_linux_x64.deb");
 

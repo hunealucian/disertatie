@@ -1,6 +1,6 @@
 package heartbeat.project.node.network.privatecast;
 
-import heartbeat.project.commons.fileUtils.FileUtils;
+import heartbeat.project.commons.utils.FileUtils;
 import heartbeat.project.commons.model.ChainLink;
 import heartbeat.project.commons.model.Node;
 import heartbeat.project.commons.model.socketmsg.ChainInfo;

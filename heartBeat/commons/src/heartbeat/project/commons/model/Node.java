@@ -1,6 +1,7 @@
 package heartbeat.project.commons.model;
 
-import heartbeat.project.commons.fileUtils.FileUtils;
+import heartbeat.project.commons.tree.treeutils.FATFile;
+import heartbeat.project.commons.utils.FileUtils;
 import heartbeat.project.commons.tree.FilesAllocationTree;
 import heartbeat.project.commons.tree.treeutils.FATFolder;
 
@@ -27,7 +28,7 @@ public class Node implements IMulticastObject<Node> {
     private Date lastPing;
 
     private MachineInfoSystem machineInfoSystem;
-    private FilesAllocationTree<FATFolder> machineFAT;
+    private FilesAllocationTree<FATFolder, FATFile> machineFAT;
 
     public Node() {
     }
@@ -119,11 +120,11 @@ public class Node implements IMulticastObject<Node> {
         this.receiveMessagesPort = receiveMessagesPort;
     }
 
-    public FilesAllocationTree<FATFolder> getMachineFAT() {
+    public FilesAllocationTree<FATFolder, FATFile> getMachineFAT() {
         return machineFAT;
     }
 
-    public void setMachineFAT(FilesAllocationTree<FATFolder> machineFAT) {
+    public void setMachineFAT(FilesAllocationTree<FATFolder, FATFile> machineFAT) {
         this.machineFAT = machineFAT;
     }
 

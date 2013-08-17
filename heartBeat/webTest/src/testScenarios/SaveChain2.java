@@ -1,6 +1,6 @@
 package testScenarios;
 
-import heartbeat.project.commons.fileUtils.FileUtils;
+import heartbeat.project.commons.utils.FileUtils;
 import heartbeat.project.commons.model.ChainLink;
 import heartbeat.project.commons.model.socketmsg.ChainInfo;
 import heartbeat.project.commons.model.socketmsg.FileInfo;

@@ -20,6 +20,11 @@ public class Manager implements IMulticastObject {
         this.multicastPort = multicastPort;
     }
 
+    @Override
+    public Object refreshMachineData() {
+        return null;
+    }
+
     public String getMulticastIp() {
         return multicastIp;
     }

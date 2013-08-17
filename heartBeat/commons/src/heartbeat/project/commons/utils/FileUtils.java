@@ -1,4 +1,4 @@
-package heartbeat.project.commons.fileUtils;
+package heartbeat.project.commons.utils;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
@@ -122,9 +122,9 @@ public class FileUtils {
         return length;
     }
 
-    public static FilesAllocationTree<FATFolder> getFolderTree(File folder) throws Exception {
+    public static FilesAllocationTree<FATFolder, FATFile> getFolderTree(File folder) throws Exception {
         if (folder != null && folder.exists() && folder.isDirectory()) {
-            FilesAllocationTree<FATFolder> tree = new FilesAllocationTree<FATFolder>(new FATFolder(folder.getName(), folder.getAbsolutePath(), folderSize(folder), new Date(folder.lastModified())));
+            FilesAllocationTree<FATFolder, FATFile> tree = new FilesAllocationTree<>(new FATFolder(folder.getName(), folder.getAbsolutePath(), folderSize(folder), new Date(folder.lastModified())));
 
             return getChilds(folder, tree);
 
@@ -134,7 +134,7 @@ public class FileUtils {
         }
     }
 
-    private static FilesAllocationTree<FATFolder> getChilds(File parrent, FilesAllocationTree tree) throws IOException, NoSuchAlgorithmException {
+    private static FilesAllocationTree<FATFolder, FATFile> getChilds(File parrent, FilesAllocationTree tree) throws IOException, NoSuchAlgorithmException {
         if (parrent.isDirectory() && parrent.listFiles().length > 0) {
             for (File file : parrent.listFiles()) {
                 if (file.isFile()) {

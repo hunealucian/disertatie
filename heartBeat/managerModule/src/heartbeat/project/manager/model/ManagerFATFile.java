@@ -27,10 +27,13 @@ public class ManagerFATFile extends FATFile {
 
         synchronized (replicationsNode){
             for (NodeInfo info : replicationsNode) {
+                //TODO use node IP
                 if( info.getNode().getId().equalsIgnoreCase(nodeInfo.getNode().getId()) ){
-                    //todo
+                    return;
                 }
             }
+
+            replicationsNode.add(nodeInfo);
         }
     }
 }

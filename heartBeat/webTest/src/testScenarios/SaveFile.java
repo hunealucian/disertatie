@@ -1,6 +1,6 @@
 package testScenarios;
 
-import heartbeat.project.commons.fileUtils.FileUtils;
+import heartbeat.project.commons.utils.FileUtils;
 import heartbeat.project.commons.model.socketmsg.FileInfo;
 import heartbeat.project.commons.network.privatecast.HeaderMessage;
 import heartbeat.project.commons.network.privatecast.factory.send.SendData;
