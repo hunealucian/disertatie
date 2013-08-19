@@ -122,30 +122,4 @@ public class FileUtils {
         return length;
     }
 
-    public static FilesAllocationTree<FATFolder, FATFile> getFolderTree(File folder) throws Exception {
-        if (folder != null && folder.exists() && folder.isDirectory()) {
-            FilesAllocationTree<FATFolder, FATFile> tree = new FilesAllocationTree<>(new FATFolder(folder.getName(), folder.getAbsolutePath(), folderSize(folder), new Date(folder.lastModified())));
-
-            return getChilds(folder, tree);
-
-
-        } else {
-            throw new Exception("The selected folder is not a directory");
-        }
-    }
-
-    private static FilesAllocationTree<FATFolder, FATFile> getChilds(File parrent, FilesAllocationTree tree) throws IOException, NoSuchAlgorithmException {
-        if (parrent.isDirectory() && parrent.listFiles().length > 0) {
-            for (File file : parrent.listFiles()) {
-                if (file.isFile()) {
-                    if( !file.getName().contains(".version") )
-                        tree.addChild(new FATFile(file.getName(), file.getAbsolutePath(), file.length(), new Date(file.lastModified()), FileUtils.getFileVersionInfo(file), FileUtils.getFileChecksum(file) ));
-                } else {
-                    getChilds(file, tree.addChild(new FATFolder(file.getName(), file.getAbsolutePath(), folderSize(file), new Date(file.lastModified()))));
-                }
-
-            }
-        }
-        return tree;
-    }
 }

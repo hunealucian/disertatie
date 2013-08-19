@@ -39,7 +39,7 @@ public class Node implements IMulticastObject<Node> {
 
         try {
             machineInfoSystem.init();
-            machineFAT = FileUtils.getFolderTree(new File(nodePath));
+            machineFAT = new FilesAllocationTree<FATFolder, FATFile>(new File(nodePath));
         } catch (Exception e) {
             e.printStackTrace();
         }

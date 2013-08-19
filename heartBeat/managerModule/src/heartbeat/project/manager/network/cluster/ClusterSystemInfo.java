@@ -4,6 +4,7 @@ import heartbeat.project.commons.model.Node;
 import heartbeat.project.commons.tree.FilesAllocationTree;
 import heartbeat.project.commons.tree.treeutils.FATFolder;
 import project.manager.model.ManagerFATFile;
+import project.manager.tree.ManagerFAT;
 import project.manager.util.ManagerAppUtil;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class ClusterSystemInfo {
     private static CopyOnWriteArrayList<Node> NODES_TABLE = new CopyOnWriteArrayList<Node>(new ArrayList<Node>());
     private static CopyOnWriteArrayList<Node> DEAD_NODES_TABLE = new CopyOnWriteArrayList<Node>(new ArrayList<Node>());
 
-    private static FilesAllocationTree<FATFolder, ManagerFATFile> FATSystem;
+    public static ManagerFAT FATSystem;
 
     /**
      * Synchronized method for update Or insert commons in table
@@ -65,7 +66,7 @@ public class ClusterSystemInfo {
 
     public static synchronized void addNodeToFATSystem(Node node){
         if( ClusterSystemInfo.FATSystem == null ){
-            FATSystem = new FilesAllocationTree<>(new FATFolder("manager", "managerPath", 0, new Date()));
+//            FATSystem = new FilesAllocationTree<>(new FATFolder("manager", "managerPath", 0, new Date()));
         }
 
         synchronized (ClusterSystemInfo.FATSystem){
