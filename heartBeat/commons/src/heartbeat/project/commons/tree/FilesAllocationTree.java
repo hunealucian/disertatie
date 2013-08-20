@@ -16,10 +16,10 @@ import java.util.List;
  */
 public class FilesAllocationTree<T extends FATFolder, M extends FATFile> {
 
-    private T data;
+    protected T data;
 
-    private FilesAllocationTree<T, M> parent;
-    List<FilesAllocationTree<T, M>> children;
+    protected FilesAllocationTree<T, M> parent;
+    protected List<FilesAllocationTree<T, M>> children;
 
     public FilesAllocationTree() {
     }
@@ -38,10 +38,12 @@ public class FilesAllocationTree<T extends FATFolder, M extends FATFile> {
         }
     }
 
-    private FilesAllocationTree(T data) {
+    public  FilesAllocationTree(T data) {
         this.data = data;
         this.children = new LinkedList<FilesAllocationTree<T, M>>();
     }
+
+
 
     public FilesAllocationTree<T, M> addChild(T child) {
         FilesAllocationTree<T, M> childNode = new FilesAllocationTree<>(child);
@@ -54,8 +56,8 @@ public class FilesAllocationTree<T extends FATFolder, M extends FATFile> {
         if (parrent.isDirectory() && parrent.listFiles().length > 0) {
             for (File file : parrent.listFiles()) {
                 if (file.isFile()) {
-                    if( !file.getName().contains(".version") )
-                        tree.addChild(new FATFile(file.getName(), file.getAbsolutePath(), file.length(), new Date(file.lastModified()), FileUtils.getFileVersionInfo(file), FileUtils.getFileChecksum(file) ));
+                    if (!file.getName().contains(".version"))
+                        tree.addChild(new FATFile(file.getName(), file.getAbsolutePath(), file.length(), new Date(file.lastModified()), FileUtils.getFileVersionInfo(file), FileUtils.getFileChecksum(file)));
                 } else {
                     getChilds(file, tree.addChild(new FATFolder(file.getName(), file.getAbsolutePath(), FileUtils.folderSize(file), new Date(file.lastModified()))));
                 }
@@ -65,9 +67,37 @@ public class FilesAllocationTree<T extends FATFolder, M extends FATFile> {
         return tree;
     }
 
-    public M getLeaf(String folderPath, String fileName){
-        for (M fatFile : getLeafs()) {
-            if( fatFile.getName().equalsIgnoreCase(fileName) && fatFile.getPath().endsWith(folderPath + "/" + fileName) ){
+    public List<FilesAllocationTree<T, M>> getChildrenFromDepth(List<FilesAllocationTree<T, M>> tree, int depth) {
+        if (depth == 0) {
+            return tree;
+        } else {
+            List<FilesAllocationTree<T, M>> returnChilds = null;
+            for (FilesAllocationTree<T, M> tmFilesAllocationTree : tree) {
+                if( returnChilds == null )
+                    returnChilds = tmFilesAllocationTree.getChildren();
+                else
+                    returnChilds.addAll(tmFilesAllocationTree.getChildren());
+            }
+            return getChildrenFromDepth(returnChilds, depth - 1);
+        }
+    }
+
+    public FilesAllocationTree<T, M> getParentOfChildren(List<FilesAllocationTree<T, M>> tree, int depth, String parrentName){
+        if(depth == 0)
+            return null;
+
+        List<FilesAllocationTree<T,M>> nodesFromDepth = getChildrenFromDepth(tree, depth - 1);
+        for (FilesAllocationTree<T, M> tmFilesAllocationTree : nodesFromDepth) {
+            if( tmFilesAllocationTree.getData().getName().equalsIgnoreCase(parrentName) )
+                return tmFilesAllocationTree;
+        }
+
+        return null;
+    }
+
+    public M getLeaf(String folderPath, String fileName) {
+        for (M fatFile : getLeafs(this, new LinkedList<M>())) {
+            if (fatFile.getName().equalsIgnoreCase(fileName) && fatFile.getPath().endsWith(folderPath + "/" + fileName)) {
                 return fatFile;
             }
         }
@@ -75,14 +105,17 @@ public class FilesAllocationTree<T extends FATFolder, M extends FATFile> {
         return null;
     }
 
-    public List<M> getLeafs(){
-        List<M> result = new LinkedList<>();
+    public List<M> getLeafs(FilesAllocationTree<T, M> tree, List<M>   result) {
+        //TODO FIX THIS SHIET
 
-        for (FilesAllocationTree<T, M> child : children) {
-            if( child.getData() instanceof FATFile ){
+        if( result == null )
+            result = new LinkedList<>();
+
+        for (FilesAllocationTree<T, M> child : tree.children) {
+            if (child.getData() instanceof FATFile) {
                 result.add((M) child.getData());
             } else {
-                result.addAll(child.getLeafs());
+                result = getLeafs(child, result);
             }
         }
 
@@ -91,6 +124,10 @@ public class FilesAllocationTree<T extends FATFolder, M extends FATFile> {
 
     public T getData() {
         return data;
+    }
+
+    public List<FilesAllocationTree<T, M>> getChildren() {
+        return children;
     }
 
     @Override

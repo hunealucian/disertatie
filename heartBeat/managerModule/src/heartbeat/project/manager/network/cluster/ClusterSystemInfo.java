@@ -71,7 +71,7 @@ public class ClusterSystemInfo {
 
         synchronized (ClusterSystemInfo.FATSystem){
 
-            List<ManagerFATFile> leafs = ClusterSystemInfo.FATSystem.getLeafs(); //fatsystem leafs
+//            List<ManagerFATFile> leafs = ClusterSystemInfo.FATSystem.getLeafs(); //fatsystem leafs
 
 
         }

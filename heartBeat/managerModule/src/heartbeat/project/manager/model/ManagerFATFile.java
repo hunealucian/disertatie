@@ -1,5 +1,6 @@
 package project.manager.model;
 
+import heartbeat.project.commons.model.Node;
 import heartbeat.project.commons.model.socketmsg.NodeInfo;
 import heartbeat.project.commons.tree.treeutils.FATFile;
 
@@ -15,20 +16,20 @@ import java.util.List;
  */
 public class ManagerFATFile extends FATFile {
 
-    private List<NodeInfo> replicationsNode;
+    private List<Node> replicationsNode;
 
     public ManagerFATFile(String name, String path, long size, Date lastModified, int version, String checksum) {
         super(name, path, size, lastModified, version, checksum);
     }
 
-    public synchronized void addReplicationNode(NodeInfo nodeInfo){
+    public synchronized void addReplicationNode(Node nodeInfo){
         if( replicationsNode == null )
             replicationsNode = new LinkedList<>();
 
         synchronized (replicationsNode){
-            for (NodeInfo info : replicationsNode) {
+            for (Node node : replicationsNode) {
                 //TODO use node IP
-                if( info.getNode().getId().equalsIgnoreCase(nodeInfo.getNode().getId()) ){
+                if( node.getId().equalsIgnoreCase(nodeInfo.getId()) ){
                     return;
                 }
             }

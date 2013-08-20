@@ -32,7 +32,9 @@ public class TestFAT {
         node2.setNodePath(nodePath2);
         node2.refreshMachineData();
 
+        node1.getMachineFAT().getChildrenFromDepth(node1.getMachineFAT().getChildren(), 3);
 
+        System.out.println();
 
         try {
 
@@ -40,6 +42,8 @@ public class TestFAT {
                 ClusterSystemInfo.FATSystem = new ManagerFAT();
             }
 
+            ClusterSystemInfo.FATSystem.addNodeTree(node1);
+            ClusterSystemInfo.FATSystem.addNodeTree(node2);
 
 
 
