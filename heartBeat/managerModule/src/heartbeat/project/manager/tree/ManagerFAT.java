@@ -27,7 +27,7 @@ public class ManagerFAT extends FilesAllocationTree<FATFolder, ManagerFATFile> {
 
     //todo o metoda de combine intre tree-uri
     public void addNodeTree(Node node) throws Exception {
-        List<FATFile> nodeLeafs = node.getMachineFAT().getLeafs(node.getMachineFAT(), new LinkedList<FATFile>());
+        List<FATFile> nodeLeafs = node.getMachineFAT().getLeafs(node.getMachineFAT());
 
 
         for (FATFile nodeLeaf : nodeLeafs) {

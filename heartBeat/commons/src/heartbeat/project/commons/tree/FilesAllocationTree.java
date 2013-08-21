@@ -96,26 +96,25 @@ public class FilesAllocationTree<T extends FATFolder, M extends FATFile> {
     }
 
     public M getLeaf(String folderPath, String fileName) {
-        for (M fatFile : getLeafs(this, new LinkedList<M>())) {
-            if (fatFile.getName().equalsIgnoreCase(fileName) && fatFile.getPath().endsWith(folderPath + "/" + fileName)) {
-                return fatFile;
-            }
-        }
+//        for (M fatFile : getLeafs(this, new LinkedList<M>())) {
+//            if (fatFile.getName().equalsIgnoreCase(fileName) && fatFile.getPath().endsWith(folderPath + "/" + fileName)) {
+//                return fatFile;
+//            }
+//        }//todo
 
         return null;
     }
 
-    public List<M> getLeafs(FilesAllocationTree<T, M> tree, List<M>   result) {
+    public List<M> getLeafs(FilesAllocationTree<T, M> tree) {
         //TODO FIX THIS SHIET
 
-        if( result == null )
-            result = new LinkedList<>();
+            List<M> result = new LinkedList<>();
 
         for (FilesAllocationTree<T, M> child : tree.children) {
             if (child.getData() instanceof FATFile) {
                 result.add((M) child.getData());
             } else {
-                result = getLeafs(child, result);
+                result.addAll(getLeafs(child));
             }
         }
 

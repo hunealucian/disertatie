@@ -1,15 +1,13 @@
 package testScenarios;
 
 import heartbeat.project.commons.model.Node;
-import heartbeat.project.commons.tree.FilesAllocationTree;
 import heartbeat.project.commons.tree.treeutils.FATFile;
-import heartbeat.project.commons.tree.treeutils.FATFolder;
-import project.manager.model.ManagerFATFile;
 import project.manager.network.cluster.ClusterSystemInfo;
 import project.manager.tree.ManagerFAT;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 /**
  * User: luc  | Date: 8/16/13  |  Time: 10:17 PM
@@ -32,7 +30,9 @@ public class TestFAT {
         node2.setNodePath(nodePath2);
         node2.refreshMachineData();
 
-        node1.getMachineFAT().getChildrenFromDepth(node1.getMachineFAT().getChildren(), 3);
+//        List<FATFile> res =  node1.getMachineFAT().getLeafs(node1.getMachineFAT());
+//        List<FATFile> res2 =  node2.getMachineFAT().getLeafs(node2.getMachineFAT());
+//        node1.getMachineFAT().getChildrenFromDepth(node1.getMachineFAT().getChildren(), 3);
 
         System.out.println();
 
