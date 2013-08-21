@@ -2,6 +2,7 @@ package project.manager.network;
 
 
 import project.manager.model.Manager;
+import project.manager.network.cluster.threads.ClusterCheckNodesHeartBeatServiceThread;
 import project.manager.network.cluster.threads.ClusterReplicationCheckServiceThread;
 import project.manager.network.multicast.ManagerMulticastClientService;
 import project.manager.network.privatecast.thread.ManagerReceiveMessagesThread;
@@ -13,6 +14,7 @@ public class NetworkManagerService {
     private Manager manager;
 
     private ClusterReplicationCheckServiceThread replicationService;
+    private ClusterCheckNodesHeartBeatServiceThread heartBeatServiceThread;
     private ManagerMulticastClientService multicastClientService;
     private ManagerReceiveMessagesThread messagesReceiverThread;
 
@@ -26,6 +28,8 @@ public class NetworkManagerService {
 
         multicastClientService = new ManagerMulticastClientService(manager);
 
+        heartBeatServiceThread = new ClusterCheckNodesHeartBeatServiceThread();
+        heartBeatServiceThread.start();
 
         replicationService = new ClusterReplicationCheckServiceThread();
         replicationService.start();

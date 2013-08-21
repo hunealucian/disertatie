@@ -33,6 +33,7 @@ public class MulticastSenderService<T extends Node> extends MulticastService<Nod
 
                 multicastSocket.send(datagramPacket);
 
+
                 Thread.sleep(10000);
 
             } catch (InterruptedException | IOException e) {

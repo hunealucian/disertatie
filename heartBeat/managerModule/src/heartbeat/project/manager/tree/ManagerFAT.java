@@ -4,7 +4,6 @@ import heartbeat.project.commons.model.Node;
 import heartbeat.project.commons.tree.FilesAllocationTree;
 import heartbeat.project.commons.tree.treeutils.FATFile;
 import heartbeat.project.commons.tree.treeutils.FATFolder;
-import heartbeat.project.commons.utils.FileUtils;
 import project.manager.model.ManagerFATFile;
 
 import java.util.Date;
@@ -25,9 +24,9 @@ public class ManagerFAT extends FilesAllocationTree<FATFolder, ManagerFATFile> {
         children = new LinkedList<>();
     }
 
-    //todo o metoda de combine intre tree-uri
     public void addNodeTree(Node node) throws Exception {
         List<FATFile> nodeLeafs = node.getMachineFAT().getLeafs(node.getMachineFAT());
+        List<FATFile> nodeLeafs2 = node.getMachineFAT().getLeafs(node.getMachineFAT());
 
 
         for (FATFile nodeLeaf : nodeLeafs) {
@@ -53,7 +52,8 @@ public class ManagerFAT extends FilesAllocationTree<FATFolder, ManagerFATFile> {
                 if (foundNode) {
                     if (i + 1 == leafParrents.length) { //means that is leaf
                         //add node to leaf
-                        leaf.addReplicationNode(node);
+                        if( leaf != null )
+                            leaf.addReplicationNode(node);
                         break;
                     } else {
                         continue;
@@ -85,7 +85,6 @@ public class ManagerFAT extends FilesAllocationTree<FATFolder, ManagerFATFile> {
 
             }
 
-            System.out.println();
         }
     }
 

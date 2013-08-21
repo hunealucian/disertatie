@@ -1,15 +1,11 @@
 package project.manager.network.cluster;
 
 import heartbeat.project.commons.model.Node;
-import heartbeat.project.commons.tree.FilesAllocationTree;
-import heartbeat.project.commons.tree.treeutils.FATFolder;
-import project.manager.model.ManagerFATFile;
 import project.manager.tree.ManagerFAT;
 import project.manager.util.ManagerAppUtil;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -34,16 +30,18 @@ public class ClusterSystemInfo {
                 //todo : USE NODE IP
                 if (node1.getId().equalsIgnoreCase(node.getId())) {
                     node1.setLastPing(node.getLastPing());
+                    addNodeToFATSystem(node);
                     return;
                 }
             }
 
             NODES_TABLE.add(node);
+            addNodeToFATSystem(node);
         }
     }
 
     /**
-     * Synchronizes method to update NodesTable
+     * Synchronizes method to check if there are dead Nodes and update NodesTable
      */
     public static synchronized void clearNodesTable() {
 
@@ -59,21 +57,22 @@ public class ClusterSystemInfo {
     public static void checkFATSystemReplication(){
         if( ClusterSystemInfo.FATSystem != null ){
 
-
+            //todo
 
         }
     }
 
-    public static synchronized void addNodeToFATSystem(Node node){
+    public static synchronized void addNodeToFATSystem(Node node)  {
         if( ClusterSystemInfo.FATSystem == null ){
-//            FATSystem = new FilesAllocationTree<>(new FATFolder("manager", "managerPath", 0, new Date()));
+            FATSystem = new ManagerFAT();
         }
 
         synchronized (ClusterSystemInfo.FATSystem){
-
-//            List<ManagerFATFile> leafs = ClusterSystemInfo.FATSystem.getLeafs(); //fatsystem leafs
-
-
+            try {
+                FATSystem.addNodeTree(node);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -1,7 +1,10 @@
 package testScenarios;
 
 import heartbeat.project.commons.model.Node;
+import heartbeat.project.commons.tree.FilesAllocationTree;
 import heartbeat.project.commons.tree.treeutils.FATFile;
+import heartbeat.project.commons.tree.treeutils.FATFolder;
+import project.manager.model.ManagerFATFile;
 import project.manager.network.cluster.ClusterSystemInfo;
 import project.manager.tree.ManagerFAT;
 
@@ -30,9 +33,11 @@ public class TestFAT {
         node2.setNodePath(nodePath2);
         node2.refreshMachineData();
 
-//        List<FATFile> res =  node1.getMachineFAT().getLeafs(node1.getMachineFAT());
-//        List<FATFile> res2 =  node2.getMachineFAT().getLeafs(node2.getMachineFAT());
-//        node1.getMachineFAT().getChildrenFromDepth(node1.getMachineFAT().getChildren(), 3);
+        List<FATFile> res =  node1.getMachineFAT().getLeafs(node1.getMachineFAT());
+        List<FATFile> res1 =  node1.getMachineFAT().getLeafs(node1.getMachineFAT());
+        List<FATFile> res2 =  node1.getMachineFAT().getLeafs(node1.getMachineFAT());
+        List<FATFile> res3 =  node2.getMachineFAT().getLeafs(node2.getMachineFAT());
+        List<FilesAllocationTree<FATFolder, FATFile>>  l = node1.getMachineFAT().getChildrenFromDepth(node1.getMachineFAT().getChildren(), 2);
 
         System.out.println();
 

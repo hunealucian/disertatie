@@ -1,6 +1,5 @@
 package project.manager.network.cluster.threads;
 
-import heartbeat.project.commons.model.Node;
 import project.manager.network.cluster.ClusterSystemInfo;
 
 import java.util.List;
@@ -20,7 +19,7 @@ public class ClusterReplicationCheckServiceThread extends Thread {
             try {
                 Thread.sleep(30000);
 
-                ClusterSystemInfo.clearNodesTable();
+                ClusterSystemInfo.checkFATSystemReplication();
 
 
             } catch (InterruptedException e) {

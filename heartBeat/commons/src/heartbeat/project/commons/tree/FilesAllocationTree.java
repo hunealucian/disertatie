@@ -6,6 +6,7 @@ import heartbeat.project.commons.utils.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.LinkedList;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * User: luc  | Date: 8/7/13  |  Time: 9:45 PM
  */
-public class FilesAllocationTree<T extends FATFolder, M extends FATFile> {
+public class FilesAllocationTree<T extends FATFolder, M extends FATFile> implements Serializable {
 
     protected T data;
 
@@ -38,11 +39,10 @@ public class FilesAllocationTree<T extends FATFolder, M extends FATFile> {
         }
     }
 
-    public  FilesAllocationTree(T data) {
+    public FilesAllocationTree(T data) {
         this.data = data;
         this.children = new LinkedList<FilesAllocationTree<T, M>>();
     }
-
 
 
     public FilesAllocationTree<T, M> addChild(T child) {
@@ -73,22 +73,21 @@ public class FilesAllocationTree<T extends FATFolder, M extends FATFile> {
         } else {
             List<FilesAllocationTree<T, M>> returnChilds = null;
             for (FilesAllocationTree<T, M> tmFilesAllocationTree : tree) {
-                if( returnChilds == null )
-                    returnChilds = tmFilesAllocationTree.getChildren();
-                else
-                    returnChilds.addAll(tmFilesAllocationTree.getChildren());
+                if (returnChilds == null)
+                    returnChilds = new LinkedList<>();
+                returnChilds.addAll(tmFilesAllocationTree.getChildren());
             }
             return getChildrenFromDepth(returnChilds, depth - 1);
         }
     }
 
-    public FilesAllocationTree<T, M> getParentOfChildren(List<FilesAllocationTree<T, M>> tree, int depth, String parrentName){
-        if(depth == 0)
+    public FilesAllocationTree<T, M> getParentOfChildren(List<FilesAllocationTree<T, M>> tree, int depth, String parrentName) {
+        if (depth == 0)
             return null;
 
-        List<FilesAllocationTree<T,M>> nodesFromDepth = getChildrenFromDepth(tree, depth - 1);
+        List<FilesAllocationTree<T, M>> nodesFromDepth = getChildrenFromDepth(tree, depth - 1);
         for (FilesAllocationTree<T, M> tmFilesAllocationTree : nodesFromDepth) {
-            if( tmFilesAllocationTree.getData().getName().equalsIgnoreCase(parrentName) )
+            if (tmFilesAllocationTree.getData().getName().equalsIgnoreCase(parrentName))
                 return tmFilesAllocationTree;
         }
 
@@ -96,19 +95,17 @@ public class FilesAllocationTree<T extends FATFolder, M extends FATFile> {
     }
 
     public M getLeaf(String folderPath, String fileName) {
-//        for (M fatFile : getLeafs(this, new LinkedList<M>())) {
-//            if (fatFile.getName().equalsIgnoreCase(fileName) && fatFile.getPath().endsWith(folderPath + "/" + fileName)) {
-//                return fatFile;
-//            }
-//        }//todo
+        for (M fatFile : getLeafs(this)) {
+            if (fatFile.getName().equalsIgnoreCase(fileName) && fatFile.getPath().endsWith(folderPath + "/" + fileName)) {
+                return fatFile;
+            }
+        }
 
         return null;
     }
 
     public List<M> getLeafs(FilesAllocationTree<T, M> tree) {
-        //TODO FIX THIS SHIET
-
-            List<M> result = new LinkedList<>();
+        List<M> result = new LinkedList<>();
 
         for (FilesAllocationTree<T, M> child : tree.children) {
             if (child.getData() instanceof FATFile) {
