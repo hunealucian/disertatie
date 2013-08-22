@@ -29,5 +29,7 @@ public class ManagerReceiveMessagesThread extends Thread {
                         return new ManagerMessageExecutor(manager);
                     }
                 });
+
+        receiver.startReceiving();
     }
 }

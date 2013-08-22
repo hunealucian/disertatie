@@ -41,6 +41,7 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
             streamReader.fetch();
 
             headerMessage = streamReader.getHeaderMessage();
+            messageInfo = (MessageInfo) streamReader.getMessageInfo();
 
             if (headerMessage != null) {
 
@@ -63,7 +64,7 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 
     private void sendFile(StreamReader streamReader) throws IOException {
         System.out.println("Received request : SEND FILE...");
-        FileInfo fileInfo = (FileInfo) streamReader.getMessageInfo();
+        FileInfo fileInfo = (FileInfo) messageInfo;
 
         FATFile f = currentNode.getMachineFAT().getLeaf(fileInfo.getUserPath(), fileInfo.getName());
         if( f != null ){
@@ -80,7 +81,7 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 
     private void deleteFile(StreamReader streamReader) {
         System.out.println("Deleting file...");
-        FileInfo fileInfo = (FileInfo) streamReader.getMessageInfo();
+        FileInfo fileInfo = (FileInfo) messageInfo;
 
         File fileTodelete = new File(currentNode.getNodePath() + "/" + fileInfo.getUserPath() + "/" + fileInfo.getName());
 
@@ -93,7 +94,7 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 
     private void saveFile(StreamReader streamReader) throws IOException, NoSuchAlgorithmException {
         System.out.println("Saving file...");
-        FileInfo fileInfo = (FileInfo) streamReader.getMessageInfo();
+        FileInfo fileInfo = (FileInfo) messageInfo;
 
         String filePath = currentNode.getNodePath() + "/" + fileInfo.getUserPath();
         streamReader.fetchFile(fileInfo.getName(), filePath, fileInfo.getReplication());
@@ -107,7 +108,7 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 
     private void saveChain(StreamReader streamReader) throws IOException, NoSuchAlgorithmException {
         System.out.println("Saving file from chain...");
-        ChainInfo chainInfo = (ChainInfo) streamReader.getMessageInfo();
+        ChainInfo chainInfo = (ChainInfo) messageInfo;
 
         ChainLink chainLink = chainInfo.getFirstNode();
 

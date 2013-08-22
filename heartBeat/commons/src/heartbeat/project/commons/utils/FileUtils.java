@@ -18,11 +18,11 @@ import java.util.Date;
  */
 public class FileUtils {
 
-    public static boolean saveFile(byte[] bytes, String fileName, String filePath, int fileReplication){
+    public static boolean saveFile(byte[] bytes, String fileName, String filePath, int fileReplication) {
         try {
             Files.write(bytes, new File(filePath + "/" + fileName));
 
-            if( fileReplication != -1 ){
+            if (fileReplication != -1) {
                 generateVersionFile(new File(filePath + "/" + fileName));
             }
 
@@ -33,13 +33,13 @@ public class FileUtils {
         return false;
     }
 
-    public static boolean saveFile(byte[] bytes, String fileName, String filePath){
+    public static boolean saveFile(byte[] bytes, String fileName, String filePath) {
         return saveFile(bytes, fileName, filePath, -1);
     }
 
-    public static boolean deleteFile(File file){
-        if( file.exists() )
-            if( file.delete())
+    public static boolean deleteFile(File file) {
+        if (file.exists())
+            if (file.delete())
                 return true;
 
         return false;
@@ -58,13 +58,17 @@ public class FileUtils {
     public static int getFileVersionInfo(File file) throws IOException {
         int result = -1;
 
-        String fileContent = getFileContent(new File(file.getAbsolutePath() + ".version"));
-        if( fileContent != null ){
+        if (new File(file.getAbsolutePath() + ".version").exists()) {
+            String fileContent = getFileContent(new File(file.getAbsolutePath() + ".version"));
+            if (fileContent != null) {
 
-            String[] rows = fileContent.split(System.getProperty("line.separator"));
-            if( rows != null && rows.length >= 1 ){
-                result = Integer.parseInt(rows[0].replace("\r", ""));
+                String[] rows = fileContent.split(System.getProperty("line.separator"));
+                if (rows != null && rows.length >= 1) {
+                    result = Integer.parseInt(rows[0].replace("\r", ""));
+                }
             }
+        } else {
+            new File(file.getAbsolutePath() + ".version").createNewFile();
         }
 
         return result;
@@ -76,6 +80,7 @@ public class FileUtils {
 
     /**
      * Calculates a file checksum
+     *
      * @param file
      * @return - checksum  as String
      * @throws IOException
@@ -108,6 +113,7 @@ public class FileUtils {
 
     /**
      * Calculates a folder size in kb
+     *
      * @param directory
      * @return - returns folder size in kb
      */

@@ -16,6 +16,7 @@ public enum HeaderMessage implements Serializable {
     GIVE_FILE_NODE_CONNECTION("giveFileNodeConnection"), //interpreted by manager for giving a node that contains that file
     GIVE_NODES_LIST("giveNodesList"),
     GIVE_NODE_INFO("giveNodeInfo"),
+    GIVE_FAT_SYSTEM("giveFatSystem"),
 
     OK("ok"),
     ERROR("error");

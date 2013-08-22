@@ -37,6 +37,8 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
 
             headerMessage = streamReader.getHeaderMessage();
 
+            messageInfo = (MessageInfo) streamReader.getMessageInfo();
+
             if (headerMessage != null) {
 
                 if (headerMessage == HeaderMessage.SAVE_FILE) {
@@ -49,6 +51,8 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
                     returnNodeInfo(streamReader);
                 } else if (headerMessage == HeaderMessage.GIVE_NODES_LIST) {
                     returnNodesList(streamReader);
+                } else if (headerMessage == HeaderMessage.GIVE_FAT_SYSTEM) {
+                    //todo
                 }
 
             }
@@ -126,7 +130,7 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
 
         ChainInfo chainInfo = makeChain(nodesList, fileInfo);
 
-        StreamWriter<ChainInfo> writer = new StreamWriter<ChainInfo>(streamReader.getSocket(), headerMessage, chainInfo);
+        StreamWriter<ChainInfo> writer = new StreamWriter<ChainInfo>(streamReader.getSocket(), HeaderMessage.OK, chainInfo);
         writer.push();
         writer.closeConnection();
     }
@@ -143,7 +147,7 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
 
         ChainLink chainLink;
         for (Node selectedNode : selectedNodes) {
-            chainLink = new ChainLink(selectedNode.getIpAddr(), selectedNode.getMulticastPort(), fileInfo);
+            chainLink = new ChainLink(selectedNode.getIpAddr(), selectedNode.getReceiveMessagesPort(), fileInfo);
             chainInfo.addNode(chainLink);
         }
 
