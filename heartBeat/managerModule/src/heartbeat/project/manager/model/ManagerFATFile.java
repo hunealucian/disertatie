@@ -37,4 +37,18 @@ public class ManagerFATFile extends FATFile {
             replicationsNode.add(nodeInfo);
         }
     }
+
+    public synchronized void removeReplicationNode(Node node){
+        if( replicationsNode != null ){
+            synchronized (replicationsNode){
+                for (Node nodeRec : replicationsNode) {
+                    //TODO use node IP
+                    if( node.getId().equalsIgnoreCase(node.getId()) ){
+                        replicationsNode.remove(nodeRec);
+                        return;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -26,8 +26,6 @@ public class ManagerFAT extends FilesAllocationTree<FATFolder, ManagerFATFile> {
 
     public void addNodeTree(Node node) throws Exception {
         List<FATFile> nodeLeafs = node.getMachineFAT().getLeafs(node.getMachineFAT());
-        List<FATFile> nodeLeafs2 = node.getMachineFAT().getLeafs(node.getMachineFAT());
-
 
         for (FATFile nodeLeaf : nodeLeafs) {
             String nodeLeafPath = nodeLeaf.getPath().replace(node.getNodePath() + "/", "");
@@ -88,4 +86,21 @@ public class ManagerFAT extends FilesAllocationTree<FATFolder, ManagerFATFile> {
         }
     }
 
+    public void removeNodeTree(Node node) throws Exception{
+
+        List<FATFile> nodeLeafs = node.getMachineFAT().getLeafs(node.getMachineFAT());
+
+        List<ManagerFATFile> fatLeafs = getLeafs(this);
+
+        for (FATFile nodeLeaf : nodeLeafs) {
+
+            for (ManagerFATFile fatLeaf : fatLeafs) {
+                if( fatLeaf.getName().equalsIgnoreCase(nodeLeaf.getName()) ){
+                    fatLeaf.removeReplicationNode(node);
+                }
+            }
+
+        }
+
+    }
 }

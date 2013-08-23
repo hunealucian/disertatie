@@ -37,6 +37,14 @@ public class ClusterSystemInfo {
 
             NODES_TABLE.add(node);
             addNodeToFATSystem(node);
+
+            if (DEAD_NODES_TABLE.size() > 0)
+                for (Node node1 : DEAD_NODES_TABLE) {
+                    //TODO use IP
+                    if (node1.getId().equalsIgnoreCase(node.getId())) {
+                        DEAD_NODES_TABLE.remove(node1);
+                    }
+                }
         }
     }
 
@@ -49,30 +57,46 @@ public class ClusterSystemInfo {
             for (Node node : NODES_TABLE) {
                 if (new Date().getTime() >= (node.getLastPing().getTime() + ManagerAppUtil.secondsToDead)) {
                     NODES_TABLE.remove(node);
+                    removeNodeFromFATSystem(node);
+                    DEAD_NODES_TABLE.add(node);
                 }
             }
         }
     }
 
-    public static void checkFATSystemReplication(){
-        if( ClusterSystemInfo.FATSystem != null ){
+    public static void checkFATSystemReplication() {
+        if (ClusterSystemInfo.FATSystem != null) {
 
             //todo
 
         }
     }
 
-    public static synchronized void addNodeToFATSystem(Node node)  {
-        if( ClusterSystemInfo.FATSystem == null ){
+    public static synchronized void addNodeToFATSystem(Node node) {
+        if (ClusterSystemInfo.FATSystem == null) {
             FATSystem = new ManagerFAT();
         }
 
-        synchronized (ClusterSystemInfo.FATSystem){
+        synchronized (ClusterSystemInfo.FATSystem) {
             try {
                 FATSystem.addNodeTree(node);
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public static synchronized void removeNodeFromFATSystem(Node node) {
+        if (ClusterSystemInfo.FATSystem != null) {
+
+            synchronized (ClusterSystemInfo.FATSystem) {
+                try {
+                    FATSystem.removeNodeTree(node);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
         }
     }
 
