@@ -1,0 +1,29 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ace="http://www.icefaces.org/icefaces/components"
+                xmlns:core="http://www.icefaces.org/icefaces/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/WEB-INF/templates/template.xhtml">
+    <ui:define name="content">
+        <ace:panel id="addJobTemplatesPanel" header="Add Job Template">
+            <h:form>
+                <h:panelGrid columns="1">
+                    <h:outputLabel id="nameLabel" value="Name"/>
+                    <h:inputText id="name" value="#{addJobTemplateBean.jobTemplate.name}" />        
+                    
+                    <ace:textAreaEntry id="codeArea" value="#{addJobTemplateBean.jobTemplate.code}" 
+                                       label="Code" labelPosition="top" resizable="false" rows="20" cols="100">
+                    </ace:textAreaEntry>
+					<ui:remove>
+					</ui:remove>
+                </h:panelGrid>
+                <h:panelGrid columns="2">
+                    <ace:pushButton id="saveButton"
+                                    value="Save"
+									actionListener="#{addJobTemplateBean.onSave}"/>
+					<h:button id="cancelButton" value="Cancel" outcome="/pages/home.xhtml"/>
+                </h:panelGrid>
+            </h:form>
+        </ace:panel>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,52 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="webApp:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/webApp_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="webApp/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="webApp" />
+          <element id="module-output" name="commons" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/jersey/jersey-core-1.17.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/jersey/jersey-client-1.17.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/jersey/asm-3.3.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/jersey/jersey-server-1.17.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/icefaces/icefaces-ace.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/jersey/jersey-bundle-1.17.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/icefaces/icepush.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/icefaces/icefaces.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/jsf/javax.faces-2.1.22.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/icefaces/icefaces-compat.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/jstl/jstl-1.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/slf4j/slf4j-api-1.7.5.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/slf4j/slf4j-simple-1.7.5.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/commons-logging-1.1.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-tx-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-context-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-aop-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-expression-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-oxm-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-instrument-tomcat-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-orm-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-webmvc-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-build-src-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-context-support-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-jms-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-instrument-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-aspects-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-beans-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-test-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-jdbc-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-web-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-struts-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-core-3.2.2.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/webLibs/spring/spring-webmvc-portlet-3.2.2.RELEASE.jar" />
+          <element id="library" level="project" name="lib" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/webApp/web/WEB-INF/web.xml" />
+      </element>
+    </root>
+  </artifact>
+</component>

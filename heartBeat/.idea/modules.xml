@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/clusterNode/clusterNode.iml" filepath="$PROJECT_DIR$/clusterNode/clusterNode.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/managerModule/manager.iml" filepath="$PROJECT_DIR$/managerModule/manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webApp/webApp.iml" filepath="$PROJECT_DIR$/webApp/webApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/webTest/webTest.iml" filepath="$PROJECT_DIR$/webTest/webTest.iml" />
     </modules>
   </component>
