@@ -4,10 +4,10 @@
                 xmlns:core="http://www.icefaces.org/icefaces/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="/WEB-INF/templates/template.xhtml">
-    
-  <ui:define name="content">
-        <ace:panel id="jobTemplatesPanel" header="Job Templates" >
-            <h:form>       
+
+    <ui:define name="content">
+        <ace:panel id="jobTemplatesPanel" header="Job Templates">
+            <h:form>
                 <ace:dataTable id="jobTemplatesTable"
                                value="#{homeBean.jobTemplateTableDataProvider.jobTemplates}"
                                var="jobTemplate" paginator="true" paginatorPosition="bottom"
@@ -19,9 +19,9 @@
 
                     <ace:column id="name" headerText="Name" sortBy="#{jobTemplate.name}"
                                 filterBy="#{jobTemplate.name}" filterMatchMode="contains">
-						<h:link value="#{jobTemplate.name}" outcome="/pages/viewJobTemplate.xhtml">
-							<f:param name="id" value="#{jobTemplate.id}" />
-						</h:link>
+                        <h:link value="#{jobTemplate.name}" outcome="/pages/viewJobTemplate.xhtml">
+                            <f:param name="id" value="#{jobTemplate.id}"/>
+                        </h:link>
                     </ace:column>
 
                     <ace:column id="creationDate" headerText="Creation Date" sortBy="#{jobTemplate.creationDate}"
@@ -29,7 +29,7 @@
                         <h:outputText id="creationDateCell" value="#{jobTemplate.creationDate}"/>
                     </ace:column>
                 </ace:dataTable>
-            </h:form>     
+            </h:form>
         </ace:panel>
 
         <ace:panel id="jobsPanel" header="Jobs Overview">
@@ -40,9 +40,9 @@
                                rows="10">
                     <ace:column id="id" headerText="ID" sortBy="#{job.id}"
                                 filterBy="#{job.id}" filterMatchMode="contains">
-						<h:link value="#{job.id}" outcome="/pages/viewJob.xhtml">
-							<f:param name="id" value="#{job.id}" />
-						</h:link>
+                        <h:link value="#{job.id}" outcome="/pages/viewJob.xhtml">
+                            <f:param name="id" value="#{job.id}"/>
+                        </h:link>
                     </ace:column>
                     <ace:column id="status" headerText="Status" sortBy="#{job.status}"
                                 filterBy="#{job.status}" filterMatchMode="contains">
@@ -65,8 +65,9 @@
                         <h:outputText id="endTimeCell" value="#{job.endTime}"/>
                     </ace:column>
                 </ace:dataTable>
-            </h:form>     
+            </h:form>
         </ace:panel>
 
     </ui:define>
 </ui:composition>
+
