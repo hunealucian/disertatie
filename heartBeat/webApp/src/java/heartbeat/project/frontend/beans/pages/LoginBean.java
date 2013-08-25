@@ -1,12 +1,13 @@
-package java.heartbeat.project.frontend.beans.pages;
+package heartbeat.project.frontend.beans.pages;
 
+import heartbeat.project.frontend.beans.Scopes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.faces.event.ActionEvent;
-import java.heartbeat.project.frontend.beans.Scopes;
+import java.io.Serializable;
 
 /**
  * Description
@@ -15,15 +16,13 @@ import java.heartbeat.project.frontend.beans.Scopes;
  * Date: 8/24/13
  */
 @Component
-@Scope(value = Scopes.Session)
-public class LoginBean {
+@Scope(Scopes.Request)
+public class LoginBean implements Serializable {
     private static final Logger log = LoggerFactory.getLogger(LoginBean.class);
 
     private String userName;
     private String password;
 
-    public LoginBean() {
-    }
 
     public void onSave(ActionEvent event){
 

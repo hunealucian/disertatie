@@ -1,4 +1,4 @@
-package java.heartbeat.project.frontend.beans;
+package heartbeat.project.frontend.beans;
 
 /**
  * Description
