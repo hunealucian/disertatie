@@ -27,8 +27,6 @@ public class UserDAOImpl implements IUserDAO {
     @Autowired
     ICrudDAO<User> crudDAO;
 
-//    @PersistenceContext(unitName = "hibernatePersistenceUnit")
-    protected EntityManager em;
 
     @Override
     public boolean checkUser(String username, String password) {
@@ -41,7 +39,7 @@ public class UserDAOImpl implements IUserDAO {
 
     @Override
     public User getUser(String username, String password) {
-        CriteriaBuilder qb = em.getCriteriaBuilder();
+        CriteriaBuilder qb = crudDAO.getEm().getCriteriaBuilder();
         CriteriaQuery<User> criteria = qb.createQuery(User.class);
         Root<User> p = criteria.from(User.class);
         Predicate condition = qb.equal(p.get("username"), username);
@@ -49,7 +47,7 @@ public class UserDAOImpl implements IUserDAO {
 
         criteria.where(condition, condition2);
 
-        TypedQuery<User> query = em.createQuery(criteria);
+        TypedQuery<User> query = crudDAO.getEm().createQuery(criteria);
 
         try {
             return query.getSingleResult();
@@ -78,5 +76,6 @@ public class UserDAOImpl implements IUserDAO {
     public boolean delete(User object) {
         return crudDAO.delete(object);
     }
+
 }
 

@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class CrudDAOImpl<M> implements ICrudDAO<M> {
 
-//    @PersistenceContext(unitName = "hibernatePersistenceUnit")
+    @PersistenceContext(unitName = "hibernatePersistenceUnit")
     protected EntityManager em;
 
 
@@ -48,6 +48,14 @@ public class CrudDAOImpl<M> implements ICrudDAO<M> {
             System.out.println(ex);
             return false;
         }
+    }
+
+    public EntityManager getEm() {
+        return em;
+    }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
     }
 }
 
