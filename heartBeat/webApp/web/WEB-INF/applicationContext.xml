@@ -7,8 +7,10 @@
 
 
     <context:annotation-config/>
-    <context:component-scan base-package="heartbeat.project.frontend.beans"/>
     <context:component-scan base-package="heartbeat.project.frontend.model"/>
+    <context:component-scan base-package="heartbeat.project.frontend.beans.dataProviders"/>
+    <context:component-scan base-package="heartbeat.project.frontend.beans.session"/>
+    <context:component-scan base-package="heartbeat.project.frontend.beans.pages"/>
 
     <!-- Load Hibernate related configuration -->
     <import resource="hibernateContext.xml" />

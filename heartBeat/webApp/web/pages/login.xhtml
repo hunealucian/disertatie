@@ -3,7 +3,6 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ace="http://www.icefaces.org/icefaces/components"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
@@ -19,13 +18,24 @@
 
         <h:form>
             <h:panelGrid columns="1">
-                <h:outputLabel id="label1" value="Login Name"/>
-                <h:inputText id="loginName" value="#{loginBean.userName}" required="true"/>
-                <h:inputSecret id="loginPass" value="#{loginBean.password}" required="true"/>
+                <h:outputText id="loginError" value="#{loginBean.errorMsg}"/>
             </h:panelGrid>
-            <ace:pushButton id="saveButton"
-                            value="Save"
-                            actionListener="#{loginBean.onSave}"/>
+            <h:panelGrid columns="2">
+                <ace:textEntry id="userNameInput" value="#{loginBean.userName}"
+                               label="User name"
+                               labelPosition="left"
+                               required="true"
+                               requiredIndicator="(*)"
+                               indicatorPosition="right" />
+                <ace:textEntry id="passwordInput" value="#{loginBean.password}"
+                               label="Password"
+                               labelPosition="left"
+                               required="true"
+                               requiredIndicator="(*)"
+                               indicatorPosition="right" />
+            </h:panelGrid>
+            <ace:pushButton id="saveButton" value="Login" actionListener="#{loginBean.onLogin}"/>
+            <ace:pushButton id="saveButton" value="Register" actionListener="#{loginBean.onLogin}"/>
         </h:form>
 
 

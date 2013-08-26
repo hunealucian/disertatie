@@ -52,6 +52,15 @@
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
 
+    <!--<filter>-->
+        <!--<filter-name>LoginFilter</filter-name>-->
+        <!--<filter-class>heartbeat.project.frontend.filters.AccesFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>LoginFilter</filter-name>-->
+        <!--<servlet-name>Faces Servlet</servlet-name>-->
+    <!--</filter-mapping>-->
+
     <!-- Welcome page -->
     <welcome-file-list>
         <welcome-file>/pages/login.xhtml</welcome-file>

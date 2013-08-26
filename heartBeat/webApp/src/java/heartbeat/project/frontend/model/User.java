@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Date: 8/25/13
  */
 @Entity
-@Table(name = "USERS", schema = "luc_test")
+@Table(name = "USERS", schema = "test")
 public class User implements Serializable {
 
     @Id
@@ -28,6 +28,11 @@ public class User implements Serializable {
 
 
     public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public String getUsername() {

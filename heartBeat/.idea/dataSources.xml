@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2615460341">
-    <data-source source="LOCAL" name="Data Source" product="MySQL" version="5.1.67" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.26 ( Revision: ${bzr.revision-id} )" uuid="a20bc4bd-5633-4e12-801c-a052a13620ac">
+  <component name="DataSourceManagerImpl" format="xml" hash="3465941078">
+    <data-source source="LOCAL" name="MySql Data Source" product="MySQL" version="5.1.67" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.26 ( Revision: ${bzr.revision-id} )" uuid="0db85971-b4ad-42ca-b2f5-9a5b90ff088f">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1:3306/</jdbc-url>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/test</jdbc-url>
       <user-name>root</user-name>
       <user-password>dfc3dfc4dfcfdfd2dfc3dfd9dfdedfcfdfc4dfde</user-password>
+      <schema-pattern>test.*</schema-pattern>
+      <default-dialect>MySQL</default-dialect>
       <libraries>
         <library>
           <url>jar://$PROJECT_DIR$/lib/webLibs/openmq/commons-codec-1.8.jar!/</url>
@@ -126,6 +128,9 @@
         </library>
         <library>
           <url>jar://$PROJECT_DIR$/lib/webLibs/mysql/mysql-connector-java-5.1.26-bin.jar!/</url>
+        </library>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/webLibs/spring/com.springsource.org.aopalliance-1.0.0.jar!/</url>
         </library>
       </libraries>
     </data-source>
