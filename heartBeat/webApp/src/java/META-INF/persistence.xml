@@ -1,6 +1,9 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
-    <persistence-unit name="hibernatePersistenceUnit" transaction-type="JTA">
+    <persistence-unit name="dataStoragePersistence" >
+        <!--<exclude-unlisted-classes>true</exclude-unlisted-classes>-->
+        <!--<class>heartbeat.project.frontend.model</class>-->
+        <!--<class>heartbeat.project.frontend.model.User</class>-->
     </persistence-unit>
 
 </persistence>

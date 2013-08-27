@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/resources/css/default.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+    <title>Job Runner</title>
+</h:head>
+
+<h:body>
+
+    <div id="center">
+
+        <h:form>
+            <h:panelGrid columns="1">
+                <h:outputText id="loginError" value="#{loginBean.errorMsg}"/>
+            </h:panelGrid>
+            <h:panelGrid columns="1">
+                <ace:textEntry id="userNameInput" value="#{loginBean.userName}"
+                               label="User name"
+                               labelPosition="left"
+                               required="true"
+                               requiredIndicator="(*)"
+                               indicatorPosition="right"/>
+                <ace:textEntry id="passwordInput" value="#{loginBean.password}"
+                               label="Password"
+                               labelPosition="left"
+                               required="true"
+                               requiredIndicator="(*)"
+                               indicatorPosition="right"/>
+            </h:panelGrid>
+            <h:panelGrid columns="2">
+                <ace:pushButton id="saveButton" value="Login" action="#{loginBean.onLogin}"/>
+                <ace:pushButton id="registerButton" value="Register" actionListener="#{loginBean.onLogin}"/>
+            </h:panelGrid>
+        </h:form>
+
+
+    </div>
+</h:body>
+
+</html>

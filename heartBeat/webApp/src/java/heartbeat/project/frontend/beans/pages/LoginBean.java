@@ -35,7 +35,7 @@ public class LoginBean implements Serializable {
     public User currentUser;
 
     String errorMsg;
-    public String onLogin(ActionEvent event){
+    public String onLogin(){
 
 
         if( userDAO.checkUser(userName, password)){
@@ -43,7 +43,7 @@ public class LoginBean implements Serializable {
 
             sessionBean.setLoggedUser(currentUser);
 
-            return "home";
+            return "pages/home?faces-redirect=true";
         } else {
             errorMsg = "Username/password incorect";
 

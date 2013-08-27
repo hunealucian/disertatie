@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
 @Service
 public class CrudDAOImpl<M> implements ICrudDAO<M> {
 
-    @PersistenceContext(unitName = "hibernatePersistenceUnit")
+    @PersistenceContext
     protected EntityManager em;
 
 

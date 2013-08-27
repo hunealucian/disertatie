@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 /**
  * Description
  * <p/>
@@ -15,16 +17,16 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Scope(Scopes.Session)
-public class SessionBean {
+public class SessionBean implements Serializable {
 
     @Autowired
-    IUserDAO userDAO;
+    private IUserDAO userDAO;
 
     private User loggedUser;
 
-
-
-
+    public SessionBean() {
+        System.out.println();
+    }
 
     public boolean isLoggedIn(){
         if( loggedUser == null )

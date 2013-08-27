@@ -12,17 +12,18 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!-- Declare a datasource that has pooling capabilities-->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="dataStoragedataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/test"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/datastore"/>
         <property name="username" value="root"/>
         <property name="password" value="inexistent"/>
     </bean>
 
     <!-- Declare a JPA entityManagerFactory-->
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" lazy-init="true">
         <property name="persistenceXmlLocation" value="classpath*:META-INF/persistence.xml"/>
-        <property name="persistenceUnitName" value="hibernatePersistenceUnit"/>
+        <property name="persistenceUnitName" value="dataStoragePersistence"/>
+        <property name="dataSource" ref="dataStoragedataSource"/>
         <property name="persistenceProviderClass" value="org.hibernate.ejb.HibernatePersistence"/>
         <property name="jpaDialect">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
@@ -40,7 +41,7 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
             </props>
         </property>
 
-        <property name="dataSource" ref="dataSource"/>
+
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <property name="showSql" value="true"/>
@@ -52,5 +53,8 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" lazy-init="true">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
+
+    <!-- Process @PersistenceContext to inject entity manager factory -->
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
 </beans>
