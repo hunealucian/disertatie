@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      lang="en">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <h:outputStylesheet library="css" name="cssLayout.css"/>
+    <title>Job Runner</title>
+</h:head>
+
+<h:body>
+    <div id="page">
+        <header id="header">
+            <h1 class="title">Distributed Online Data Storage</h1>
+
+            <h:form>
+                <ul class="links">
+
+                    <li><ace:linkButton styleClass="link" id="settingsBtn" value="Account Settings" action="#{sessionBean.doLogout}"/></li>
+                    <li><ace:linkButton styleClass="link" id="logoutBtn" value="Logout" action="#{sessionBean.doLogout}"/></li>
+
+                </ul>
+            </h:form>
+
+            <h1 class="welcome">
+                <h:outputFormat id="aaaa" value="Welcome {0}">
+                    <f:param id="aaaa2" value="#{sessionBean.loggedUser.username}"/>
+                </h:outputFormat>
+            </h1>
+
+        </header>
+        <section id="content">
+            <div id="side">
+                <ui:insert name="treeContent">Default left side</ui:insert>
+            </div>
+            <div id="main">
+                <ui:insert name="content">Default content</ui:insert>
+            </div>
+        </section>
+    </div>
+
+
+</h:body>
+</html>
+

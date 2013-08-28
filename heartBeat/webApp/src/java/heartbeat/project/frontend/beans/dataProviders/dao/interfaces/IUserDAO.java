@@ -13,6 +13,7 @@ public interface IUserDAO extends ICRUD<User> {
     public boolean checkUser(final String username, final String password);
 
     public User getUser(final String username, final String password);
+    public User getUser(final String email);
 
 }
 

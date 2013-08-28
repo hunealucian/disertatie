@@ -57,6 +57,24 @@ public class UserDAOImpl implements IUserDAO {
     }
 
     @Override
+    public User getUser(String email) {
+        CriteriaBuilder qb = crudDAO.getEm().getCriteriaBuilder();
+        CriteriaQuery<User> criteria = qb.createQuery(User.class);
+        Root<User> p = criteria.from(User.class);
+        Predicate condition = qb.equal(p.get("email"), email);
+
+        criteria.where(condition);
+
+        TypedQuery<User> query = crudDAO.getEm().createQuery(criteria);
+
+        try {
+            return query.getSingleResult();
+        } catch (Throwable t) {
+            return null;
+        }
+    }
+
+    @Override
     public User saveOrUpdate(User object) {
         return crudDAO.saveOrUpdate(object);
     }

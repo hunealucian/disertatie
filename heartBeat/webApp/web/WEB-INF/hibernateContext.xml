@@ -34,8 +34,8 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
                 <prop key="hibernate.cache.use_second_level_cache">false</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 
-                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
-                <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
+                <!--<prop key="hibernate.hbm2ddl.auto">create-drop</prop>-->
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
 
                 <prop key="hibernate.format_sql">true</prop>
             </props>

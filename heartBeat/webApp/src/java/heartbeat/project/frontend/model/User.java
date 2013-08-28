@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Date: 8/25/13
  */
 @Entity
-@Table(name = "USERS", schema = "test")
+@Table(name = "USERS", schema = "datastore")
 public class User implements Serializable {
 
     @Id
@@ -24,7 +24,15 @@ public class User implements Serializable {
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
+    @Column(name = "EMAIL", nullable = false, unique = true)
+    private String email;
+
+
+
+    @Enumerated
     private UserType type;
+
+    private String userPath;
 
 
     public User() {
@@ -66,5 +74,21 @@ public class User implements Serializable {
 
     public void setType(UserType type) {
         this.type = type;
+    }
+
+    public String getUserPath() {
+        return userPath;
+    }
+
+    public void setUserPath(String userPath) {
+        this.userPath = userPath;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

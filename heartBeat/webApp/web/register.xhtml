@@ -3,43 +3,63 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ace="http://www.icefaces.org/icefaces/components"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="/resources/css/default.css" rel="stylesheet" type="text/css"/>
     <link href="/resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
-    <title>Job Runner</title>
+    <title>Register Page</title>
 </h:head>
 
 <h:body>
 
-    <div id="center">
-
-        <h:form>
-            <h:panelGrid columns="1">
-                <h:outputText id="loginError" value="#{loginBean.errorMsg}"/>
-            </h:panelGrid>
-            <h:panelGrid columns="1">
-                <ace:textEntry id="userNameInput" value="#{loginBean.userName}"
-                               label="User name"
-                               labelPosition="left"
-                               required="true"
-                               requiredIndicator="(*)"
-                               indicatorPosition="right"/>
-                <ace:textEntry id="passwordInput" value="#{loginBean.password}"
-                               label="Password"
-                               labelPosition="left"
-                               required="true"
-                               requiredIndicator="(*)"
-                               indicatorPosition="right"/>
-            </h:panelGrid>
-            <h:panelGrid columns="2">
-                <ace:pushButton id="saveButton" value="Login" action="#{loginBean.onLogin}"/>
-                <ace:pushButton id="registerButton" value="Register" actionListener="#{loginBean.onLogin}"/>
-            </h:panelGrid>
-        </h:form>
-
+    <div id="center" style="position:absolute; top:35%; left:40%; width:500px; height:321px; z-index:1; padding:5px; border: #000000 1px ;">
+        <ace:panel id="registerPanel" header="Register new user">
+            <h:form>
+                <h:panelGrid columns="1">
+                    <h:outputText id="loginError" value="#{registerBean.errorMsg}"/>
+                </h:panelGrid>
+                <h:panelGrid columns="1">
+                    <ace:textEntry id="userNameInput" value="#{registerBean.userName}"
+                                   label="User name"
+                                   labelPosition="left"
+                                   required="true"
+                                   requiredIndicator="(*)"
+                                   indicatorPosition="right"/>
+                    <ace:textEntry id="passwordInput" value="#{registerBean.password}"
+                                   label="Password"
+                                   labelPosition="left"
+                                   required="true"
+                                   requiredIndicator="(*)"
+                                   indicatorPosition="right"/>
+                    <ace:textEntry id="passwordInput2" value="#{registerBean.retypedPassword}"
+                                   label="Retype Password"
+                                   labelPosition="left"
+                                   required="true"
+                                   requiredIndicator="(*)"
+                                   indicatorPosition="right"/>
+                    <ace:textEntry id="emailInput" value="#{registerBean.email}"
+                                   label="Email"
+                                   labelPosition="left"
+                                   required="true"
+                                   requiredIndicator="(*)"
+                                   indicatorPosition="right"/>
+                    <!--<ace:comboBox id="selectUserTypeInput"  label="Select user Type:" labelPosition="left">-->
+                        <!--<f:selectItem id="normal" value="aaa" />-->
+                        <!--<f:selectItem id="bbb" value="bbb" />-->
+                        <!--<ace:ajax execute="@this" render="@all" />-->
+                        <!--<ace:ajax event="blur" execute="@this" render="@all" />-->
+                    <!--</ace:comboBox>-->
+                </h:panelGrid>
+                <h:panelGrid columns="2">
+                    <ace:pushButton id="saveButton" value="Register" action="#{registerBean.onSave}"/>
+                    <ace:pushButton id="CancelButton" value="Cancel" action="#{registerBean.onCancel}">
+                        <ace:ajax execute="@this"/>
+                    </ace:pushButton>
+                </h:panelGrid>
+            </h:form>
+        </ace:panel>
 
     </div>
 </h:body>

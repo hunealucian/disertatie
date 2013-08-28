@@ -37,7 +37,7 @@ public class SessionBean implements Serializable {
 
     public String doLogout(){
         loggedUser = null;
-        return "loginPage";
+        return "/login?faces-redirect=true";
     }
 
     public User getLoggedUser() {

@@ -4,6 +4,7 @@ import heartbeat.project.frontend.beans.Scopes;
 import heartbeat.project.frontend.beans.dataProviders.dao.interfaces.IUserDAO;
 import heartbeat.project.frontend.beans.session.SessionBean;
 import heartbeat.project.frontend.model.User;
+import heartbeat.project.frontend.model.UserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,13 @@ public class LoginBean implements Serializable {
 
             sessionBean.setLoggedUser(currentUser);
 
-            return "pages/home?faces-redirect=true";
+            if( currentUser.getType() == UserType.ADMIN ){
+                return "pages/admin/adminHome?faces-redirect=true";
+            } else {
+                return "pages/user/userHome?faces-redirect=true";
+            }
+
+
         } else {
             errorMsg = "Username/password incorect";
 
@@ -54,8 +61,8 @@ public class LoginBean implements Serializable {
 
     }
 
-    public void onRegister(ActionEvent event){
-
+    public String onRegister(){
+        return "register.xhtml?faces-redirect=true";
     }
 
     public String getUserName() {
