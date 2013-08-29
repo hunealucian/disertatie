@@ -1,13 +1,6 @@
 <component name="libraryTable">
   <library name="webLibs">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/webLibs/openmq/commons-codec-1.8.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/webLibs/openmq/commons-pool-1.5.4.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/webLibs/openmq/commons-httpclient-3.0.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/webLibs/openmq/commons-logging-1.1.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/webLibs/openmq/javax.jms_1.1.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/webLibs/openmq/imq.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/webLibs/openmq/javax.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/webLibs/slf4j/slf4j-api-1.7.5.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/webLibs/slf4j/slf4j-simple-1.7.5.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/commons-logging-1.1.2.jar!/" />
@@ -32,8 +25,68 @@
       <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-webmvc-3.2.2.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-struts-3.2.2.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/webLibs/jsf/javax.faces-2.1.22.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/hibernate/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/hibernate/hibernate-jpa-2.0-api-1.0.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/mysql/mysql-connector-java-5.1.26-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/com.springsource.org.aopalliance-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/hibernate/antlr-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/hibernate/hibernate-commons-annotations-4.0.2.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/hibernate/hibernate-core-4.2.4.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/hibernate/hibernate-entitymanager-4.2.4.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/hibernate/hibernate-envers-4.2.4.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/hibernate/javassist-3.15.0-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/hibernate/jboss-logging-3.1.0.GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/hibernate/jboss-transaction-api_1.1_spec-1.0.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/openmq/javax.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/icefaces/icefaces-ace.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/icefaces/icefaces-compat.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/icefaces/icefaces.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/icefaces/icepush.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/commons-collections-3.2.1.jar!/" />
     </CLASSES>
-    <JAVADOC />
-    <SOURCES />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-aop-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-aspects-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-beans-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-context-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-context-support-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-core-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-expression-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-instrument-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-instrument-tomcat-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-jdbc-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-jms-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-orm-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-oxm-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-struts-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-test-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-tx-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-web-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-webmvc-3.2.2.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-webmvc-portlet-3.2.2.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-aop-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-aspects-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-beans-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-context-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-context-support-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-core-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-expression-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-instrument-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-instrument-tomcat-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-jdbc-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-jms-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-orm-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-oxm-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-test-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-tx-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-web-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-webmvc-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-webmvc-portlet-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-struts-3.2.2.RELEASE-sources.jar!/org/springframework/web/struts" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-struts-3.2.2.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/icefaces/icefaces-ace.jar!/" />
+    </SOURCES>
   </library>
 </component>

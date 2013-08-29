@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-         version="3.0">
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <display-name>JSF2 and Spring 3.2</display-name>
 
+    <context-param>
+        <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+        <param-value>.xhtml</param-value>
+    </context-param>
+
+    <!-- Welcome page -->
+    <welcome-file-list>
+        <welcome-file>/pages/login.xhtml</welcome-file>
+    </welcome-file-list>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -34,12 +44,7 @@
         <param-value>AIzaSyAcAbAa7AL1DLU0785OeWn2byf4XOsm7KM</param-value>
     </context-param>
 
-    <display-name>JSF2 and Spring 3.2</display-name>
 
-    <context-param>
-        <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
-        <param-value>.xhtml</param-value>
-    </context-param>
 
     <!-- Add Support for Spring -->
     <listener>
@@ -52,10 +57,17 @@
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
 
-    <!-- Welcome page -->
-    <welcome-file-list>
-        <welcome-file>/pages/login.xhtml</welcome-file>
-    </welcome-file-list>
+    <!--<filter>-->
+        <!--<filter-name>LoginFilter</filter-name>-->
+        <!--<filter-class>heartbeat.project.frontend.filters.AccesFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>LoginFilter</filter-name>-->
+        <!--<servlet-name>Faces Servlet</servlet-name>-->
+        <!--<url-pattern>/pages/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
+
 
     <!-- JSF mapping -->
     <servlet>
