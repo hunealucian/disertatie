@@ -1,4 +1,4 @@
-package heartbeat.project.frontend.beans.pages;
+package heartbeat.project.frontend.beans.ui.pages;
 
 import heartbeat.project.frontend.beans.Scopes;
 import heartbeat.project.frontend.beans.dataProviders.dao.interfaces.IUserDAO;
@@ -11,9 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import java.io.Serializable;
 
 /**

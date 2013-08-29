@@ -2,8 +2,8 @@
 
     <persistence-unit name="dataStoragePersistence" >
         <!--<exclude-unlisted-classes>true</exclude-unlisted-classes>-->
-        <!--<class>heartbeat.project.frontend.model</class>-->
-        <!--<class>heartbeat.project.frontend.model.User</class>-->
+        <!--<class>heartbeat.project.frontend.treeDataProvider</class>-->
+        <!--<class>heartbeat.project.frontend.treeDataProvider.User</class>-->
     </persistence-unit>
 
 </persistence>
