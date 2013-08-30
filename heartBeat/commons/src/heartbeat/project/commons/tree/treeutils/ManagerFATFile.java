@@ -1,4 +1,4 @@
-package project.manager.model;
+package heartbeat.project.commons.tree.treeutils;
 
 import heartbeat.project.commons.model.Node;
 import heartbeat.project.commons.model.socketmsg.NodeInfo;

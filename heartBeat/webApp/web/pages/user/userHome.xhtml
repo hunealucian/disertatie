@@ -46,9 +46,19 @@
                           stateCreationCallback="#{userHomeBean.nodeStateCreationCallback}"
                           stateMap="#{userHomeBean.treeDataProvider.nodeStateMap}"
                           reordering="false" var="node" type="#{node.type}">
+                    <ace:node>
+                        <h:panelGrid id="MainNavigationTreeNode" title="#{node.label}" columns="2">
+                            <!--<h:outputText id="MainNavigationTreeNodeLabel" value="#{node.label}" />-->
+                            <h:link id="MainNavigationTreeNodeAnchor" value="#{node.label}" outcome="#{node.action}" rendered="#{!empty node.action}">
+                                <f:param name="nodeId" value="#{node.id}" disable="#{empty node.parameter}"/>
+                            </h:link>
 
-                    <ace:ajax event="select" render="@all" execute="@all" />
-                    <ace:ajax event="deselect" render="@all" execute="@all" />
+
+                        </h:panelGrid>
+                    </ace:node>
+
+                    <!--<ace:ajax event="select" render="@all" execute="@all" />-->
+                    <!--<ace:ajax event="deselect" render="@all" execute="@all" />-->
 
                 </ace:tree>
 

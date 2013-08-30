@@ -1,5 +1,12 @@
 package heartbeat.project.frontend.beans.ui.tree;
 
+import heartbeat.project.commons.tree.FilesAllocationTree;
+import heartbeat.project.commons.tree.treeutils.FATFolder;
+import heartbeat.project.commons.tree.treeutils.ManagerFATFile;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Description
  * <p/>
@@ -10,56 +17,49 @@ public class UserTreeNodeFactory {
     public static final String NODE_TYPE_PARENT = "parent";
     public static final String NODE_TYPE_LEAF = "leaf";
 
-    public static NavigationTreeNode createLazyParentNodeWithAction(NavigationNode navigationNode)
-    {
-        NavigationTreeNode navigationTreeNode = createParentNode(navigationNode);
-        navigationTreeNode.setLazy(true);
-        navigationTreeNode.setAction(navigationNode.getViewId());
-        return navigationTreeNode;
+    public static List<NavigationTreeNode> createNavigationTreeNodeList(FilesAllocationTree<FATFolder, ManagerFATFile> tree, NavigationTreeNode node) {
+        List<NavigationTreeNode> result = new ArrayList<>();
+
+
+        if (tree != null && tree.getChildren().size() > 0) {
+            if (node == null) {
+                for (FilesAllocationTree<FATFolder, ManagerFATFile> children : tree.getChildren()) {
+                    if (children.getData() instanceof ManagerFATFile) {
+//                        result.add(new NavigationTreeNode(children.getData().getPath(), children.getData().getName(), NODE_TYPE_LEAF, children.getData().getPath()));
+                    } else {
+                        result.add(new NavigationTreeNode(children.getData().getPath(), children.getData().getName(), NODE_TYPE_PARENT, "pages/user/userHome?faces-redirect=true"));
+                    }
+                }
+
+                return result;
+            }
+
+            String[] tmp = node.getId().split("/");
+            int index = 0;
+            for (String s : tmp) {
+                if (s.length() > 0)
+                    index += 1;
+            }
+
+            FilesAllocationTree<FATFolder, ManagerFATFile> treeDepth = tree.getNodeByPath(node.getId());
+
+            if (node.getId().equalsIgnoreCase(treeDepth.getData().getPath())) {
+                for (FilesAllocationTree<FATFolder, ManagerFATFile> child : treeDepth.getChildren()) {
+
+                    if (child.getData() instanceof ManagerFATFile) {
+//                            result.add(new NavigationTreeNode(child.getData().getPath(), child.getData().getName(), NODE_TYPE_LEAF, child.getData().getPath()));
+                    } else {
+                        result.add(new NavigationTreeNode(child.getData().getPath(), child.getData().getName(), NODE_TYPE_PARENT, "pages/user/userHome?faces-redirect=true"));
+                    }
+
+
+                }
+            }
+
+
+        }
+
+        return result;
     }
 
-    public static NavigationTreeNode createParentNodeWithAction(NavigationNode navigationNode)
-    {
-        NavigationTreeNode navigationTreeNode = createParentNode(navigationNode);
-        navigationTreeNode.setAction(navigationNode.getViewId());
-        return navigationTreeNode;
-    }
-
-    public static NavigationTreeNode createParentNode(NavigationNode navigationNode)
-    {
-        return createCommonNode(
-                navigationNode.getId(),
-                I18NHelper.msg(navigationNode.getId()),
-                NODE_TYPE_PARENT
-        );
-    }
-
-    public static NavigationTreeNode createLeafNodeWithParameter(String id, String label,
-                                                                 String action, String parameter)
-    {
-        NavigationTreeNode navigationTreeNode = createLeafNode(id, label, action);
-        navigationTreeNode.setParameter(parameter);
-        return navigationTreeNode;
-    }
-
-    public static NavigationTreeNode createLeafNode(NavigationNode navigationNode)
-    {
-        return createLeafNode(
-                navigationNode.getId(),
-                I18NHelper.msg(navigationNode.getId()),
-                navigationNode.getViewId()
-        );
-    }
-
-    public static NavigationTreeNode createLeafNode(String id, String label, String action)
-    {
-        NavigationTreeNode navigationTreeNode = createCommonNode(id, label, NODE_TYPE_LEAF);
-        navigationTreeNode.setAction(action);
-        return navigationTreeNode;
-    }
-
-    private static NavigationTreeNode createCommonNode(String id, String label, String type)
-    {
-        return new NavigationTreeNode(id, label, type);
-    }
 }

@@ -53,6 +53,8 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
                     returnNodesList(streamReader);
                 } else if (headerMessage == HeaderMessage.GIVE_FAT_SYSTEM) {
                     //todo
+                } else if (headerMessage == HeaderMessage.GIVE_FAT_SYSTEM_FROM_PATH) {
+                    //todo : returns an UserFATInfo
                 }
 
             }

@@ -134,4 +134,12 @@ public class BasicMutableTreeNode implements MutableTreeNode, Serializable
     {
         parent = (BasicMutableTreeNode) mutableTreeNode;
     }
+
+    public List<BasicMutableTreeNode> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<BasicMutableTreeNode> children) {
+        this.children = children;
+    }
 }

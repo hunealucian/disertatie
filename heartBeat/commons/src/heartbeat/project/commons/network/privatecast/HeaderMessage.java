@@ -17,6 +17,7 @@ public enum HeaderMessage implements Serializable {
     GIVE_NODES_LIST("giveNodesList"),
     GIVE_NODE_INFO("giveNodeInfo"),
     GIVE_FAT_SYSTEM("giveFatSystem"),
+    GIVE_FAT_SYSTEM_FROM_PATH("giveFatSystemFromPath"), //used for returning an user fat tree
 
     OK("ok"),
     ERROR("error");

@@ -13,7 +13,7 @@ public class NavigationTreeNode extends BasicMutableTreeNode
     protected String action;
     protected String parameter;
     protected String type;
-    protected boolean isLazy;
+    protected boolean isLazy = false;
 
     public NavigationTreeNode(String id, String label, String type)
     {
@@ -21,6 +21,14 @@ public class NavigationTreeNode extends BasicMutableTreeNode
         this.label = label;
         this.type = type;
     }
+    public NavigationTreeNode(String id, String label, String type, String action)
+    {
+        this.id = id;
+        this.label = label;
+        this.type = type;
+        this.action = action;
+    }
+
 
     //region [Accessors]
     public String getId()

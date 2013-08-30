@@ -1,7 +1,7 @@
 package project.manager.network.cluster;
 
 import heartbeat.project.commons.model.Node;
-import project.manager.tree.ManagerFAT;
+import heartbeat.project.commons.tree.ManagerFAT;
 import project.manager.util.ManagerAppUtil;
 
 import java.util.ArrayList;

@@ -4,12 +4,9 @@ import heartbeat.project.commons.model.Node;
 import heartbeat.project.commons.tree.FilesAllocationTree;
 import heartbeat.project.commons.tree.treeutils.FATFile;
 import heartbeat.project.commons.tree.treeutils.FATFolder;
-import project.manager.model.ManagerFATFile;
 import project.manager.network.cluster.ClusterSystemInfo;
-import project.manager.tree.ManagerFAT;
+import heartbeat.project.commons.tree.ManagerFAT;
 
-import java.io.File;
-import java.util.Date;
 import java.util.List;
 
 /**

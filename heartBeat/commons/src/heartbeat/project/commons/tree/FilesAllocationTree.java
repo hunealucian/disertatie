@@ -2,6 +2,7 @@ package heartbeat.project.commons.tree;
 
 import heartbeat.project.commons.tree.treeutils.FATFile;
 import heartbeat.project.commons.tree.treeutils.FATFolder;
+import heartbeat.project.commons.tree.treeutils.ManagerFATFile;
 import heartbeat.project.commons.utils.FileUtils;
 
 import java.io.File;
@@ -118,6 +119,26 @@ public class FilesAllocationTree<T extends FATFolder, M extends FATFile> impleme
         }
 
         return result;
+    }
+
+    public FilesAllocationTree<T, M> getNodeByPath(String nodePath){
+        String[] userPathSplited = nodePath.split("/");
+
+        for (int i = 0; i < userPathSplited.length; i++) {
+            String leafParrent = userPathSplited[i];
+            List<FilesAllocationTree<T, M>> treeDepth = getChildrenFromDepth(children, i);
+
+            boolean foundNode = false;
+            ManagerFATFile leaf = null;
+            for (FilesAllocationTree<T, M> chield : treeDepth) {
+                if (chield.getData().getPath().equalsIgnoreCase(nodePath)) {
+                        return chield;
+                }
+            }
+
+        }
+
+        return null;
     }
 
     public T getData() {

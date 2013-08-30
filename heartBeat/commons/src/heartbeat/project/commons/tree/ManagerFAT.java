@@ -1,10 +1,10 @@
-package project.manager.tree;
+package heartbeat.project.commons.tree;
 
 import heartbeat.project.commons.model.Node;
 import heartbeat.project.commons.tree.FilesAllocationTree;
 import heartbeat.project.commons.tree.treeutils.FATFile;
 import heartbeat.project.commons.tree.treeutils.FATFolder;
-import project.manager.model.ManagerFATFile;
+import heartbeat.project.commons.tree.treeutils.ManagerFATFile;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -69,12 +69,12 @@ public class ManagerFAT extends FilesAllocationTree<FATFolder, ManagerFATFile> {
                         if (i >= 1) {
                             FilesAllocationTree<FATFolder, ManagerFATFile> parentLeaf = getParentOfChildren(children, i, leafParrents[i - 1]);
                             if (parentLeaf != null) {
-                                parentLeaf.getChildren().add(new FilesAllocationTree<FATFolder, ManagerFATFile>(new FATFolder(leafParrent, "", 0, new Date())));
+                                parentLeaf.getChildren().add(new FilesAllocationTree<FATFolder, ManagerFATFile>(new FATFolder(leafParrent, getFolderPath(leafParrents, i), 0, new Date())));
                             } else {
-                                treeDepth.add(new FilesAllocationTree<FATFolder, ManagerFATFile>(new FATFolder(leafParrent, "", 0, new Date())));
+                                treeDepth.add(new FilesAllocationTree<FATFolder, ManagerFATFile>(new FATFolder(leafParrent, getFolderPath(leafParrents, i), 0, new Date())));
                             }
                         } else {
-                            treeDepth.add(new FilesAllocationTree<FATFolder, ManagerFATFile>(new FATFolder(leafParrent, "", 0, new Date())));
+                            treeDepth.add(new FilesAllocationTree<FATFolder, ManagerFATFile>(new FATFolder(leafParrent, getFolderPath(leafParrents, i), 0, new Date())));
                         }
                     }
 
@@ -84,6 +84,15 @@ public class ManagerFAT extends FilesAllocationTree<FATFolder, ManagerFATFile> {
             }
 
         }
+    }
+
+    private String getFolderPath(String[] paths, int index){
+        String result = "";
+        for( int i = 0; i <= index; i++){
+            result += paths[i] + ( i +1 > index ? "" : "/");
+        }
+
+        return result;
     }
 
     public void removeNodeTree(Node node) throws Exception{
@@ -103,4 +112,26 @@ public class ManagerFAT extends FilesAllocationTree<FATFolder, ManagerFATFile> {
         }
 
     }
+
+    public FilesAllocationTree<FATFolder, ManagerFATFile> getTreeOfUser(String userPath){
+        String[] userPathSplited = userPath.split("/");
+
+        for (int i = 0; i < userPathSplited.length; i++) {
+            String leafParrent = userPathSplited[i];
+            List<FilesAllocationTree<FATFolder, ManagerFATFile>> treeDepth = getChildrenFromDepth(children, i);
+
+            ManagerFATFile leaf = null;
+            for (FilesAllocationTree<FATFolder, ManagerFATFile> chield : treeDepth) {
+                if (chield.getData().getName().equalsIgnoreCase(leafParrent)) {
+                    if ( i + 1 == userPathSplited.length)
+                        return chield;
+                }
+            }
+
+        }
+
+        return null;
+    }
+
+
 }
