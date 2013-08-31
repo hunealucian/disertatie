@@ -22,6 +22,7 @@ public class ClusterService {
     public static final String nodePath2 = "/home/luc/cluster/node2";
 
     public FilesAllocationTree<FATFolder, ManagerFATFile> getTreeOfUser(String userPath){
+        //todo change this
         Node node1 = new Node();
         node1.setName("node1");
         node1.setIpAddr("111.111.111.111");

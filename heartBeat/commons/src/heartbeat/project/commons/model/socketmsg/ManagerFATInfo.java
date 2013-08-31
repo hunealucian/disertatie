@@ -11,17 +11,14 @@ import heartbeat.project.commons.tree.treeutils.ManagerFATFile;
  * User: Hunea Lucian | Email : hunealucian@gmail.com
  * Date: 8/30/13
  */
-public class UserFATInfo {
+public class ManagerFATInfo {
 
-    private String userPath;
     private FilesAllocationTree<FATFolder, ManagerFATFile> fatTree;
 
-    public UserFATInfo(String userPath) {
-        this.userPath = userPath;
+    public ManagerFATInfo() {
     }
 
-    public UserFATInfo(String userPath, FilesAllocationTree<FATFolder, ManagerFATFile> fatTree) {
-        this.userPath = userPath;
+    public ManagerFATInfo(FilesAllocationTree<FATFolder, ManagerFATFile> fatTree) {
         this.fatTree = fatTree;
     }
 
@@ -31,13 +28,5 @@ public class UserFATInfo {
 
     public void setFatTree(FilesAllocationTree<FATFolder, ManagerFATFile> fatTree) {
         this.fatTree = fatTree;
-    }
-
-    public String getUserPath() {
-        return userPath;
-    }
-
-    public void setUserPath(String userPath) {
-        this.userPath = userPath;
     }
 }

@@ -52,9 +52,9 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
                 } else if (headerMessage == HeaderMessage.GIVE_NODES_LIST) {
                     returnNodesList(streamReader);
                 } else if (headerMessage == HeaderMessage.GIVE_FAT_SYSTEM) {
-                    //todo
+                    returnFATSystem(streamReader);
                 } else if (headerMessage == HeaderMessage.GIVE_FAT_SYSTEM_FROM_PATH) {
-                    //todo : returns an UserFATInfo
+                    returnUserFATSystem(streamReader);
                 }
 
             }
@@ -139,6 +139,22 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
 
     private void deleteFile(StreamReader streamReader) {
         //todo send message to delete to all nodes that containes that file
+    }
+
+    private void returnFATSystem(StreamReader streamReader) throws IOException {
+        StreamWriter<ManagerFATInfo> write = new StreamWriter<ManagerFATInfo>(streamReader.getSocket(), HeaderMessage.OK, new ManagerFATInfo(ClusterSystemInfo.FATSystem));
+        write.push();
+        write.closeConnection();
+    }
+
+    private void returnUserFATSystem(StreamReader streamReader) throws IOException {
+        UserFATInfo received = (UserFATInfo) messageInfo;
+
+        String userPath = received.getUserPath();
+
+        StreamWriter<UserFATInfo> write = new StreamWriter<>(streamReader.getSocket(), HeaderMessage.OK, new UserFATInfo(userPath, ClusterSystemInfo.FATSystem.getTreeOfUser(userPath)));
+        write.push();
+        write.closeConnection();
     }
 
     private ChainInfo makeChain(List<Node> nodesList, FileInfo fileInfo) {
