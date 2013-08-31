@@ -1,8 +1,9 @@
-package heartbeat.project.frontend.beans.ui.tree;
+package heartbeat.project.frontend.beans.dataProviders.tree;
 
 import heartbeat.project.commons.tree.FilesAllocationTree;
 import heartbeat.project.commons.tree.treeutils.FATFolder;
 import heartbeat.project.commons.tree.treeutils.ManagerFATFile;
+import heartbeat.project.frontend.beans.ui.tree.NavigationTreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

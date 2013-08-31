@@ -8,6 +8,8 @@ import heartbeat.project.commons.tree.treeutils.FATFolder;
 import heartbeat.project.commons.tree.treeutils.ManagerFATFile;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+
 /**
  * Description
  * <p/>
@@ -42,6 +44,9 @@ public class ClusterService {
         }
 
         return FATSystem.getTreeOfUser(userPath);
+    }
 
+    public void uploadFile(File file){
+        //todo request chain from manager and send file to first node
     }
 }

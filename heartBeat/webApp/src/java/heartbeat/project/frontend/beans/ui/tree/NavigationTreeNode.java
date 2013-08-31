@@ -11,7 +11,6 @@ public class NavigationTreeNode extends BasicMutableTreeNode
     protected String id;
     protected String label;
     protected String action;
-    protected String parameter;
     protected String type;
     protected boolean isLazy = false;
 
@@ -59,16 +58,6 @@ public class NavigationTreeNode extends BasicMutableTreeNode
     public void setAction(String action)
     {
         this.action = action;
-    }
-
-    public String getParameter()
-    {
-        return parameter;
-    }
-
-    public void setParameter(String parameter)
-    {
-        this.parameter = parameter;
     }
 
     public String getType()

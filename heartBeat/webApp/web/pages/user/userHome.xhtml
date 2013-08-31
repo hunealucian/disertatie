@@ -4,69 +4,105 @@
                 xmlns:ice="http://www.icesoft.com/icefaces/component" xmlns:f="http://java.sun.com/jsf/core"
                 template="/WEB-INF/templates/userTemplate.xhtml">
 
+
+
+
     <ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
         <ui:define name="treeContent">
+
             <h:form id="treeForm">
-                <style type="text/css">
-                    #form\3Atree {
-                        line-height: 1 !important;
-                        height: 205px;
-                        width: 230px;
-                        overflow: auto;
-                        position: relative;
-                        text-align: left;
-                    }
-
-                    #form\3Atree table {
-                        font-size: 1em;
-                    }
-
-                    #form > table > tr {
-                        vertical-align: top;
-                    }
-
-                    .eqCell {
-                        width: 50%;
-                        text-align: center;
-                    }
-
-                    ul.output {
-                        height: 184px;
-                        width: 120px;
-                        display: inline-block;
-                        overflow: auto;
-                        padding-left: 1em;
-                        list-style: disc inside;
-                    }
-                </style>
-
-
                 <ace:tree id="tree" expansion="true" selection="true" selectMultiple="false"
                           value="#{userHomeBean.treeDataProvider.nodeDataModel}"
                           stateCreationCallback="#{userHomeBean.nodeStateCreationCallback}"
                           stateMap="#{userHomeBean.treeDataProvider.nodeStateMap}"
                           reordering="false" var="node" type="#{node.type}">
+                    <ace:ajax event="select" render="@this folderFilesForm folderInfoPanel" execute="@this"
+                              listener="#{userHomeBean.onNodeClick}"/>
+                    <f:attribute name="nodeId" value="#{node.id}"/>
                     <ace:node>
                         <h:panelGrid id="MainNavigationTreeNode" title="#{node.label}" columns="2">
-                            <!--<h:outputText id="MainNavigationTreeNodeLabel" value="#{node.label}" />-->
-                            <h:link id="MainNavigationTreeNodeAnchor" value="#{node.label}" outcome="#{node.action}" rendered="#{!empty node.action}">
-                                <f:param name="nodeId" value="#{node.id}" disable="#{empty node.parameter}"/>
-                            </h:link>
-
-
+                            <h:outputText id="MainNavigationTreeNodeLabel" value="#{node.label}"/>
                         </h:panelGrid>
                     </ace:node>
-
-                    <!--<ace:ajax event="select" render="@all" execute="@all" />-->
-                    <!--<ace:ajax event="deselect" render="@all" execute="@all" />-->
-
                 </ace:tree>
-
             </h:form>
-            Tree
+
         </ui:define>
+
         <ui:define name="content">
-            Welcome user to Center
+
+            <ace:panel id="folderInfoPanel" header="Folder Info" visible="#{!empty userHomeBean.currentNode}">
+                <h:panelGrid columns="2">
+                    <h:outputText id="nodeNameLabel" value="Folder name : "/>
+                    <h:outputText id="nodeName" value="#{userHomeBean.folderName}"/>
+                    <h:outputText id="nodeDateLabel" value="Creation date : "/>
+                    <h:outputText id="nodeDate" value="#{userHomeBean.folderDate}"/>
+                </h:panelGrid>
+            </ace:panel>
+
+            <h:form id="folderFilesForm">
+                <ace:panel id="folderFilesPanel" header="Folder Files" visible="#{!empty userHomeBean.currentNode}">
+
+                    <ace:pushButton id="uploadButton" value="Upload file" actionListener="#{userHomeBean.onShowUploadDialogClicl}">
+                        <ace:ajax execute="@this" render="@form uploadFileForm"/>
+                    </ace:pushButton>
+
+                    <ace:dataTable id="filesDataTable"
+                                   value="#{userHomeBean.filesTableDataProvider.dataModel}"
+                                   var="managerFATFile"
+                                   stateMap="#{userHomeBean.filesTableDataProvider.rowStateMap}"
+                                   selectionMode="single" rendered="#{!empty userHomeBean.filesTableDataProvider}">
+                        <ace:column id="name" headerText="Name">
+                            <h:outputText id="nameCell" value="#{managerFATFile.name}"/>
+                        </ace:column>
+                        <ace:column id="size" headerText="Size">
+                            <h:outputText id="sizeCell" value="#{managerFATFile.size} bytes"/>
+                        </ace:column>
+                        <ace:column id="lastModified" headerText="Date">
+                            <h:outputText id="dateCell" value="#{managerFATFile.lastModified}"/>
+                        </ace:column>
+                        <ace:column id="checksum" headerText="Checksum">
+                            <h:outputText id="checksumCell" value="#{managerFATFile.checksum}"/>
+                        </ace:column>
+
+                    </ace:dataTable>
+                </ace:panel>
+            </h:form>
+
+            <h:form id="uploadFileForm">
+                <ace:dialog id="uploadFileDialog" closable="true" draggable="false" closeOnEscape="true"
+                            header="Upload file to folder #{userHomeBean.currentNode.label}"
+                            modal="true" resizable="false" position="center" showEffect="fade" hideEffect="fade"
+                            visible="#{userHomeBean.showUploadDialog}"
+                            styleClass="medium">
+                    <h:panelGroup layout="block">
+                        <h:panelGrid columns="2">
+                            <h:outputText id="nodeNameLabel" value="Choose file : "/>
+                            <ace:panel style="width: 250px; height: 40px; border: 0px;">
+                                <ace:fileEntry id="file-entry"
+                                               relativePath="/home/lucian/"
+                                               maxFileCount="1"
+                                               maxFileCountMessage="Limited to 1 files uploaded concurrantly."
+                                               fileEntryListener="#{userHomeBean.onUploadClickListener}"
+                                               maxFileSize="6291456"
+                                               maxFileSizeMessage="Submitted file is too large."
+                                               maxTotalSize="18874368"
+                                               maxTotalSizeMessage="Total size of submitted files is too large."
+                                               required="true"
+                                               requiredMessage="The file is required to submit this form."
+                                               useOriginalFilename="true"
+                                               useSessionSubdir="true"/>
+                            </ace:panel>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2">
+                            <h:commandButton id="submit" type="submit" value="Upload File"/>
+                            <ace:pushButton id="cancelButton" value="Cancel">
+                                <ace:ajax execute="@this" render="@all" />
+                            </ace:pushButton>
+                        </h:panelGrid>
+                    </h:panelGroup>
+                </ace:dialog>
+            </h:form>
         </ui:define>
     </ui:composition>
 </ui:composition>
