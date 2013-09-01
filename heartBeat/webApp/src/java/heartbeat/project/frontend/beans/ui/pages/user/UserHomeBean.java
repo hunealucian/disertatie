@@ -11,19 +11,22 @@ import heartbeat.project.frontend.beans.dataProviders.tree.UserTreeNodeFactory;
 import org.icefaces.ace.component.fileentry.FileEntry;
 import org.icefaces.ace.component.fileentry.FileEntryEvent;
 import org.icefaces.ace.component.fileentry.FileEntryResults;
+import org.icefaces.ace.event.SelectEvent;
 import org.icefaces.ace.model.tree.NodeState;
 import org.icefaces.ace.model.tree.NodeStateCreationCallback;
+import org.icefaces.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
-import java.io.File;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 /**
  * Description
@@ -43,6 +46,7 @@ public class UserHomeBean implements Serializable {
 
     private NavigationTreeNode currentNode;
     private FilesAllocationTree<FATFolder, ManagerFATFile> currentFATNode;
+    private String fileToDownload;
 
     private FilesTableDataProvider filesTableDataProvider;
 
@@ -53,44 +57,25 @@ public class UserHomeBean implements Serializable {
         treeDataProvider = new UserTreeDataProvider(sessionBean.getLoggedUser(), sessionBean.getUserFATTree());
     }
 
-    public UserTreeDataProvider getTreeDataProvider() {
-        if (treeDataProvider == null) {
-            initTree();
-        }
-
-        return treeDataProvider;
-    }
-
-    public void setTreeDataProvider(UserTreeDataProvider treeDataProvider) {
-        this.treeDataProvider = treeDataProvider;
-    }
-
-    public String getFolderName() {
-        return currentFATNode != null ? currentFATNode.getData().getName() : "";
-    }
-
-    public String getFolderDate() {
-        return currentFATNode != null ? currentFATNode.getData().getLastModified().toString() : "";
-    }
-
-
     public void onNodeClick(AjaxBehaviorEvent e) {
         if (treeDataProvider != null) {
             currentNode = (NavigationTreeNode) treeDataProvider.getNodeStateMap().getSelected().get(0);
             currentFATNode = sessionBean.getFATNode(currentNode.getId());
+
+            sessionBean.setCurrentNodeId(currentNode.getId());
 
             filesTableDataProvider = new FilesTableDataProvider(currentFATNode);
             filesTableDataProvider.init();
         }
     }
 
+    //region upload region
     private boolean showUploadDialog = false;
+    private StringBuffer uploadMessage;
 
-    public void onShowUploadDialogClicl(ActionEvent event) {
+    public void onShowUploadDialogClick(ActionEvent event) {
         showUploadDialog = true;
     }
-
-    private StringBuffer uploadMessage;
 
     public void onUploadClickListener(FileEntryEvent e) {
         FileEntry fe = (FileEntry) e.getComponent();
@@ -106,12 +91,6 @@ public class UserHomeBean implements Serializable {
 
         if (i.isSaved()) {
             uploadMessage.append("File Size: " + results.getFiles().get(0).getSize() + " bytes").append("\n");
-
-            File file = results.getFiles().get(0).getFile();
-            if (file != null) {
-                sessionBean.uploadFile(file);
-                //todo delete after save
-            }
         } else {
             uploadMessage.append("File was not saved because: " +
                     i.getStatus().getFacesMessage(
@@ -119,6 +98,55 @@ public class UserHomeBean implements Serializable {
                             fe, i).getSummary());
         }
     }
+    //endregion
+
+    //region download region
+    public String onDownloadClick3(){
+
+        System.out.println();
+
+        return null;
+    }
+    public void onDownloadClick2(ActionEvent e){
+//        String parameter = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("filePath");
+
+
+        File file = new File("/home/luc/cluster/node2/normal/user1/aaa.pdf");
+
+        if(file.exists())
+            System.out.println("Yes"); //It exists !
+
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = facesContext.getExternalContext();
+
+        externalContext.setResponseHeader("Content-Type", externalContext.getMimeType(file.getName()));
+        externalContext.setResponseHeader("Content-Length", String.valueOf(file.length()));
+        externalContext.setResponseHeader("Content-Disposition", "attachment;filename=\"" + file.getName() + "\"");
+
+        InputStream input = null;
+        OutputStream output = null;
+
+        try {
+            input = new FileInputStream(file);
+            output = externalContext.getResponseOutputStream();
+            IOUtils.copy(input, output);
+        } catch (IOException ex) {
+            System.out.println();
+        } finally {
+            IOUtils.closeQuietly(output);
+            IOUtils.closeQuietly(input);
+        }
+
+        facesContext.responseComplete();
+        System.out.println();
+    }
+
+    public void onDownloadClick(AjaxBehaviorEvent e){
+
+        System.out.println();
+
+    }
+    //endregion
 
     public NodeStateCreationCallback getNodeStateCreationCallback() {
         if (nodeStateCreationCallback == null) {
@@ -173,6 +201,33 @@ public class UserHomeBean implements Serializable {
 
     public void setUploadMessage(StringBuffer uploadMessage) {
         this.uploadMessage = uploadMessage;
+    }
+    public UserTreeDataProvider getTreeDataProvider() {
+        if (treeDataProvider == null) {
+            initTree();
+        }
+
+        return treeDataProvider;
+    }
+
+    public void setTreeDataProvider(UserTreeDataProvider treeDataProvider) {
+        this.treeDataProvider = treeDataProvider;
+    }
+
+    public String getFolderName() {
+        return currentFATNode != null ? currentFATNode.getData().getName() : "";
+    }
+
+    public String getFolderDate() {
+        return currentFATNode != null ? currentFATNode.getData().getLastModified().toString() : "";
+    }
+
+    public String getFileToDownload() {
+        return fileToDownload;
+    }
+
+    public void setFileToDownload(String fileToDownload) {
+        this.fileToDownload = fileToDownload;
     }
 
     //endregion

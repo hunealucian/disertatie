@@ -30,6 +30,7 @@ public class ManagerFATFile extends FATFile {
             for (Node node : replicationsNode) {
                 //TODO use node IP
                 if( node.getId().equalsIgnoreCase(nodeInfo.getId()) ){
+
                     return;
                 }
             }

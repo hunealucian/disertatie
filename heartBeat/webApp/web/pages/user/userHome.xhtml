@@ -43,15 +43,34 @@
             <h:form id="folderFilesForm">
                 <ace:panel id="folderFilesPanel" header="Folder Files" visible="#{!empty userHomeBean.currentNode}">
 
-                    <ace:pushButton id="uploadButton" value="Upload file" actionListener="#{userHomeBean.onShowUploadDialogClicl}">
-                        <ace:ajax execute="@this" render="@form uploadFileForm"/>
-                    </ace:pushButton>
+                    <h:panelGrid columns="2">
+                        <ace:pushButton id="uploadButton" value="Upload file" actionListener="#{userHomeBean.onShowUploadDialogClick}">
+                            <ace:ajax execute="@this" render="@form uploadFileForm"/>
+                        </ace:pushButton>
+
+                        <ice:outputResource id="downLink"
+                                            resource="#{outputResource.pdfResource}"
+                                            attachment="true"
+                                            label="Download PDF"
+                                            type="button"
+                                            fileName="Training.pdf"/>
+
+                        <ace:pushButton id="downloadButton" value="Download file"
+                                        actionListener="#{userHomeBean.onDownloadClick2}">
+                            <f:attribute name="filePath"  value="#{userHomeBean.filesTableDataProvider}" />
+                            <!--<ace:ajax execute="@all" render="@this" listener="#{userHomeBean.onDownloadClick}"/>-->
+                        </ace:pushButton>
+                    </h:panelGrid>
+
 
                     <ace:dataTable id="filesDataTable"
                                    value="#{userHomeBean.filesTableDataProvider.dataModel}"
                                    var="managerFATFile"
                                    stateMap="#{userHomeBean.filesTableDataProvider.rowStateMap}"
-                                   selectionMode="single" rendered="#{!empty userHomeBean.filesTableDataProvider}">
+                                   selectionMode="single"
+                                   rendered="#{!empty userHomeBean.filesTableDataProvider}" >
+                        <!--<ace:ajax event="select" execute="@this" render="@this folderFilesForm:downloadButton" />-->
+
                         <ace:column id="name" headerText="Name">
                             <h:outputText id="nameCell" value="#{managerFATFile.name}"/>
                         </ace:column>
@@ -63,6 +82,12 @@
                         </ace:column>
                         <ace:column id="checksum" headerText="Checksum">
                             <h:outputText id="checksumCell" value="#{managerFATFile.checksum}"/>
+                        </ace:column>
+                        <ace:column headerText="Download">
+                            <ace:pushButton id="downloadButton2"  value="Download file" action="#{userHomeBean.onDownloadClick3}">
+                                <f:attribute name="filePath"  value="#{managerFATFile.path}" />
+                                <!--<ace:ajax execute="@this" render="@this" listener="#{userHomeBean.onDownloadClick}"/>-->
+                            </ace:pushButton>
                         </ace:column>
 
                     </ace:dataTable>
@@ -77,9 +102,10 @@
                             styleClass="medium">
                     <h:panelGroup layout="block">
                         <h:panelGrid columns="2">
+                            <h:message for="fileEntry" />
                             <h:outputText id="nodeNameLabel" value="Choose file : "/>
                             <ace:panel style="width: 250px; height: 40px; border: 0px;">
-                                <ace:fileEntry id="file-entry"
+                                <ace:fileEntry id="fileEntry"
                                                relativePath="/home/lucian/"
                                                maxFileCount="1"
                                                maxFileCountMessage="Limited to 1 files uploaded concurrantly."
@@ -91,11 +117,12 @@
                                                required="true"
                                                requiredMessage="The file is required to submit this form."
                                                useOriginalFilename="true"
-                                               useSessionSubdir="true"/>
+                                               useSessionSubdir="true"
+                                        callback="#{uploadFileCallback}"/>
                             </ace:panel>
                         </h:panelGrid>
                         <h:panelGrid columns="2">
-                            <h:commandButton id="submit" type="submit" value="Upload File"/>
+                            <h:commandButton id="upploadFile" type="submit" value="Upload File"/>
                             <ace:pushButton id="cancelButton" value="Cancel">
                                 <ace:ajax execute="@this" render="@all" />
                             </ace:pushButton>

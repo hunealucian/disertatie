@@ -31,6 +31,7 @@ public class SessionBean implements Serializable {
     private User loggedUser;
 
     private FilesAllocationTree<FATFolder, ManagerFATFile> currentFATNode;
+    private String currentNodeId;
 
     public SessionBean() {
         System.out.println();
@@ -82,6 +83,14 @@ public class SessionBean implements Serializable {
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
+    }
+
+    public String getCurrentNodeId() {
+        return currentNodeId;
+    }
+
+    public void setCurrentNodeId(String currentNodeId) {
+        this.currentNodeId = currentNodeId;
     }
 
     //endregion

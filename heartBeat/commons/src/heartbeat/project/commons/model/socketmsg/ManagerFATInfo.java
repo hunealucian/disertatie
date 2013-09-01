@@ -11,7 +11,7 @@ import heartbeat.project.commons.tree.treeutils.ManagerFATFile;
  * User: Hunea Lucian | Email : hunealucian@gmail.com
  * Date: 8/30/13
  */
-public class ManagerFATInfo {
+public class ManagerFATInfo implements MessageInfo {
 
     private FilesAllocationTree<FATFolder, ManagerFATFile> fatTree;
 
