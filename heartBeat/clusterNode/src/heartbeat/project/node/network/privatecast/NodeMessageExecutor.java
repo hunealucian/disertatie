@@ -68,13 +68,20 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 
         FATFile f = currentNode.getMachineFAT().getLeaf(fileInfo.getUserPath(), fileInfo.getName());
         if( f != null ){
+            fileInfo.setName(f.getName());
+            fileInfo.setChecksum(f.getChecksum());
+            fileInfo.setSize(f.getSize());
+
             System.out.println("\rSending file : " + f.getPath() + " to " + streamReader.getSocket().getInetAddress().getHostAddress());
             StreamWriter<FileInfo> writer = new StreamWriter<FileInfo>(streamReader.getSocket(), HeaderMessage.OK, fileInfo);
+            writer.push();
             writer.push(new File(f.getPath()));
             writer.closeConnection();
+            System.out.println("\rFile has been send successfully!");
         } else {
             System.out.println("\rERROR: could not find file " + fileInfo.getUserPath() + "/" + fileInfo.getName() + " on this machine!");
             StreamWriter<FileInfo> writer = new StreamWriter<FileInfo>(streamReader.getSocket(), HeaderMessage.ERROR, fileInfo);
+            writer.push();
             writer.closeConnection();
         }
     }

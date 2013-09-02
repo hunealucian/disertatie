@@ -7,16 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5acf446c-8c97-43d9-9201-22d02718d245" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/DownloadFileResource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UploadFileCallback.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/dataProviders/clusterServices/ClusterService.java" afterPath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/dataProviders/clusterServices/ClusterService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/FileInfo.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/FileInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/tree/treeutils/ManagerFATFile.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/tree/treeutils/ManagerFATFile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/ManagerFATInfo.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/ManagerFATInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/session/SessionBean.java" afterPath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/session/SessionBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/UserFATInfo.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/UserFATInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/dataProviders/servlets/DownloadFileServlet.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/ViewScope.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/ViewScopeCallbackExecutorListener.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/DownloadFileResource.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/tree/FilesAllocationTree.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/tree/FilesAllocationTree.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/managerModule/src/heartbeat/project/manager/network/privatecast/ManagerMessageExecutor.java" afterPath="$PROJECT_DIR$/managerModule/src/heartbeat/project/manager/network/privatecast/ManagerMessageExecutor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/NodeMessageExecutor.java" afterPath="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/NodeMessageExecutor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/Scopes.java" afterPath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/Scopes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/receive/stream/StreamReader.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/receive/stream/StreamReader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/send/stream/StreamWriter.java" afterPath="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/send/stream/StreamWriter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UploadFileCallback.java" afterPath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UploadFileCallback.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserHomeBean.java" afterPath="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserHomeBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webApp/web/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/webApp/web/WEB-INF/applicationContext.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webApp/web/WEB-INF/faces-config.xml" afterPath="$PROJECT_DIR$/webApp/web/WEB-INF/faces-config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webApp/web/pages/user/userHome.xhtml" afterPath="$PROJECT_DIR$/webApp/web/pages/user/userHome.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webApp/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/webApp/web/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="d8b1d915-e19e-4ebf-a093-c347a1507716" name="ignore" comment="" />
@@ -34,7 +40,7 @@
     <file path="/MulticastClient.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1375704600599" ignored="false" />
     <file path="/SendMulticastThread.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1375697899530" ignored="false" />
     <file path="/ClearNodesTable.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1375695137641" ignored="false" />
-    <file path="/fragment.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378043284677" ignored="false" />
+    <file path="/fragment.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378138405120" ignored="false" />
     <file path="/MulticastSend.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1375702328888" ignored="false" />
     <file path="/NodeNetworkAdapter.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1375798844176" ignored="false" />
     <file path="/MulticastReceive.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1375702195872" ignored="false" />
@@ -110,17 +116,17 @@
     <file path="/SendMessage.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376136094610" ignored="false" />
     <file path="/SendFile.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376138681145" ignored="false" />
     <file path="/SendFileStream.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376138552479" ignored="false" />
-    <file path="/Dummy.txt" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378025471172" ignored="false" />
-    <file path="/NodeMessageExecutor.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376683518233" ignored="false" />
+    <file path="/Dummy.txt" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378045803381" ignored="false" />
+    <file path="/NodeMessageExecutor.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378137910931" ignored="false" />
     <file path="/SendData.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376683219547" ignored="false" />
     <file path="/StreamReader.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376426983050" ignored="false" />
     <file path="/SaveChain.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376340157830" ignored="false" />
     <file path="/ChainInfo.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376340626228" ignored="false" />
     <file path="/TestChain.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376340392813" ignored="false" />
     <file path="/FileInfo.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376341246195" ignored="false" />
-    <file path="/StreamWriter.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376683237568" ignored="false" />
+    <file path="/StreamWriter.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378137291055" ignored="false" />
     <file path="/SaveFile.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376428036819" ignored="false" />
-    <file path="/ManagerMessageExecutor.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376595435066" ignored="false" />
+    <file path="/ManagerMessageExecutor.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378134877803" ignored="false" />
     <file path="/ManagerReceiveMessagesThread.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376565447195" ignored="false" />
     <file path="/NodeInfo.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376570616919" ignored="false" />
     <file path="/NodesListInfo.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376565747616" ignored="false" />
@@ -128,13 +134,18 @@
     <file path="/TestFAT.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376681032370" ignored="false" />
     <file path="/FileVersionInfo.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376681542036" ignored="false" />
     <file path="/DownloadFile.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1376686675581" ignored="false" />
-    <file path="/UserHomeBean.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378044309094" ignored="false" />
-    <file path="/userHome.xhtml" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378045767302" ignored="false" />
+    <file path="/UserHomeBean.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378138838830" ignored="false" />
+    <file path="/userHome.xhtml" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378138761102" ignored="false" />
     <file path="/SessionBean.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378028983718" ignored="false" />
     <file path="/FilesTableDataProvider.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1377946764858" ignored="false" />
     <file path="/ClusterService.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378030234631" ignored="false" />
-    <file path="/UploadFileCallback.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378031434254" ignored="false" />
+    <file path="/UploadFileCallback.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378132810188" ignored="false" />
     <file path="/DownloadFileResource.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378045411810" ignored="false" />
+    <file path="/Scopes.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378111741405" ignored="false" />
+    <file path="/applicationContext.xml" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378111812537" ignored="false" />
+    <file path="/faces-config.xml" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378112506196" ignored="false" />
+    <file path="/DownloadFileServlet.java" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378138351401" ignored="false" />
+    <file path="/web.xml" changelist="5acf446c-8c97-43d9-9201-22d02718d245" time="1378128594557" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,6 +153,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/heartBeat$NodeMain.coverage" NAME="NodeMain Coverage Results" MODIFIED="1378137438212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>heartbeat.project.node.*</FILTER>
+    </SUITE>
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -195,7 +211,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserHomeBean.java" line="145" class="heartbeat.project.frontend.beans.ui.pages.user.UserHomeBean" package="heartbeat.project.frontend.beans.ui.pages.user">
+      <breakpoint url="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/dataProviders/servlets/DownloadFileServlet.java" line="44" class="heartbeat.project.frontend.beans.dataProviders.servlets.DownloadFileServlet" package="heartbeat.project.frontend.beans.dataProviders.servlets">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -210,67 +226,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserHomeBean.java" line="229" class="heartbeat.project.frontend.beans.ui.pages.user.UserHomeBean" package="heartbeat.project.frontend.beans.ui.pages.user">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserHomeBean.java" line="140" class="heartbeat.project.frontend.beans.ui.pages.user.UserHomeBean" package="heartbeat.project.frontend.beans.ui.pages.user">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserHomeBean.java" line="107" class="heartbeat.project.frontend.beans.ui.pages.user.UserHomeBean" package="heartbeat.project.frontend.beans.ui.pages.user">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserHomeBean.java" line="133" class="heartbeat.project.frontend.beans.ui.pages.user.UserHomeBean" package="heartbeat.project.frontend.beans.ui.pages.user">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserHomeBean.java" line="113" class="heartbeat.project.frontend.beans.ui.pages.user.UserHomeBean" package="heartbeat.project.frontend.beans.ui.pages.user">
+      <breakpoint url="file://$PROJECT_DIR$/managerModule/src/heartbeat/project/manager/network/privatecast/ManagerMessageExecutor.java" line="107" class="project.manager.network.privatecast.ManagerMessageExecutor" package="project.manager.network.privatecast">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -332,21 +288,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="userHome.xhtml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="userHome.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webApp/web/pages/user/userHome.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="24" selection-start="2627" selection-end="2627" vertical-scroll-proportion="0.334471">
-              <folding />
+            <state line="82" column="105" selection-start="4914" selection-end="4914" vertical-scroll-proportion="-21.041666">
+              <folding>
+                <element signature="tag#ui:define#0;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#h:form#0;tag#ui:define#0;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#ace:tree#0;tag#h:form#0;tag#ui:define#0;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#ace:ajax#0;tag#ace:tree#0;tag#h:form#0;tag#ui:define#0;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#ace:node#0;tag#ace:tree#0;tag#h:form#0;tag#ui:define#0;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#h:panelGrid#0;tag#ace:node#0;tag#ace:tree#0;tag#h:form#0;tag#ui:define#0;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#ace:panel#0;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#h:panelGrid#0;tag#ace:panel#0;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#ace:column#0;tag#ace:dataTable#0;tag#ace:panel#0;tag#h:form#0;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#ace:column#1;tag#ace:dataTable#0;tag#ace:panel#0;tag#h:form#0;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#ace:column#2;tag#ace:dataTable#0;tag#ace:panel#0;tag#h:form#0;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#ace:column#3;tag#ace:dataTable#0;tag#ace:panel#0;tag#h:form#0;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#h:panelGroup#0;tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#h:panelGrid#0;tag#h:panelGroup#0;tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#ace:panel#0;tag#h:panelGrid#0;tag#h:panelGroup#0;tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#ace:fileEntry#0;tag#ace:panel#0;tag#h:panelGrid#0;tag#h:panelGroup#0;tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#h:panelGrid#1;tag#h:panelGroup#0;tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+                <element signature="tag#ace:pushButton#0;tag#h:panelGrid#1;tag#h:panelGroup#0;tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DownloadFileResource.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/DownloadFileResource.java">
+      <file leaf-file-name="DownloadFileServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/dataProviders/servlets/DownloadFileServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="4" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0">
+            <state line="56" column="0" selection-start="2244" selection-end="2244" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1982#1992#0" expanded="true" />
+                <element signature="e#2555#2565#0" expanded="true" />
+                <element signature="e#3534#3962#0" expanded="true" />
+                <element signature="e#3939#3940#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -355,30 +336,24 @@
       <file leaf-file-name="UserHomeBean.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserHomeBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="131" column="14" selection-start="4881" selection-end="4881" vertical-scroll-proportion="0.0">
+            <state line="51" column="27" selection-start="1951" selection-end="1951" vertical-scroll-proportion="0.0">
               <folding>
+                <element signature="method#onNodeClick#0;class#UserHomeBean#0" expanded="false" />
                 <element signature="method#onShowUploadDialogClick#0;class#UserHomeBean#0" expanded="false" />
-                <element signature="method#onUploadClickListener#0;class#UserHomeBean#0" expanded="false" />
                 <element signature="method#getNodeStateCreationCallback#0;class#UserHomeBean#0" expanded="false" />
+                <element signature="n#!!doc;n#getCurrentNode#0;n#UserHomeBean#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SessionBean.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/session/SessionBean.java">
+      <file leaf-file-name="ManagerMessageExecutor.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/managerModule/src/heartbeat/project/manager/network/privatecast/ManagerMessageExecutor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="822" selection-end="822" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClusterSystemInfo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/managerModule/src/heartbeat/project/manager/network/cluster/ClusterSystemInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="30" selection-start="2524" selection-end="2524" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="117" column="32" selection-start="4614" selection-end="4614" vertical-scroll-proportion="0.63095236">
+              <folding>
+                <element signature="e#4894#4904#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -403,22 +378,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserTreeDataProvider.java" />
-        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/tree/NavigationTreeNode.java" />
-        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/dataTables/AbstractTableDataProvider.java" />
-        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/dataTables/AbstractEagerTableDataProvider.java" />
-        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/dataProviders/dataTable/FilesTableDataProvider.java" />
-        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/FileInfo.java" />
-        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/session/SessionBean.java" />
-        <option value="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/util/nodeInfoConfigurations.properties" />
-        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/UserFATInfo.java" />
-        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/ManagerFATInfo.java" />
-        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/dataProviders/clusterServices/ClusterService.java" />
-        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/tree/treeutils/ManagerFATFile.java" />
-        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UploadFileCallback.java" />
-        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserHomeBean.java" />
+        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/Scopes.java" />
+        <option value="$PROJECT_DIR$/webApp/web/WEB-INF/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/ViewScopeCallbackExecutorListener.java" />
+        <option value="$PROJECT_DIR$/webApp/web/WEB-INF/faces-config.xml" />
         <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/DownloadFileResource.java" />
+        <option value="$PROJECT_DIR$/webApp/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UploadFileCallback.java" />
+        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/tree/FilesAllocationTree.java" />
+        <option value="$PROJECT_DIR$/managerModule/src/heartbeat/project/manager/network/privatecast/ManagerMessageExecutor.java" />
+        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/receive/stream/StreamReader.java" />
+        <option value="$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/send/stream/StreamWriter.java" />
+        <option value="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/NodeMessageExecutor.java" />
+        <option value="$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/util/nodeInfoConfigurations.properties" />
         <option value="$PROJECT_DIR$/webApp/web/pages/user/userHome.xhtml" />
+        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserHomeBean.java" />
+        <option value="$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/dataProviders/servlets/DownloadFileServlet.java" />
       </list>
     </option>
   </component>
@@ -977,7 +952,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dataTable" />
+              <option name="myItemId" value="servlets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1044,6 +1019,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="network" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartBeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="managerModule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartbeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="network" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="privatecast" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1194,6 +1203,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="node" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartBeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heartbeat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1508,7 +1547,7 @@
       </UpdatedFiles>
     </UpdateInfo>
   </component>
-  <component name="RunManager" selected="Application.ManagerMain">
+  <component name="RunManager" selected="Application.NodeMain">
     <configuration default="false" name="NodeMain" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1527,12 +1566,14 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="clusterNode" />
       <envs />
+      <RunnerSettings RunnerId="Cover" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Cover" />
       <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
@@ -1631,7 +1672,13 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="manager" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -1903,7 +1950,11 @@
       <created>1377955564812</created>
       <updated>1377955564812</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="-upload file - finished&#10;- started download part">
+      <created>1378045810395</created>
+      <updated>1378045810395</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1911,34 +1962,35 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32699168" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24256837" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32461354" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944787" sideWeight="0.67181927" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2625767" sideWeight="0.7574316" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2625767" sideWeight="0.646849" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32818073" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32461354" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35315102" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32461354" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="2063" y="411" width="793" height="329" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32491767" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1984,7 +2036,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="-upload file" />
+    <option name="LAST_COMMIT_MESSAGE" value="-upload file - finished&#10;- started download part" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -2002,6 +2054,7 @@
     <MESSAGE value="- send file implementation : done&#10;- send chain implementation : done&#10;- delete file implementation : done" />
     <MESSAGE value="-manager implementations" />
     <MESSAGE value="-upload file" />
+    <MESSAGE value="-upload file - finished&#10;- started download part" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2029,123 +2082,149 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/multicast/threads/MulticastSenderService.java">
+    <entry file="file://$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/NodeMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="81" selection-start="934" selection-end="934" vertical-scroll-proportion="0.5152672">
+        <state line="12" column="13" selection-start="344" selection-end="344" vertical-scroll-proportion="0.19516729">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/tree/treeutils/ManagerFATFile.java">
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/model/socketmsg/NodeInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="29" selection-start="696" selection-end="696" vertical-scroll-proportion="0.33333334">
+        <state line="13" column="14" selection-start="290" selection-end="290" vertical-scroll-proportion="0.35071942">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/tree/ManagerFAT.java">
+    <entry file="file://$PROJECT_DIR$/managerModule/src/heartbeat/project/manager/ManagerMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="43" selection-start="2135" selection-end="2135" vertical-scroll-proportion="0.5896947">
+        <state line="16" column="42" selection-start="431" selection-end="431" vertical-scroll-proportion="0.35911602">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/managerModule/src/heartbeat/project/manager/network/multicast/threads/MulticastReceiverService.java">
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/tree/FilesAllocationTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="46" selection-start="1471" selection-end="1471" vertical-scroll-proportion="0.5027933">
+        <state line="100" column="0" selection-start="3852" selection-end="3852" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/managerModule/src/heartbeat/project/manager/network/cluster/ClusterSystemInfo.java">
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/HeaderMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="30" selection-start="2524" selection-end="2524" vertical-scroll-proportion="0.0">
+        <state line="11" column="4" selection-start="280" selection-end="280" vertical-scroll-proportion="0.2967626">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/session/SessionBean.java">
+    <entry file="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-web-3.2.2.RELEASE-sources.jar!/org/springframework/web/context/support/HttpRequestHandlerServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="822" selection-end="822" vertical-scroll-proportion="0.0">
+        <state line="77" column="0" selection-start="2998" selection-end="2998" vertical-scroll-proportion="0.7032374">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UploadFileCallback.java">
+    <entry file="jar://$USER_HOME$/_Apps/Java/jdk1.7.0_10/src.zip!/java/io/ObjectOutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="0" selection-start="3541" selection-end="3541" vertical-scroll-proportion="2.1183207">
+        <state line="696" column="16" selection-start="29823" selection-end="29823" vertical-scroll-proportion="0.33271375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/receive/stream/StreamReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="0" selection-start="2080" selection-end="2080" vertical-scroll-proportion="0.3320158">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commons/src/heartbeat/project/commons/network/privatecast/factory/socket/send/stream/StreamWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="13" selection-start="1077" selection-end="1077" vertical-scroll-proportion="0.3616601">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/util/nodeInfoConfigurations.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="110" selection-end="110" vertical-scroll-proportion="0.17786561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clusterNode/src/heartbeat/project/node/network/privatecast/NodeMessageExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="37" selection-start="3181" selection-end="3181" vertical-scroll-proportion="0.5928854">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webApp/web/pages/user/userHome.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="105" selection-start="4914" selection-end="4914" vertical-scroll-proportion="-21.041666">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="tag#ui:define#0;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#h:form#0;tag#ui:define#0;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#ace:tree#0;tag#h:form#0;tag#ui:define#0;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#ace:ajax#0;tag#ace:tree#0;tag#h:form#0;tag#ui:define#0;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#ace:node#0;tag#ace:tree#0;tag#h:form#0;tag#ui:define#0;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#h:panelGrid#0;tag#ace:node#0;tag#ace:tree#0;tag#h:form#0;tag#ui:define#0;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#ace:panel#0;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#h:panelGrid#0;tag#ace:panel#0;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#ace:column#0;tag#ace:dataTable#0;tag#ace:panel#0;tag#h:form#0;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#ace:column#1;tag#ace:dataTable#0;tag#ace:panel#0;tag#h:form#0;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#ace:column#2;tag#ace:dataTable#0;tag#ace:panel#0;tag#h:form#0;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#ace:column#3;tag#ace:dataTable#0;tag#ace:panel#0;tag#h:form#0;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#h:panelGroup#0;tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#h:panelGrid#0;tag#h:panelGroup#0;tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#ace:panel#0;tag#h:panelGrid#0;tag#h:panelGroup#0;tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#ace:fileEntry#0;tag#ace:panel#0;tag#h:panelGrid#0;tag#h:panelGroup#0;tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#h:panelGrid#1;tag#h:panelGroup#0;tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
+            <element signature="tag#ace:pushButton#0;tag#h:panelGrid#1;tag#h:panelGroup#0;tag#ace:dialog#0;tag#h:form#1;tag#ui:define#1;tag#ui:composition#0;tag#ui:composition#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/webLibs/icefaces/icefaces-ace.jar!/META-INF/components.tld">
+    <entry file="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserTreeDataProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6232" column="0" selection-start="305463" selection-end="305463" vertical-scroll-proportion="0.33206108">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-context-3.2.2.RELEASE-sources.jar!/org/springframework/context/annotation/Scope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="18" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/webLibs/icefaces/icefaces-ace.jar!/org/icefaces/ace/model/table/RowStateMap.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="171" selection-end="171" vertical-scroll-proportion="-0.64453125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/dataTables/AbstractTableDataProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="17" selection-start="494" selection-end="494" vertical-scroll-proportion="0.3575419">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/webLibs/icefaces/icefaces-ace.jar!/org/icefaces/apache/commons/io/IOUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="173" selection-end="173" vertical-scroll-proportion="0.13111888">
+        <state line="25" column="11" selection-start="914" selection-end="914" vertical-scroll-proportion="0.27641279">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/UserHomeBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="14" selection-start="4881" selection-end="4881" vertical-scroll-proportion="0.0">
+        <state line="51" column="27" selection-start="1951" selection-end="1951" vertical-scroll-proportion="0.0">
           <folding>
+            <element signature="method#onNodeClick#0;class#UserHomeBean#0" expanded="false" />
             <element signature="method#onShowUploadDialogClick#0;class#UserHomeBean#0" expanded="false" />
-            <element signature="method#onUploadClickListener#0;class#UserHomeBean#0" expanded="false" />
             <element signature="method#getNodeStateCreationCallback#0;class#UserHomeBean#0" expanded="false" />
+            <element signature="n#!!doc;n#getCurrentNode#0;n#UserHomeBean#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/webLibs/icefaces/icefaces-compat.jar!/com/icesoft/faces/context/Resource.class">
+    <entry file="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/dataProviders/servlets/DownloadFileServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="21" selection-start="478" selection-end="478" vertical-scroll-proportion="0.43589744">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/src/java/heartbeat/project/frontend/beans/ui/pages/user/DownloadFileResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="4" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0">
+        <state line="56" column="0" selection-start="2244" selection-end="2244" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1982#1992#0" expanded="true" />
+            <element signature="e#2555#2565#0" expanded="true" />
+            <element signature="e#3534#3962#0" expanded="true" />
+            <element signature="e#3939#3940#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webApp/web/pages/user/userHome.xhtml">
+    <entry file="file://$PROJECT_DIR$/managerModule/src/heartbeat/project/manager/network/privatecast/ManagerMessageExecutor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="24" selection-start="2627" selection-end="2627" vertical-scroll-proportion="0.334471">
-          <folding />
+        <state line="117" column="32" selection-start="4614" selection-end="4614" vertical-scroll-proportion="0.63095236">
+          <folding>
+            <element signature="e#4894#4904#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

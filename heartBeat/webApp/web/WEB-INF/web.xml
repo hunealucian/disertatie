@@ -76,6 +76,19 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <servlet>
+        <display-name>DownloadFileServlet</display-name>
+        <servlet-name>downloadFile</servlet-name>
+        <servlet-class>
+            org.springframework.web.context.support.HttpRequestHandlerServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>downloadFile</servlet-name>
+        <url-pattern>/downloadFile</url-pattern>
+    </servlet-mapping>
+
     <!-- Map these files with JSF -->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>

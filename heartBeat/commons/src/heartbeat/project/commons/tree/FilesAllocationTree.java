@@ -99,7 +99,7 @@ public class FilesAllocationTree<T extends FATFolder, M extends FATFile> impleme
 
     public M getLeaf(String folderPath, String fileName) {
         for (M fatFile : getLeafs(this)) {
-            if (fatFile.getName().equalsIgnoreCase(fileName) && fatFile.getPath().endsWith(folderPath + "/" + fileName)) {
+            if (fatFile.getName().equalsIgnoreCase(fileName) && fatFile.getPath().endsWith(folderPath)) {
                 return fatFile;
             }
         }

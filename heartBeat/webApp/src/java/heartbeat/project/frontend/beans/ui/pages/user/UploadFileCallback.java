@@ -60,6 +60,7 @@ public class UploadFileCallback implements FileEntryCallback, Serializable {
             reader.fetch();
 
             reader.closeConnection();
+            sendSaveToManager.closeConnection();
             HeaderMessage message = reader.getHeaderMessage();
             if (message == HeaderMessage.OK) {
                 validForSave = true;

@@ -35,7 +35,7 @@ import java.util.logging.Level;
  * Date: 8/29/13
  */
 @Component
-@Scope(Scopes.Request)
+@Scope(Scopes.View)
 public class UserHomeBean implements Serializable {
 
     @Autowired
@@ -46,7 +46,6 @@ public class UserHomeBean implements Serializable {
 
     private NavigationTreeNode currentNode;
     private FilesAllocationTree<FATFolder, ManagerFATFile> currentFATNode;
-    private String fileToDownload;
 
     private FilesTableDataProvider filesTableDataProvider;
 
@@ -97,54 +96,22 @@ public class UserHomeBean implements Serializable {
                             FacesContext.getCurrentInstance(),
                             fe, i).getSummary());
         }
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+        initTree();
+        treeDataProvider.refresh();
     }
     //endregion
 
     //region download region
-    public String onDownloadClick3(){
 
-        System.out.println();
-
-        return null;
-    }
-    public void onDownloadClick2(ActionEvent e){
-//        String parameter = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("filePath");
-
-
-        File file = new File("/home/luc/cluster/node2/normal/user1/aaa.pdf");
-
-        if(file.exists())
-            System.out.println("Yes"); //It exists !
-
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        ExternalContext externalContext = facesContext.getExternalContext();
-
-        externalContext.setResponseHeader("Content-Type", externalContext.getMimeType(file.getName()));
-        externalContext.setResponseHeader("Content-Length", String.valueOf(file.length()));
-        externalContext.setResponseHeader("Content-Disposition", "attachment;filename=\"" + file.getName() + "\"");
-
-        InputStream input = null;
-        OutputStream output = null;
-
-        try {
-            input = new FileInputStream(file);
-            output = externalContext.getResponseOutputStream();
-            IOUtils.copy(input, output);
-        } catch (IOException ex) {
-            System.out.println();
-        } finally {
-            IOUtils.closeQuietly(output);
-            IOUtils.closeQuietly(input);
-        }
-
-        facesContext.responseComplete();
-        System.out.println();
-    }
-
-    public void onDownloadClick(AjaxBehaviorEvent e){
-
-        System.out.println();
-
+    public void onRowSelect(AjaxBehaviorEvent e){
+        ManagerFATFile file = (ManagerFATFile) filesTableDataProvider.getRowStateMap().getSelected().get(0);
     }
     //endregion
 
@@ -222,13 +189,6 @@ public class UserHomeBean implements Serializable {
         return currentFATNode != null ? currentFATNode.getData().getLastModified().toString() : "";
     }
 
-    public String getFileToDownload() {
-        return fileToDownload;
-    }
-
-    public void setFileToDownload(String fileToDownload) {
-        this.fileToDownload = fileToDownload;
-    }
 
     //endregion
 }

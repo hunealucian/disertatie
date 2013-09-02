@@ -14,6 +14,17 @@
     <context:component-scan base-package="heartbeat.project.frontend.beans.session"/>
     <context:component-scan base-package="heartbeat.project.frontend.beans.ui.pages"/>
 
+    <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <property name="scopes">
+            <map>
+                <entry key="view">
+                    <bean class="heartbeat.project.frontend.beans.ui.ViewScope"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+
     <!-- Load Hibernate related configuration -->
     <import resource="hibernateContext.xml" />
 

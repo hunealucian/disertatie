@@ -72,6 +72,22 @@ public class StreamReader<T> extends ObjectInputStream {
 		}
 	}
 
+    public void fetchFile(ChunkReceivedListener listener) {
+
+		try {
+			int n;
+			byte[] buffer = new byte[8192];
+			while ((n = this.read(buffer)) >= 0) {
+				if (listener != null)
+					listener.onDataArrives(buffer, 0, n);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
 
 	public void closeConnection() throws IOException {
 		close();

@@ -5,5 +5,17 @@
               version="2.0">
     <application>
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+
+        <system-event-listener>
+            <system-event-listener-class>heartbeat.project.frontend.beans.ui.ViewScopeCallbackExecutorListener</system-event-listener-class>
+            <system-event-class>javax.faces.event.PostConstructViewMapEvent</system-event-class>
+            <source-class>javax.faces.component.UIViewRoot</source-class>
+        </system-event-listener>
+
+        <system-event-listener>
+            <system-event-listener-class>heartbeat.project.frontend.beans.ui.ViewScopeCallbackExecutorListener</system-event-listener-class>
+            <system-event-class>javax.faces.event.PreDestroyViewMapEvent</system-event-class>
+            <source-class>javax.faces.component.UIViewRoot</source-class>
+        </system-event-listener>
     </application>
 </faces-config>

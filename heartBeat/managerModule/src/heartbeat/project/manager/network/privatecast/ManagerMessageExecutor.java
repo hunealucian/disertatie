@@ -111,7 +111,7 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
             nodeFile = node.getMachineFAT().getLeaf(fileInfo.getUserPath(), fileInfo.getName());
             if( nodeFile != null ){
                 foundNode = node;
-                return;
+                break;
             }
         }
 

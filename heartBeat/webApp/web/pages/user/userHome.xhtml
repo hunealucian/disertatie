@@ -48,18 +48,11 @@
                             <ace:ajax execute="@this" render="@form uploadFileForm"/>
                         </ace:pushButton>
 
-                        <ice:outputResource id="downLink"
-                                            resource="#{outputResource.pdfResource}"
-                                            attachment="true"
-                                            label="Download PDF"
-                                            type="button"
-                                            fileName="Training.pdf"/>
-
-                        <ace:pushButton id="downloadButton" value="Download file"
-                                        actionListener="#{userHomeBean.onDownloadClick2}">
-                            <f:attribute name="filePath"  value="#{userHomeBean.filesTableDataProvider}" />
+                        <!--<ace:pushButton id="downloadButton" value="Download file"-->
+                                        <!--actionListener="#{userHomeBean.onDownloadClick2}">-->
+                            <!--<f:attribute name="filePath"  value="#{userHomeBean.filesTableDataProvider}" />-->
                             <!--<ace:ajax execute="@all" render="@this" listener="#{userHomeBean.onDownloadClick}"/>-->
-                        </ace:pushButton>
+                        <!--</ace:pushButton>-->
                     </h:panelGrid>
 
 
@@ -69,7 +62,7 @@
                                    stateMap="#{userHomeBean.filesTableDataProvider.rowStateMap}"
                                    selectionMode="single"
                                    rendered="#{!empty userHomeBean.filesTableDataProvider}" >
-                        <!--<ace:ajax event="select" execute="@this" render="@this folderFilesForm:downloadButton" />-->
+                        <ace:ajax event="select" execute="@this" render="@this" listener="#{userHomeBean.onRowSelect}"/>
 
                         <ace:column id="name" headerText="Name">
                             <h:outputText id="nameCell" value="#{managerFATFile.name}"/>
@@ -84,10 +77,11 @@
                             <h:outputText id="checksumCell" value="#{managerFATFile.checksum}"/>
                         </ace:column>
                         <ace:column headerText="Download">
-                            <ace:pushButton id="downloadButton2"  value="Download file" action="#{userHomeBean.onDownloadClick3}">
-                                <f:attribute name="filePath"  value="#{managerFATFile.path}" />
-                                <!--<ace:ajax execute="@this" render="@this" listener="#{userHomeBean.onDownloadClick}"/>-->
-                            </ace:pushButton>
+                            <h:outputLink id="downloadButton2"  value="/datastorage/downloadFile" >
+                                <ice:outputText value="Download"/>
+                                <f:param name="filePath"  value="#{managerFATFile.path}" />
+                                <f:param name="redirectTo"  value="/datastorage/pages/user/userHome.xhtml" />
+                            </h:outputLink>
                         </ace:column>
 
                     </ace:dataTable>
