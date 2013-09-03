@@ -25,6 +25,7 @@ import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -68,6 +69,12 @@ public class UserHomeBean implements Serializable {
         }
     }
 
+    public void onDeselectNodeClick(AjaxBehaviorEvent ajaxBehaviorEvent) {
+        currentNode = null;
+        currentFATNode = null;
+        sessionBean.setCurrentNodeId(null);
+    }
+
     //region upload region
     private boolean showUploadDialog = false;
     private StringBuffer uploadMessage;
@@ -100,17 +107,61 @@ public class UserHomeBean implements Serializable {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e1) {
-            e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e1.printStackTrace();
         }
 
+        sessionBean.refreshFATTree();
+        initTree();
+        treeDataProvider.refresh();
+    }
+
+    public void onHideUploadDialogButton(ActionEvent e) {
+        showUploadDialog = false;
         initTree();
         treeDataProvider.refresh();
     }
     //endregion
 
+    //region add folder Dialog
+    private boolean showAddFolderDialog = false;
+    private String newFolderName;
+
+    public void onShowFolderDialogClick(ActionEvent e) {
+        showAddFolderDialog = true;
+    }
+
+    public void onHideAddFolderDialogClick(ActionEvent e) {
+        showAddFolderDialog = false;
+    }
+
+    public void onAddFolderClick(ActionEvent e) {
+
+        FilesAllocationTree<FATFolder, ManagerFATFile> newNode;
+
+        if (newFolderName != null) {
+            if (currentNode == null) {
+                if( sessionBean.getUserFATTree() == null ){
+                    sessionBean.setCurrentFATTree(new FilesAllocationTree<FATFolder, ManagerFATFile>(new FATFolder(sessionBean.getLoggedUser().getUsername(), sessionBean.getLoggedUser().getUserPath(), 0, new Date())));
+                    sessionBean.getUserFATTree().addChild(new FATFolder(newFolderName, sessionBean.getLoggedUser().getUserPath() + "/" + newFolderName, 0, new Date()));
+                } else {
+                    sessionBean.getUserFATTree().addChild(new FATFolder(newFolderName, sessionBean.getLoggedUser().getUserPath() + "/" + newFolderName, 0, new Date()));
+                }
+            } else {
+                sessionBean.getUserFATTree().getNodeByPath(currentNode.getId()).addChild(new FATFolder(newFolderName, sessionBean.getLoggedUser().getUserPath() + "/" + newFolderName, 0, new Date()));
+            }
+
+            initTree();
+            treeDataProvider.refresh();
+
+            showAddFolderDialog = false;
+        }
+    }
+
+    //endregion
+
     //region download region
 
-    public void onRowSelect(AjaxBehaviorEvent e){
+    public void onRowSelect(AjaxBehaviorEvent e) {
         ManagerFATFile file = (ManagerFATFile) filesTableDataProvider.getRowStateMap().getSelected().get(0);
     }
     //endregion
@@ -169,6 +220,7 @@ public class UserHomeBean implements Serializable {
     public void setUploadMessage(StringBuffer uploadMessage) {
         this.uploadMessage = uploadMessage;
     }
+
     public UserTreeDataProvider getTreeDataProvider() {
         if (treeDataProvider == null) {
             initTree();
@@ -189,6 +241,21 @@ public class UserHomeBean implements Serializable {
         return currentFATNode != null ? currentFATNode.getData().getLastModified().toString() : "";
     }
 
+    public boolean isShowAddFolderDialog() {
+        return showAddFolderDialog;
+    }
+
+    public void setShowAddFolderDialog(boolean showAddFolderDialog) {
+        this.showAddFolderDialog = showAddFolderDialog;
+    }
+
+    public String getNewFolderName() {
+        return newFolderName;
+    }
+
+    public void setNewFolderName(String newFolderName) {
+        this.newFolderName = newFolderName;
+    }
 
     //endregion
 }

@@ -102,6 +102,6 @@ public class DownloadFileServlet implements HttpRequestHandler {
             e.printStackTrace();
         }
 
-//        response.sendRedirect( redirectTo);
+        response.sendRedirect( redirectTo);
     }
 }

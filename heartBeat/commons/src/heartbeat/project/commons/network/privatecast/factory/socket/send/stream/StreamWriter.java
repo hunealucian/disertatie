@@ -41,7 +41,6 @@ public class StreamWriter<T> extends ObjectOutputStream {
         byte[] buffer = new byte[8192];
         while ((n = bis.read(buffer)) > -1){
             push(buffer, 0, n);
-            System.out.println(".");
         }
 
         flush();

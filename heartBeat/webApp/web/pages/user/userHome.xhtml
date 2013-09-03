@@ -11,22 +11,58 @@
         <ui:define name="treeContent">
 
             <h:form id="treeForm">
-                <ace:tree id="tree" expansion="true" selection="true" selectMultiple="false"
-                          value="#{userHomeBean.treeDataProvider.nodeDataModel}"
-                          stateCreationCallback="#{userHomeBean.nodeStateCreationCallback}"
-                          stateMap="#{userHomeBean.treeDataProvider.nodeStateMap}"
-                          reordering="false" var="node" type="#{node.type}">
-                    <ace:ajax event="select" render="@this folderFilesForm folderInfoPanel" execute="@this"
-                              listener="#{userHomeBean.onNodeClick}"/>
-                    <f:attribute name="nodeId" value="#{node.id}"/>
-                    <ace:node>
-                        <h:panelGrid id="MainNavigationTreeNode" title="#{node.label}" columns="2">
-                            <h:outputText id="MainNavigationTreeNodeLabel" value="#{node.label}"/>
-                        </h:panelGrid>
-                    </ace:node>
-                </ace:tree>
+                <h:panelGrid columns="1">
+                    <ace:pushButton id="addFolderButton" value="Add folder" actionListener="#{userHomeBean.onShowFolderDialogClick}">
+                        <ace:ajax execute="@this" render="@form addFolderForm"/>
+                    </ace:pushButton>
+
+                    <ace:tree id="tree" expansion="true" selection="true" selectMultiple="false"
+                              value="#{userHomeBean.treeDataProvider.nodeDataModel}"
+                              stateCreationCallback="#{userHomeBean.nodeStateCreationCallback}"
+                              stateMap="#{userHomeBean.treeDataProvider.nodeStateMap}"
+                              reordering="false" var="node" type="#{node.type}">
+                        <ace:ajax event="select" render="@this folderFilesForm folderInfoPanel" execute="@this" listener="#{userHomeBean.onNodeClick}"/>
+                        <ace:ajax event="deselect" render="@all" execute="@this" listener="#{userHomeBean.onDeselectNodeClick}"/>
+                        <f:attribute name="nodeId" value="#{node.id}"/>
+                        <ace:node>
+                            <h:panelGrid id="MainNavigationTreeNode" title="#{node.label}" columns="2">
+                                <h:outputText id="MainNavigationTreeNodeLabel" value="#{node.label}"/>
+                            </h:panelGrid>
+                        </ace:node>
+                    </ace:tree>
+                </h:panelGrid>
+
             </h:form>
 
+            <h:form id="addFolderForm">
+                <ace:dialog id="addFolderDialog" closable="true" draggable="false" closeOnEscape="true"
+                            header="Add new folder"
+                            modal="true" resizable="false" position="center" showEffect="fade" hideEffect="fade"
+                            visible="#{userHomeBean.showAddFolderDialog}"
+                            styleClass="medium">
+                    <h:panelGroup layout="block">
+                        <h:panelGrid columns="2">
+                            <ace:panel style="width: 250px; height: 70px; border: 0px;">
+                                <h:message for="userNameInput" />
+                                <ace:textEntry id="userNameInput" value="#{userHomeBean.newFolderName}"
+                                               label="Folder name"
+                                               labelPosition="left"
+                                               required="true"
+                                               requiredIndicator="(*)"
+                                               indicatorPosition="right"/>
+                            </ace:panel>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2">
+                            <ace:pushButton id="addButton" value="Add" actionListener="#{userHomeBean.onAddFolderClick}">
+                                <ace:ajax execute="@this addFolderForm" render="@all" />
+                            </ace:pushButton>
+                            <ace:pushButton id="cancelButton" value="Cancel" actionListener="#{userHomeBean.onHideAddFolderDialogClick}">
+                                <ace:ajax execute="@this" render="@all" />
+                            </ace:pushButton>
+                        </h:panelGrid>
+                    </h:panelGroup>
+                </ace:dialog>
+            </h:form>
         </ui:define>
 
         <ui:define name="content">
@@ -97,8 +133,10 @@
                     <h:panelGroup layout="block">
                         <h:panelGrid columns="2">
                             <h:message for="fileEntry" />
-                            <h:outputText id="nodeNameLabel" value="Choose file : "/>
-                            <ace:panel style="width: 250px; height: 40px; border: 0px;">
+                            <h:outputText id="nodeNameLabel2" value=""/>
+
+                            <ace:panel style="width: 350px; height: 80px; border: 0px;">
+                                <h:outputText id="nodeNameLabel" value="Choose file : "/>
                                 <ace:fileEntry id="fileEntry"
                                                relativePath="/home/lucian/"
                                                maxFileCount="1"
@@ -117,7 +155,7 @@
                         </h:panelGrid>
                         <h:panelGrid columns="2">
                             <h:commandButton id="upploadFile" type="submit" value="Upload File"/>
-                            <ace:pushButton id="cancelButton" value="Cancel">
+                            <ace:pushButton id="cancelButton" value="Cancel" actionListener="#{userHomeBean.onHideUploadDialogButton}">
                                 <ace:ajax execute="@this" render="@all" />
                             </ace:pushButton>
                         </h:panelGrid>

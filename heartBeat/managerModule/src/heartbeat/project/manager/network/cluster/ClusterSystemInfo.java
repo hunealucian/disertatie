@@ -30,6 +30,8 @@ public class ClusterSystemInfo {
                 //todo : USE NODE IP
                 if (node1.getId().equalsIgnoreCase(node.getId())) {
                     node1.setLastPing(node.getLastPing());
+                    node1.setMachineFAT(node.getMachineFAT());
+                    node1.setMachineInfoSystem(node.getMachineInfoSystem());
                     addNodeToFATSystem(node);
                     return;
                 }

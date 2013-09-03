@@ -10,7 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.faces.event.ValueChangeEvent;
+import javax.faces.model.SelectItem;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Description
@@ -23,38 +27,49 @@ import java.io.Serializable;
 public class RegisterBean implements Serializable {
     private static final Logger log = LoggerFactory.getLogger(RegisterBean.class);
 
-    @Autowired IUserDAO userDAO;
+    @Autowired
+    IUserDAO userDAO;
 
     private String userName;
     private String password;
     private String retypedPassword;
     private String email;
     private String selectedUserType = "";
-    private UserType userTypeNormal;
-    private UserType userTypePremium;
-    private UserType userTypeAdmin;
+    private UserType selectedType = UserType.NORMAL;
+
+    private List<SelectItem> userTypes;
 
     public User currentUser;
 
     public RegisterBean() {
 
-        userTypeNormal = UserType.NORMAL;
-        userTypePremium = UserType.PREMIUM;
-        userTypeAdmin = UserType.ADMIN;
+        userTypes = new ArrayList<SelectItem>();
+
+        userTypes.add(new SelectItem(UserType.NORMAL.getName()));
+        userTypes.add(new SelectItem(UserType.PREMIUM.getName()));
 
     }
 
-    String errorMsg;
-    public String onSave(){
+    public void onUserTypeSelectListener(ValueChangeEvent valueChangeEvent) {
+        String value = (String) valueChangeEvent.getNewValue();
 
-        if( !password.equalsIgnoreCase(retypedPassword) ){
+        if (value != null) {
+            selectedType = UserType.getType(value);
+        }
+    }
+
+    String errorMsg;
+
+    public String onSave() {
+
+        if (!password.equalsIgnoreCase(retypedPassword)) {
             errorMsg = "The passwords doesn't match";
             return null;
         }
 
         currentUser = userDAO.getUser(email);
 
-        if( currentUser != null ){
+        if (currentUser != null) {
             errorMsg = "This email '" + email + "' is already assigned to an user";
             return null;
         }
@@ -63,7 +78,7 @@ public class RegisterBean implements Serializable {
         currentUser.setUsername(userName);
         currentUser.setPassword(password);
         currentUser.setEmail(email);
-        currentUser.setType(UserType.ADMIN); //todo
+        currentUser.setType(selectedType);
         currentUser.setUserPath(currentUser.getType().getName() + "/" + userName);
 
 
@@ -73,7 +88,7 @@ public class RegisterBean implements Serializable {
         return null;
     }
 
-    public String onCancel(){
+    public String onCancel() {
         return "login.xhtml?faces-redirect=true";
     }
 
@@ -109,14 +124,6 @@ public class RegisterBean implements Serializable {
         this.email = email;
     }
 
-    public UserType getUserTypeNormal() {
-        return userTypeNormal;
-    }
-
-    public void setUserTypeNormal(UserType userTypeNormal) {
-        this.userTypeNormal = userTypeNormal;
-    }
-
     public String getRetypedPassword() {
         return retypedPassword;
     }
@@ -133,19 +140,11 @@ public class RegisterBean implements Serializable {
         this.selectedUserType = selectedUserType;
     }
 
-    public UserType getUserTypePremium() {
-        return userTypePremium;
+    public List<SelectItem> getUserTypes() {
+        return userTypes;
     }
 
-    public void setUserTypePremium(UserType userTypePremium) {
-        this.userTypePremium = userTypePremium;
-    }
-
-    public UserType getUserTypeAdmin() {
-        return userTypeAdmin;
-    }
-
-    public void setUserTypeAdmin(UserType userTypeAdmin) {
-        this.userTypeAdmin = userTypeAdmin;
+    public void setUserTypes(List<SelectItem> userTypes) {
+        this.userTypes = userTypes;
     }
 }

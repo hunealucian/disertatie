@@ -34,7 +34,7 @@ public class MulticastSenderService<T extends Node> extends MulticastService<Nod
                 multicastSocket.send(datagramPacket);
 
 
-                Thread.sleep(10000);
+                Thread.sleep(2000);
 
             } catch (InterruptedException | IOException e) {
                 System.out.println("A problem appeared in multicast send service : " + e.getMessage());

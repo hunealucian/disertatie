@@ -21,30 +21,41 @@
                     <h:outputText id="loginError" value="#{registerBean.errorMsg}"/>
                 </h:panelGrid>
                 <h:panelGrid columns="1">
+                    <h:message for="userNameInput" />
                     <ace:textEntry id="userNameInput" value="#{registerBean.userName}"
                                    label="User name"
                                    labelPosition="left"
                                    required="true"
                                    requiredIndicator="(*)"
                                    indicatorPosition="right"/>
+                    <h:message for="passwordInput" />
                     <ace:textEntry id="passwordInput" value="#{registerBean.password}"
                                    label="Password"
                                    labelPosition="left"
                                    required="true"
                                    requiredIndicator="(*)"
                                    indicatorPosition="right"/>
+                    <h:message for="passwordInput2" />
                     <ace:textEntry id="passwordInput2" value="#{registerBean.retypedPassword}"
                                    label="Retype Password"
                                    labelPosition="left"
                                    required="true"
                                    requiredIndicator="(*)"
                                    indicatorPosition="right"/>
+                    <h:message for="emailInput" />
                     <ace:textEntry id="emailInput" value="#{registerBean.email}"
                                    label="Email"
                                    labelPosition="left"
                                    required="true"
                                    requiredIndicator="(*)"
                                    indicatorPosition="right"/>
+                    <h:message for="selectUserType" />
+                    <ace:comboBox id="selectUserType" valueChangeListener="#{registerBean.onUserTypeSelectListener}"
+                                  label="Select type: " labelPosition="left" required="true">
+                        <f:selectItems value="#{registerBean.userTypes}" />
+                        <ace:ajax execute="@this" render="@this" />
+                        <ace:ajax event="blur" execute="@this" render="@this" />
+                    </ace:comboBox>
                     <!--<ace:comboBox id="selectUserTypeInput"  label="Select user Type:" labelPosition="left">-->
                         <!--<f:selectItem id="normal" value="aaa" />-->
                         <!--<f:selectItem id="bbb" value="bbb" />-->

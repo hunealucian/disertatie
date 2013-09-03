@@ -28,7 +28,7 @@ public class MulticastReceiverService<T extends Manager> extends MulticastServic
         try {
             while (true) {
                 //se asteapta un pachet venit pe adresa grupului
-                buf = new byte[6000];
+                buf = new byte[20000];
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
 
                 multicastSocket.setLoopbackMode(true);

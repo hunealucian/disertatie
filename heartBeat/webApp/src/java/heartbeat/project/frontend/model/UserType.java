@@ -19,6 +19,15 @@ public enum UserType implements Serializable {
         this.replication = replication;
     }
 
+    public static UserType getType(String name){
+        for (UserType userType : UserType.values()) {
+            if( userType.getName().equalsIgnoreCase(name) )
+                return userType;
+        }
+
+        return null;
+    }
+
     public String getName() {
         return name;
     }

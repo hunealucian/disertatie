@@ -30,7 +30,7 @@ public class SessionBean implements Serializable {
     //logged user
     private User loggedUser;
 
-    private FilesAllocationTree<FATFolder, ManagerFATFile> currentFATNode;
+    private FilesAllocationTree<FATFolder, ManagerFATFile> currentFATTree;
     private String currentNodeId;
 
     public SessionBean() {
@@ -52,14 +52,23 @@ public class SessionBean implements Serializable {
     //endregion
 
     //region user
+    public void refreshFATTree(){
+        currentFATTree = clusterService.getTreeOfUser(loggedUser.getUserPath());
+    }
+
     public FilesAllocationTree<FATFolder, ManagerFATFile> getUserFATTree(){
-        currentFATNode = clusterService.getTreeOfUser(loggedUser.getUserPath());
-        return currentFATNode;
+        if( currentFATTree == null )
+            refreshFATTree();
+        return currentFATTree;
+    }
+
+    public void setCurrentFATTree(FilesAllocationTree<FATFolder, ManagerFATFile> currentFATTree) {
+        this.currentFATTree = currentFATTree;
     }
 
     public FilesAllocationTree<FATFolder, ManagerFATFile> getFATNode(String nodeId){
-        if(currentFATNode != null){
-            return currentFATNode.getNodeByPath(nodeId);
+        if(currentFATTree != null){
+            return currentFATTree.getNodeByPath(nodeId);
         } else {
             return null;
         }
