@@ -4,6 +4,7 @@
     <root id="archive" name="clusterNode.jar">
       <element id="module-output" name="clusterNode" />
       <element id="module-output" name="commons" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/guava-14.0.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

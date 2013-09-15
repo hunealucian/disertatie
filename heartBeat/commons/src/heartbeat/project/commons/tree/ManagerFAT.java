@@ -1,7 +1,6 @@
 package heartbeat.project.commons.tree;
 
 import heartbeat.project.commons.model.Node;
-import heartbeat.project.commons.tree.FilesAllocationTree;
 import heartbeat.project.commons.tree.treeutils.FATFile;
 import heartbeat.project.commons.tree.treeutils.FATFolder;
 import heartbeat.project.commons.tree.treeutils.ManagerFATFile;
@@ -61,7 +60,7 @@ public class ManagerFAT extends FilesAllocationTree<FATFolder, ManagerFATFile> {
                     if (i + 1 == leafParrents.length) { //means that is leaf
                         FilesAllocationTree<FATFolder, ManagerFATFile> parentLeaf = getParentOfChildren(children, i, leafParrents[i - 1]);
                         if (parentLeaf != null) {
-                            leaf = new ManagerFATFile(nodeLeaf.getName(), nodeLeafPath, nodeLeaf.getSize(), nodeLeaf.getLastModified(), nodeLeaf.getVersion(), nodeLeaf.getChecksum());
+                            leaf = new ManagerFATFile(nodeLeaf.getName(), nodeLeafPath, nodeLeaf.getSize(), nodeLeaf.getLastModified(), nodeLeaf.getVersion(), nodeLeaf.getReplication(), nodeLeaf.getChecksum());
                             leaf.addReplicationNode(node);
                             parentLeaf.getChildren().add(new FilesAllocationTree<FATFolder, ManagerFATFile>(leaf));
                         }

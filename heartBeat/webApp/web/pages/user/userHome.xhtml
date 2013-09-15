@@ -1,19 +1,15 @@
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ace="http://www.icefaces.org/icefaces/components"
-                xmlns:ice="http://www.icesoft.com/icefaces/component" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:f="http://java.sun.com/jsf/core"
                 template="/WEB-INF/templates/userTemplate.xhtml">
 
-
-
-
-    <ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
         <ui:define name="treeContent">
 
             <h:form id="treeForm">
                 <h:panelGrid columns="1">
                     <ace:pushButton id="addFolderButton" value="Add folder" actionListener="#{userHomeBean.onShowFolderDialogClick}">
-                        <ace:ajax execute="@this" render="@form addFolderForm"/>
+                        <ace:ajax execute="@this" render="addFolderForm"/>
                     </ace:pushButton>
 
                     <ace:tree id="tree" expansion="true" selection="true" selectMultiple="false"
@@ -31,6 +27,7 @@
                         </ace:node>
                     </ace:tree>
                 </h:panelGrid>
+
 
             </h:form>
 
@@ -67,7 +64,7 @@
 
         <ui:define name="content">
 
-            <ace:panel id="folderInfoPanel" header="Folder Info" visible="#{!empty userHomeBean.currentNode}">
+            <ace:panel id="folderInfoPanel" header="Folder Info" rendered="#{!empty userHomeBean.currentNode}">
                 <h:panelGrid columns="2">
                     <h:outputText id="nodeNameLabel" value="Folder name : "/>
                     <h:outputText id="nodeName" value="#{userHomeBean.folderName}"/>
@@ -83,12 +80,6 @@
                         <ace:pushButton id="uploadButton" value="Upload file" actionListener="#{userHomeBean.onShowUploadDialogClick}">
                             <ace:ajax execute="@this" render="@form uploadFileForm"/>
                         </ace:pushButton>
-
-                        <!--<ace:pushButton id="downloadButton" value="Download file"-->
-                                        <!--actionListener="#{userHomeBean.onDownloadClick2}">-->
-                            <!--<f:attribute name="filePath"  value="#{userHomeBean.filesTableDataProvider}" />-->
-                            <!--<ace:ajax execute="@all" render="@this" listener="#{userHomeBean.onDownloadClick}"/>-->
-                        <!--</ace:pushButton>-->
                     </h:panelGrid>
 
 
@@ -114,7 +105,7 @@
                         </ace:column>
                         <ace:column headerText="Download">
                             <h:outputLink id="downloadButton2"  value="/datastorage/downloadFile" >
-                                <ice:outputText value="Download"/>
+                                <h:outputText value="Download"/>
                                 <f:param name="filePath"  value="#{managerFATFile.path}" />
                                 <f:param name="redirectTo"  value="/datastorage/pages/user/userHome.xhtml" />
                             </h:outputLink>
@@ -163,6 +154,5 @@
                 </ace:dialog>
             </h:form>
         </ui:define>
-    </ui:composition>
 </ui:composition>
 

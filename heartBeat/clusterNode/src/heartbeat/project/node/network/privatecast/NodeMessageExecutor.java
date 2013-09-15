@@ -1,6 +1,5 @@
 package heartbeat.project.node.network.privatecast;
 
-import heartbeat.project.commons.utils.FileUtils;
 import heartbeat.project.commons.model.ChainLink;
 import heartbeat.project.commons.model.Node;
 import heartbeat.project.commons.model.socketmsg.ChainInfo;
@@ -13,7 +12,9 @@ import heartbeat.project.commons.network.privatecast.factory.socket.ChunkReceive
 import heartbeat.project.commons.network.privatecast.factory.socket.receive.stream.StreamReader;
 import heartbeat.project.commons.network.privatecast.factory.socket.send.stream.StreamWriter;
 import heartbeat.project.commons.tree.treeutils.FATFile;
+import heartbeat.project.commons.utils.FileUtils;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -40,10 +41,15 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
         try {
             streamReader.fetch();
 
+            System.out.println("###############################");
+
+
             headerMessage = streamReader.getHeaderMessage();
             messageInfo = (MessageInfo) streamReader.getMessageInfo();
 
             if (headerMessage != null) {
+
+                System.out.println("Received message :" + headerMessage.getName());
 
                 if (headerMessage == HeaderMessage.SAVE_FILE) {
                     saveFile(streamReader);
@@ -53,9 +59,13 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
                     deleteFile(streamReader);
                 } else if( headerMessage == HeaderMessage.SEND_FILE ){
                     sendFile(streamReader);
+                } else if( headerMessage == HeaderMessage.SEND_FILE_TO_CHAIN ){
+                    sendFileToChain(streamReader);
                 }
 
             }
+
+            System.out.println("###############################");
 
         } catch (IOException | NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -109,7 +119,7 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
         streamReader.closeConnection();
         System.out.println("File saved on : " + currentNode.getNodePath() + "/" + fileInfo.getUserPath());
 
-        FileUtils.generateVersionFile(new File(filePath + "/" + fileInfo.getName()));
+        FileUtils.generateVersionFile(new File(filePath + "/" + fileInfo.getName()), fileInfo.getReplication());
         System.out.println("Versioning file info has been generated for : " + fileInfo.getName());
     }
 
@@ -157,7 +167,40 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 
         streamReader.closeConnection();
 
-        FileUtils.generateVersionFile(new File(filePath + "/" + fileInfo.getName()));
+        FileUtils.generateVersionFile(new File(filePath + "/" + fileInfo.getName()), fileInfo.getReplication());
         System.out.println("Versioning file info has been generated for : " + fileInfo.getName());
+
+        Toolkit.getDefaultToolkit().beep();
+
+    }
+
+    private void sendFileToChain(StreamReader streamReader) throws IOException, NoSuchAlgorithmException {
+        System.out.println("Sending file to chain...");
+        ChainInfo chainInfo = (ChainInfo) messageInfo;
+
+        ChainLink chainLink = chainInfo.getFirstNode();
+
+        ChainLink nextChain = null;
+        SendData<ChainInfo> sendDataToNextNode = null;
+        if (chainInfo.leftChains() >= 1) {
+            System.out.println("\rInitializing connection with next node from chain...");
+            // make new connection with next chain node
+            nextChain = chainInfo.getNextNode();
+
+
+            FileInfo fileInfo = chainLink.getFileInfo();
+            String filePath = currentNode.getNodePath() + "/" + fileInfo.getUserPath() + "/" + fileInfo.getName();
+            sendDataToNextNode = new SendData<ChainInfo>(nextChain.getNodeIpAddrs(), nextChain.getNodePort(), headerMessage, chainInfo, new File(filePath));
+            sendDataToNextNode.send();
+
+            System.out.println("\rConnection established with " + nextChain.getNodeIpAddrs() + " on port " + nextChain.getNodePort());
+
+            sendDataToNextNode.closeConnection();
+        }
+
+        streamReader.closeConnection();
+
+        System.out.println("File has been sent successfuly!");
+        Toolkit.getDefaultToolkit().beep();
     }
 }

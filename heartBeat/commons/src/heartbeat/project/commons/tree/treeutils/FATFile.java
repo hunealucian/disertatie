@@ -8,15 +8,17 @@ import java.util.Date;
 public class FATFile extends FATFolder {
 
     private int version;
+    private int replication;
     private String checksum;
 
     public FATFile(String name, String path, long size, Date lastModified) {
         super(name, path, size, lastModified);
     }
 
-    public FATFile(String name, String path, long size, Date lastModified, int version, String checksum) {
+    public FATFile(String name, String path, long size, Date lastModified, int version, int replication, String checksum) {
         super(name, path, size, lastModified);
         this.version = version;
+        this.replication = replication;
         this.checksum = checksum;
     }
 
@@ -34,5 +36,13 @@ public class FATFile extends FATFolder {
 
     public void setChecksum(String checksum) {
         this.checksum = checksum;
+    }
+
+    public int getReplication() {
+        return replication;
+    }
+
+    public void setReplication(int replication) {
+        this.replication = replication;
     }
 }

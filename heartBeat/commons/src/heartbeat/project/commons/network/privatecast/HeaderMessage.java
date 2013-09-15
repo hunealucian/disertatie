@@ -12,6 +12,7 @@ public enum HeaderMessage implements Serializable {
 	SEND_FILE("sendFile"),   //used for download of file
 
 	SAVE_CHAIN("saveChain"),  // used for upload of file on multiple nodes
+	SEND_FILE_TO_CHAIN("sendFileToChain"),  // used for remaking replication on multiple nodes
 
     GIVE_FILE_NODE_CONNECTION("giveFileNodeConnection"), //interpreted by manager for giving a node that contains that file
     GIVE_NODES_LIST("giveNodesList"),

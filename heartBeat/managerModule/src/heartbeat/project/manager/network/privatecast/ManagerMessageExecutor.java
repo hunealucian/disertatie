@@ -1,16 +1,14 @@
 package project.manager.network.privatecast;
 
-import heartbeat.project.commons.model.ChainLink;
 import heartbeat.project.commons.model.Node;
 import heartbeat.project.commons.model.socketmsg.*;
 import heartbeat.project.commons.network.privatecast.HeaderMessage;
 import heartbeat.project.commons.network.privatecast.factory.SocketReaderMessageExecutor;
 import heartbeat.project.commons.network.privatecast.factory.socket.receive.stream.StreamReader;
 import heartbeat.project.commons.network.privatecast.factory.socket.send.stream.StreamWriter;
-import heartbeat.project.commons.tree.treeutils.FATFile;
 import project.manager.model.Manager;
 import project.manager.network.cluster.ClusterSystemInfo;
-import project.manager.util.ManagerAppUtil;
+import project.manager.network.cluster.StorageNodesLoadBalancer;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -103,17 +101,7 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
 
         FileInfo fileInfo = (FileInfo) messageInfo;
 
-        List<Node> nodesList = new LinkedList<>(ClusterSystemInfo.getNODES_TABLE());
-
-        FATFile nodeFile = null;
-        Node foundNode = null;
-        for (Node node : nodesList) {
-            nodeFile = node.getMachineFAT().getLeaf(fileInfo.getUserPath(), fileInfo.getName());
-            if( nodeFile != null ){
-                foundNode = node;
-                break;
-            }
-        }
+        Node foundNode = StorageNodesLoadBalancer.getNode(fileInfo);
 
         if( foundNode != null ){
             StreamWriter<NodeInfo> write = new StreamWriter<NodeInfo>(streamReader.getSocket(), HeaderMessage.OK, new NodeInfo(foundNode));
@@ -128,9 +116,8 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
 
     private void buildAndReturnChain(StreamReader streamReader) throws IOException, NoSuchAlgorithmException {
         FileInfo fileInfo = (FileInfo) messageInfo;
-        List<Node> nodesList = new LinkedList<>(ClusterSystemInfo.getNODES_TABLE());
 
-        ChainInfo chainInfo = makeChain(nodesList, fileInfo);
+        ChainInfo chainInfo = StorageNodesLoadBalancer.makeChain(fileInfo);
 
         StreamWriter<ChainInfo> writer = new StreamWriter<ChainInfo>(streamReader.getSocket(), HeaderMessage.OK, chainInfo);
         writer.push();
@@ -157,36 +144,6 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
         write.closeConnection();
     }
 
-    private ChainInfo makeChain(List<Node> nodesList, FileInfo fileInfo) {
-        ChainInfo chainInfo = new ChainInfo();
 
-        List<Node> selectedNodes = new LinkedList<>();
-        selectCompatibleNodes(selectedNodes, nodesList, fileInfo.getReplication(), fileInfo.getSize(), ManagerAppUtil.MAX_THREADS);
-
-        ChainLink chainLink;
-        for (Node selectedNode : selectedNodes) {
-            chainLink = new ChainLink(selectedNode.getIpAddr(), selectedNode.getReceiveMessagesPort(), fileInfo);
-            chainInfo.addNode(chainLink);
-        }
-
-        return chainInfo;
-    }
-
-    private void selectCompatibleNodes(List<Node> selectedNodes, List<Node> nodesList, int replication, long fileSize, int openedThreads) {
-        if (selectedNodes != null && selectedNodes.size() == replication)
-            return;
-
-        for (Node node : nodesList) {
-            if (node.getMachineInfoSystem().getOpenedThreads() <= openedThreads) {
-                if (node.getMachineInfoSystem().getFreeSpace() > fileSize) {
-                    selectedNodes.add(node);
-                    nodesList.remove(node);
-                }
-            }
-        }
-
-        if (selectedNodes.size() < replication)
-            selectCompatibleNodes(selectedNodes, nodesList, replication, fileSize, openedThreads + 1);
-    }
 
 }

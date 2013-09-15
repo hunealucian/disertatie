@@ -1,8 +1,6 @@
 package heartbeat.project.commons.tree.treeutils;
 
 import heartbeat.project.commons.model.Node;
-import heartbeat.project.commons.model.socketmsg.NodeInfo;
-import heartbeat.project.commons.tree.treeutils.FATFile;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -18,8 +16,8 @@ public class ManagerFATFile extends FATFile {
 
     private List<Node> replicationsNode;
 
-    public ManagerFATFile(String name, String path, long size, Date lastModified, int version, String checksum) {
-        super(name, path, size, lastModified, version, checksum);
+    public ManagerFATFile(String name, String path, long size, Date lastModified, int version, int replication, String checksum) {
+        super(name, path, size, lastModified, version, replication, checksum);
     }
 
     public synchronized void addReplicationNode(Node nodeInfo){
@@ -51,5 +49,9 @@ public class ManagerFATFile extends FATFile {
                 }
             }
         }
+    }
+
+    public List<Node> getReplicationsNode() {
+        return replicationsNode;
     }
 }

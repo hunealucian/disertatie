@@ -1,11 +1,18 @@
 package project.manager.network.cluster;
 
 import heartbeat.project.commons.model.Node;
+import heartbeat.project.commons.model.socketmsg.ChainInfo;
+import heartbeat.project.commons.network.privatecast.HeaderMessage;
+import heartbeat.project.commons.network.privatecast.factory.send.SendData;
 import heartbeat.project.commons.tree.ManagerFAT;
+import heartbeat.project.commons.tree.treeutils.ManagerFATFile;
+import project.manager.network.mail.MailService;
 import project.manager.util.ManagerAppUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -17,6 +24,7 @@ public class ClusterSystemInfo {
     private static CopyOnWriteArrayList<Node> DEAD_NODES_TABLE = new CopyOnWriteArrayList<Node>(new ArrayList<Node>());
 
     public static ManagerFAT FATSystem;
+    private static ManagerFAT tmpFATSystem;
 
     /**
      * Synchronized method for update Or insert commons in table
@@ -59,6 +67,10 @@ public class ClusterSystemInfo {
             for (Node node : NODES_TABLE) {
                 if (new Date().getTime() >= (node.getLastPing().getTime() + ManagerAppUtil.secondsToDead)) {
                     NODES_TABLE.remove(node);
+
+                    //send a mail to administrator
+                    MailService.sendMail(String.format(MailService.NODE_FAILED, node.getId(), node.getIpAddr()));
+
                     removeNodeFromFATSystem(node);
                     DEAD_NODES_TABLE.add(node);
                 }
@@ -69,25 +81,79 @@ public class ClusterSystemInfo {
     public static void checkFATSystemReplication() {
         if (ClusterSystemInfo.FATSystem != null) {
 
-            //todo
+            List<ManagerFATFile> leafs = FATSystem.getLeafs(FATSystem);
+
+            for (ManagerFATFile leaf : leafs) {
+                if( leaf.getReplication() < leaf.getReplicationsNode().size() ){
+
+                    ChainInfo chainInfo = StorageNodesLoadBalancer.makeChainForReplication(leaf);
+
+                    try {
+
+                        Node firstNode = leaf.getReplicationsNode().get(0);
+
+                        //sende file to first node
+                        SendData<ChainInfo> sendSaveToFirstNode = new SendData<ChainInfo>(firstNode.getIpAddr(), firstNode.getReceiveMessagesPort(), HeaderMessage.SEND_FILE_TO_CHAIN, chainInfo);
+
+                        sendSaveToFirstNode.send();
+
+                        sendSaveToFirstNode.closeConnection();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    System.out.println();
+
+                } else if(leaf.getReplication() > leaf.getReplicationsNode().size()) {
+                    //todo delete files from one node
+                }
+            }
+
+
 
         }
     }
 
+    private static volatile int index = 0;
     public static synchronized void addNodeToFATSystem(Node node) {
+
+        if (ClusterSystemInfo.tmpFATSystem == null) {
+            tmpFATSystem = new ManagerFAT();
+        }
         if (ClusterSystemInfo.FATSystem == null) {
             FATSystem = new ManagerFAT();
         }
 
-        synchronized (ClusterSystemInfo.FATSystem) {
-            try {
-                FATSystem.addNodeTree(node);
-            } catch (Exception e) {
-                e.printStackTrace();
+
+        if( index <= NODES_TABLE.size() + 5 ){
+            synchronized (ClusterSystemInfo.tmpFATSystem) {
+                try {
+                    tmpFATSystem.addNodeTree(node);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            index++;
+        } else {
+            index = 0;
+
+            System.out.println("------------------");
+            System.out.println("\tRenewing File System Tree");
+            System.out.println("------------------");
+
+            synchronized (ClusterSystemInfo.FATSystem) {
+                FATSystem = tmpFATSystem;
+            }
+
+            synchronized (ClusterSystemInfo.tmpFATSystem) {
+                tmpFATSystem = new ManagerFAT();
             }
         }
     }
 
+    //remove
     public static synchronized void removeNodeFromFATSystem(Node node) {
         if (ClusterSystemInfo.FATSystem != null) {
 

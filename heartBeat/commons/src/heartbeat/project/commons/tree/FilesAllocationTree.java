@@ -59,7 +59,7 @@ public class FilesAllocationTree<T extends FATFolder, M extends FATFile> impleme
                 if (file.isFile()) {
                     if (!file.getName().contains(".version")) {
                         if ((new File(file.getAbsolutePath() + ".version")).exists())
-                            tree.addChild(new FATFile(file.getName(), file.getAbsolutePath(), file.length(), new Date(file.lastModified()), FileUtils.getFileVersionInfo(file), FileUtils.getFileChecksum(file)));
+                            tree.addChild(new FATFile(file.getName(), file.getAbsolutePath(), file.length(), new Date(file.lastModified()), FileUtils.getFileVersionInfo(file), FileUtils.getFileReplicationInfo(file), FileUtils.getFileChecksum(file)));
                     }
                 } else {
                     getChilds(file, tree.addChild(new FATFolder(file.getName(), file.getAbsolutePath(), FileUtils.folderSize(file), new Date(file.lastModified()))));

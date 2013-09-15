@@ -2,16 +2,12 @@ package heartbeat.project.commons.utils;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
-import heartbeat.project.commons.tree.FilesAllocationTree;
-import heartbeat.project.commons.tree.treeutils.FATFile;
-import heartbeat.project.commons.tree.treeutils.FATFolder;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
 
 /**
  * User: luc  | Date: 8/7/13  |  Time: 10:40 PM
@@ -23,7 +19,7 @@ public class FileUtils {
             Files.write(bytes, new File(filePath + "/" + fileName));
 
             if (fileReplication != -1) {
-                generateVersionFile(new File(filePath + "/" + fileName));
+                generateVersionFile(new File(filePath + "/" + fileName), fileReplication);
             }
 
             return true;
@@ -45,12 +41,14 @@ public class FileUtils {
         return false;
     }
 
-    public static void generateVersionFile(File file) throws IOException, NoSuchAlgorithmException {
+    public static void generateVersionFile(File file, int replication) throws IOException, NoSuchAlgorithmException {
 
         int fileVersion = getFileVersionInfo(file);
 
         StringBuffer buffer = new StringBuffer();
         buffer.append(fileVersion == -1 ? 1 : (fileVersion + 1));
+        buffer.append("\n");
+        buffer.append(replication);
 
         Files.write(buffer.toString().getBytes(), new File(file.getAbsolutePath() + ".version"));
     }
@@ -73,6 +71,27 @@ public class FileUtils {
 
         return result;
     }
+
+    public static int getFileReplicationInfo(File file) throws IOException {
+        int result = -1;
+
+        if (new File(file.getAbsolutePath() + ".version").exists()) {
+            String fileContent = getFileContent(new File(file.getAbsolutePath() + ".version"));
+            if (fileContent != null) {
+
+                String[] rows = fileContent.split(System.getProperty("line.separator"));
+                if (rows != null && rows.length >= 2) {
+                    result = Integer.parseInt(rows[1].replace("\r", ""));
+                }
+            }
+        } else {
+            new File(file.getAbsolutePath() + ".version").createNewFile();
+        }
+
+        return result;
+    }
+
+
 
     public static String getFileContent(File file) throws IOException {
         return Files.toString(file, Charsets.UTF_8);

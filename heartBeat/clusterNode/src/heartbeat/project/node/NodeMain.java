@@ -13,8 +13,8 @@ import java.net.InetAddress;
 public class NodeMain {
 
     public static void main(String[] args) throws Throwable {
-
         Node currentNode = new Node();
+        currentNode.setName(InetAddress.getLocalHost().getHostName());
         currentNode.setMulticastIp(NodeAppUtil.getProperty(NodeConfigsProperties.MULTICAST_IP.getPropertyName()));
         currentNode.setMulticastPort(Integer.parseInt(NodeAppUtil.getProperty(NodeConfigsProperties.MULTICAST_PORT.getPropertyName())));
         currentNode.setNodePath(NodeAppUtil.getProperty(NodeConfigsProperties.NODE_STORAGE_PATH.getPropertyName()));
