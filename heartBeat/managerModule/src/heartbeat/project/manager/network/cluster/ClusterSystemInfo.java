@@ -34,7 +34,7 @@ public class ClusterSystemInfo {
     public synchronized static void inserOrUpdateNode(Node node) {
 
         synchronized (NODES_TABLE) {
-            for (Node node1 : NODES_TABLE) {
+            for (Node node1 : getNODES_TABLE()) {
                 //todo : USE NODE IP
                 if (node1.getId().equalsIgnoreCase(node.getId())) {
                     node1.setLastPing(node.getLastPing());
@@ -45,7 +45,7 @@ public class ClusterSystemInfo {
                 }
             }
 
-            NODES_TABLE.add(node);
+            getNODES_TABLE().add(node);
             addNodeToFATSystem(node);
 
             if (DEAD_NODES_TABLE.size() > 0)
@@ -64,9 +64,9 @@ public class ClusterSystemInfo {
     public static synchronized void clearNodesTable() {
 
         synchronized (NODES_TABLE) {
-            for (Node node : NODES_TABLE) {
+            for (Node node : getNODES_TABLE()) {
                 if (new Date().getTime() >= (node.getLastPing().getTime() + ManagerAppUtil.secondsToDead)) {
-                    NODES_TABLE.remove(node);
+                    getNODES_TABLE().remove(node);
 
                     //send a mail to administrator
                     MailService.sendMail(String.format(MailService.NODE_FAILED, node.getId(), node.getIpAddr()));
@@ -84,7 +84,7 @@ public class ClusterSystemInfo {
             List<ManagerFATFile> leafs = FATSystem.getLeafs(FATSystem);
 
             for (ManagerFATFile leaf : leafs) {
-                if( leaf.getReplication() < leaf.getReplicationsNode().size() ){
+                if( leaf.getReplication() > leaf.getReplicationsNode().size() ){
 
                     ChainInfo chainInfo = StorageNodesLoadBalancer.makeChainForReplication(leaf);
 
@@ -105,7 +105,7 @@ public class ClusterSystemInfo {
 
                     System.out.println();
 
-                } else if(leaf.getReplication() > leaf.getReplicationsNode().size()) {
+                } else if(leaf.getReplication() < leaf.getReplicationsNode().size()) {
                     //todo delete files from one node
                 }
             }
@@ -126,7 +126,7 @@ public class ClusterSystemInfo {
         }
 
 
-        if( index <= NODES_TABLE.size() + 5 ){
+        if( index <= getNODES_TABLE().size() + 5 ){
             synchronized (ClusterSystemInfo.tmpFATSystem) {
                 try {
                     tmpFATSystem.addNodeTree(node);
@@ -153,6 +153,16 @@ public class ClusterSystemInfo {
         }
     }
 
+    private static volatile int index2 = 0;
+    public static synchronized ManagerFAT getFATSystem(){
+        while (index2 <= getNODES_TABLE().size() + 5){
+            index2++;
+        }
+
+        index2 = 0;
+        return FATSystem;
+    }
+
     //remove
     public static synchronized void removeNodeFromFATSystem(Node node) {
         if (ClusterSystemInfo.FATSystem != null) {
@@ -171,5 +181,9 @@ public class ClusterSystemInfo {
 
     public static synchronized CopyOnWriteArrayList<Node> getNODES_TABLE() {
         return NODES_TABLE;
+    }
+
+    public static synchronized CopyOnWriteArrayList<Node> getDEAD_NODES_TABLE() {
+        return DEAD_NODES_TABLE;
     }
 }

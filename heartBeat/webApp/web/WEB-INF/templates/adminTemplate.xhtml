@@ -10,7 +10,7 @@
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <h:outputStylesheet library="css" name="cssLayout.css"/>
-    <title>Job Runner</title>
+    <title>Administration page</title>
 </h:head>
 
 <h:body>
@@ -20,30 +20,29 @@
 
             <h:form>
                 <ul class="links">
-
+                    <ui:remove>
                     <li><ace:linkButton styleClass="link" id="settingsBtn" value="Account Settings" action="#{sessionBean.doLogout}"/></li>
+                    </ui:remove>
                     <li><ace:linkButton styleClass="link" id="logoutBtn" value="Logout" action="#{sessionBean.doLogout}"/></li>
 
                 </ul>
             </h:form>
             <h1 class="welcome">
-                <h:outputFormat id="aaaa" value="Welcome admin {0}">
+                <h:outputFormat id="aaaa" value="Welcome {0}">
                     <f:param id="aaaa2" value="#{sessionBean.loggedUser.username}"/>
                 </h:outputFormat>
             </h1>
         </header>
         <nav id="navigation">
             <ul class="menu">
-                <li><a href="#">Menu 1</a></li>
-                <li><a href="#">Menu 2</a></li>
-                <li><a href="#">Menu 3</a></li>
-                <li><a href="#">Menu 4</a></li>
+                <li><a href="/datastorage/pages/admin/adminHome.xhtml">Dashbord</a></li>
+                <li><a href="/datastorage/pages/admin/adminNodesInfo.xhtml">Nodes Info</a></li>
+                <li><a href="/datastorage/pages/admin/adminfat.xhtml">File System</a></li>
             </ul>
         </nav>
         <section id="content">
 
             <div id="main">
-                Content
                 <ui:insert name="content">Default content</ui:insert>
             </div>
         </section>

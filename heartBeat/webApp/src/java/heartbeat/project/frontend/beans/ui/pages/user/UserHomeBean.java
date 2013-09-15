@@ -5,29 +5,24 @@ import heartbeat.project.commons.tree.treeutils.FATFolder;
 import heartbeat.project.commons.tree.treeutils.ManagerFATFile;
 import heartbeat.project.frontend.beans.Scopes;
 import heartbeat.project.frontend.beans.dataProviders.dataTable.FilesTableDataProvider;
+import heartbeat.project.frontend.beans.dataProviders.tree.UserTreeNodeFactory;
 import heartbeat.project.frontend.beans.session.SessionBean;
 import heartbeat.project.frontend.beans.ui.tree.NavigationTreeNode;
-import heartbeat.project.frontend.beans.dataProviders.tree.UserTreeNodeFactory;
 import org.icefaces.ace.component.fileentry.FileEntry;
 import org.icefaces.ace.component.fileentry.FileEntryEvent;
 import org.icefaces.ace.component.fileentry.FileEntryResults;
-import org.icefaces.ace.event.SelectEvent;
 import org.icefaces.ace.model.tree.NodeState;
 import org.icefaces.ace.model.tree.NodeStateCreationCallback;
-import org.icefaces.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
-import java.io.*;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
 
 /**
  * Description
@@ -51,6 +46,7 @@ public class UserHomeBean implements Serializable {
     private FilesTableDataProvider filesTableDataProvider;
 
     public UserHomeBean() {
+        System.out.println();
     }
 
     private void initTree() {

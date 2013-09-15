@@ -20,8 +20,9 @@
 
             <h:form>
                 <ul class="links">
-
+                    <ui:remove>
                     <li><ace:linkButton styleClass="link" id="settingsBtn" value="Account Settings" action="#{sessionBean.doLogout}"/></li>
+                    </ui:remove>
                     <li><ace:linkButton styleClass="link" id="logoutBtn" value="Logout" action="#{sessionBean.doLogout}"/></li>
 
                 </ul>

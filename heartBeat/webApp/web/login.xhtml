@@ -3,7 +3,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ace="http://www.icefaces.org/icefaces/components"
-      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://www.icefaces.org/icefaces/components">
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://www.icefaces.org/icefaces/components"
+      xmlns:ice="http://java.sun.com/jsf/html">
 
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -14,33 +15,32 @@
 
 <h:body>
 
-    <div id="layer1" style="position:absolute; top:35%; left:40%; width:450px; height:321px; z-index:1; padding:5px; border: #000000 1px ;">
+    <div id="layer1"
+         style="position:absolute; top:35%; left:40%; width:450px; height:321px; z-index:1; padding:5px; border: #000000 1px ;">
 
-    <ace:panel id="loginPanel" header="Login">
+        <ace:panel id="loginPanel" header="Login">
             <h:form>
                 <h:panelGrid columns="1">
                     <h:outputText id="loginError" value="#{loginBean.errorMsg}"/>
                 </h:panelGrid>
                 <h:panelGrid columns="1">
-                    <h:message for="userNameInput" />
-                    <ace:textEntry id="userNameInput" value="#{loginBean.userName}"
-                                   label="User name"
-                                   labelPosition="left"
-                                   required="true"
-                                   requiredIndicator="(*)"
-                                   indicatorPosition="right"/>
-                    <h:message for="passwordInput" />
-                    <ace:textEntry id="passwordInput" value="#{loginBean.password}"
-                                   label="Password"
-                                   labelPosition="left"
-                                   required="true"
-                                   requiredIndicator="(*)"
-                                   indicatorPosition="right"/>
+                    <h:message for="userNameInput"/>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="userNameInput" value="User name"/>
+                        <h:inputText id="userNameInput" value="#{loginBean.userName}" required="true"/>
+                    </h:panelGrid>
+
+                    <h:message for="passwordInput"/>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="passwordInput" value="Password"/>
+                        <h:inputSecret id="passwordInput" value="#{loginBean.password}" required="true"/>
+                    </h:panelGrid>
+
                 </h:panelGrid>
                 <h:panelGrid columns="2">
                     <ace:pushButton id="saveButton" value="Login" action="#{loginBean.onLogin}"/>
-                    <ace:pushButton id="registerButton" value="Register" action="#{loginBean.onRegister}" >
-                        <ace:ajax execute="@this" />
+                    <ace:pushButton id="registerButton" value="Register" action="#{loginBean.onRegister}">
+                        <ace:ajax execute="@this"/>
                     </ace:pushButton>
                 </h:panelGrid>
             </h:form>

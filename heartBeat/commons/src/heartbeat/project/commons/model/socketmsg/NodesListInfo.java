@@ -10,9 +10,12 @@ import java.util.List;
 public class NodesListInfo implements MessageInfo  {
 
     private List<Node> nodeList;
+    private List<Node> failedNodeList;
 
-    public NodesListInfo(List<Node> nodeList) {
+
+    public NodesListInfo(List<Node> nodeList, List<Node> failedNodeList) {
         this.nodeList = nodeList;
+        this.failedNodeList = failedNodeList;
     }
 
     public List<Node> getNodeList() {
@@ -21,5 +24,13 @@ public class NodesListInfo implements MessageInfo  {
 
     public void setNodeList(List<Node> nodeList) {
         this.nodeList = nodeList;
+    }
+
+    public List<Node> getFailedNodeList() {
+        return failedNodeList;
+    }
+
+    public void setFailedNodeList(List<Node> failedNodeList) {
+        this.failedNodeList = failedNodeList;
     }
 }

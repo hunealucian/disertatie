@@ -2,8 +2,6 @@ package project.manager.network.cluster.threads;
 
 import project.manager.network.cluster.ClusterSystemInfo;
 
-import java.util.List;
-
 /**
  * User: luc  | Date: 8/5/13  |  Time: 12:31 PM
  */
@@ -18,6 +16,9 @@ public class ClusterReplicationCheckServiceThread extends Thread {
         while (true) {
             try {
                 Thread.sleep(30000);
+                System.out.println("----------");
+                System.out.println("Checking files replication...");
+                System.out.println("----------");
 
                 ClusterSystemInfo.checkFATSystemReplication();
 

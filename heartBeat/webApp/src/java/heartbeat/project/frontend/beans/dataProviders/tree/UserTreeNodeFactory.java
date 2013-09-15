@@ -28,7 +28,8 @@ public class UserTreeNodeFactory {
                     if (children.getData() instanceof ManagerFATFile) {
 //                        result.add(new NavigationTreeNode(children.getData().getPath(), children.getData().getName(), NODE_TYPE_LEAF, children.getData().getPath()));
                     } else {
-                        result.add(new NavigationTreeNode(children.getData().getPath(), children.getData().getName(), NODE_TYPE_PARENT, "pages/user/userHome?faces-redirect=true"));
+//                        result.add(new NavigationTreeNode(children.getData().getPath(), children.getData().getName(), NODE_TYPE_PARENT, "pages/user/userHome?faces-redirect=true"));
+                        result.add(new NavigationTreeNode(children.getData().getPath(), children.getData().getName(), NODE_TYPE_PARENT, ""));
                     }
                 }
 
@@ -50,7 +51,8 @@ public class UserTreeNodeFactory {
                     if (child.getData() instanceof ManagerFATFile) {
 //                            result.add(new NavigationTreeNode(child.getData().getPath(), child.getData().getName(), NODE_TYPE_LEAF, child.getData().getPath()));
                     } else {
-                        result.add(new NavigationTreeNode(child.getData().getPath(), child.getData().getName(), NODE_TYPE_PARENT, "pages/user/userHome?faces-redirect=true"));
+//                        result.add(new NavigationTreeNode(child.getData().getPath(), child.getData().getName(), NODE_TYPE_PARENT, "pages/user/userHome?faces-redirect=true"));
+                        result.add(new NavigationTreeNode(child.getData().getPath(), child.getData().getName(), NODE_TYPE_PARENT, ""));
                     }
 
 

@@ -1,0 +1,80 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ace="http://www.icefaces.org/icefaces/components" xmlns:f="http://java.sun.com/jsf/composite"
+                template="/WEB-INF/templates/adminTemplate.xhtml">
+
+    <ui:composition template="/WEB-INF/templates/adminTemplate.xhtml">
+        <ui:define name="content">
+
+
+            <div id="side">
+                <h:form id="treeForm">
+                    <ace:tree id="tree" expansion="true" selection="true" selectMultiple="false"
+                              value="#{adminFATBean.treeDataProvider.nodeDataModel}"
+                              stateCreationCallback="#{adminFATBean.nodeStateCreationCallback}"
+                              stateMap="#{adminFATBean.treeDataProvider.nodeStateMap}"
+                              reordering="false" var="node" type="#{node.type}">
+                        <ace:ajax event="select" render="@all folderFilesForm " execute="@this" listener="#{adminFATBean.onNodeClick}"/>
+                        <ace:ajax event="deselect" render="@all" execute="@this" listener="#{adminFATBean.onDeselectNodeClick}"/>
+                        <f:attribute name="nodeId" value="#{node.id}"/>
+                        <ace:node>
+                            <h:panelGrid id="MainNavigationTreeNode" title="#{node.label}" columns="2">
+                                <h:graphicImage id="folderImg" value="/resources/images/folderIcon.png"/>
+                                <h:outputText id="MainNavigationTreeNodeLabel" value="#{node.label}"/>
+                            </h:panelGrid>
+                        </ace:node>
+                    </ace:tree>
+
+                </h:form>
+            </div>
+            <div id="main">
+
+                    <h:form id="folderFilesForm" rendered="#{!empty adminFATBean.currentNode}">
+                        <ace:panel id="folderInfoPanel" header="Folder Info">
+                            <h:panelGrid columns="2">
+                                <h:outputText id="nodeNameLabel" value="Folder name : "/>
+                                <h:outputText id="nodeName" value="#{adminFATBean.folderName}"/>
+                                <h:outputText id="nodeDateLabel" value="Creation date : "/>
+                                <h:outputText id="nodeDate" value="#{adminFATBean.folderDate}"/>
+                            </h:panelGrid>
+                        </ace:panel>
+                        <ace:panel id="folderFilesPanel" header="Folder Files">
+                            <ace:dataTable id="filesDataTable"
+                                           value="#{adminFATBean.filesTableDataProvider.dataModel}"
+                                           var="managerFATFile"
+                                           stateMap="#{adminFATBean.filesTableDataProvider.rowStateMap}"
+                                           selectionMode="single"
+                                           rendered="#{!empty adminFATBean.filesTableDataProvider}">
+
+                                <ace:column id="icon" headerText="">
+                                    <h:graphicImage id="folderImg" value="/resources/images/fileIcon.jpg"/>
+                                </ace:column>
+                                <ace:column id="name" headerText="Name">
+                                    <h:outputText id="nameCell" value="#{managerFATFile.name}"/>
+                                </ace:column>
+                                <ace:column id="size" headerText="Size">
+                                    <h:outputText id="sizeCell" value="#{managerFATFile.size} bytes"/>
+                                </ace:column>
+                                <ace:column id="lastModified" headerText="Date">
+                                    <h:outputText id="dateCell" value="#{managerFATFile.lastModified}"/>
+                                </ace:column>
+                                <ace:column id="checksum" headerText="Checksum">
+                                    <h:outputText id="checksumCell" value="#{managerFATFile.checksum}"/>
+                                </ace:column>
+                                <ace:column id="replicatedNodes" headerText="Replicated on">
+                                    <h:outputText id="replicatedNodesCell" value="#{managerFATFile.nodesAsString}" />
+                                </ace:column>
+
+                            </ace:dataTable>
+                        </ace:panel>
+                    </h:form>
+
+            </div>
+
+            <h:panelGrid columns="1" width="100%">
+
+
+            </h:panelGrid>
+        </ui:define>
+    </ui:composition>
+</ui:composition>
+

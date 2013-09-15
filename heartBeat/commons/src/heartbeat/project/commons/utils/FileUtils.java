@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
 
 /**
  * User: luc  | Date: 8/7/13  |  Time: 10:40 PM
@@ -146,5 +147,16 @@ public class FileUtils {
         }
         return length;
     }
+    private static final int CONVERSION_VALUE = 1024;
+    public static double convertToMb(long bytes) {
+        return format(bytes, 1024*1024, "MB");
+    }
+    private static double format(final long value, final long divider, final String unit){
+        return  divider > 1 ? (double) value / (double) divider : (double) value;
+    }
 
+    public static String getFormatedToMb(long bytes){
+        double result = format(bytes, 1024*1024, "MB");
+        return new DecimalFormat("#,##0.#").format(result) + " MB";
+    }
 }

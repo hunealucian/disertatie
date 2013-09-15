@@ -9,7 +9,7 @@
             <h:form id="treeForm">
                 <h:panelGrid columns="1">
                     <ace:pushButton id="addFolderButton" value="Add folder" actionListener="#{userHomeBean.onShowFolderDialogClick}">
-                        <ace:ajax execute="@this" render="addFolderForm"/>
+                        <ace:ajax execute="@all" render="addFolderForm"/>
                     </ace:pushButton>
 
                     <ace:tree id="tree" expansion="true" selection="true" selectMultiple="false"
@@ -17,27 +17,26 @@
                               stateCreationCallback="#{userHomeBean.nodeStateCreationCallback}"
                               stateMap="#{userHomeBean.treeDataProvider.nodeStateMap}"
                               reordering="false" var="node" type="#{node.type}">
-                        <ace:ajax event="select" render="@this folderFilesForm folderInfoPanel" execute="@this" listener="#{userHomeBean.onNodeClick}"/>
+                        <ace:ajax event="select" render="@all folderFilesForm " execute="@this" listener="#{userHomeBean.onNodeClick}"/>
                         <ace:ajax event="deselect" render="@all" execute="@this" listener="#{userHomeBean.onDeselectNodeClick}"/>
                         <f:attribute name="nodeId" value="#{node.id}"/>
                         <ace:node>
                             <h:panelGrid id="MainNavigationTreeNode" title="#{node.label}" columns="2">
+                                <h:graphicImage id="folderImg" value="/resources/images/folderIcon.png" />
                                 <h:outputText id="MainNavigationTreeNodeLabel" value="#{node.label}"/>
                             </h:panelGrid>
                         </ace:node>
                     </ace:tree>
                 </h:panelGrid>
-
-
             </h:form>
 
             <h:form id="addFolderForm">
-                <ace:dialog id="addFolderDialog" closable="true" draggable="false" closeOnEscape="true"
-                            header="Add new folder"
+                <ace:dialog id="addFolderDialog" closable="false" draggable="false" header="Add new folder"
                             modal="true" resizable="false" position="center" showEffect="fade" hideEffect="fade"
                             visible="#{userHomeBean.showAddFolderDialog}"
                             styleClass="medium">
                     <h:panelGroup layout="block">
+
                         <h:panelGrid columns="2">
                             <ace:panel style="width: 250px; height: 70px; border: 0px;">
                                 <h:message for="userNameInput" />
@@ -64,21 +63,21 @@
 
         <ui:define name="content">
 
-            <ace:panel id="folderInfoPanel" header="Folder Info" rendered="#{!empty userHomeBean.currentNode}">
-                <h:panelGrid columns="2">
-                    <h:outputText id="nodeNameLabel" value="Folder name : "/>
-                    <h:outputText id="nodeName" value="#{userHomeBean.folderName}"/>
-                    <h:outputText id="nodeDateLabel" value="Creation date : "/>
-                    <h:outputText id="nodeDate" value="#{userHomeBean.folderDate}"/>
-                </h:panelGrid>
-            </ace:panel>
+            <h:form id="folderFilesForm" rendered="#{!empty userHomeBean.currentNode}">
+                <ace:panel id="folderInfoPanel" header="Folder Info" >
+                    <h:panelGrid columns="2" >
+                        <h:outputText id="nodeNameLabel" value="Folder name : "/>
+                        <h:outputText id="nodeName" value="#{userHomeBean.folderName}"/>
+                        <h:outputText id="nodeDateLabel" value="Creation date : "/>
+                        <h:outputText id="nodeDate" value="#{userHomeBean.folderDate}"/>
+                    </h:panelGrid>
+                </ace:panel>
 
-            <h:form id="folderFilesForm">
-                <ace:panel id="folderFilesPanel" header="Folder Files" visible="#{!empty userHomeBean.currentNode}">
+                <ace:panel id="folderFilesPanel" header="Folder Files" >
 
                     <h:panelGrid columns="2">
                         <ace:pushButton id="uploadButton" value="Upload file" actionListener="#{userHomeBean.onShowUploadDialogClick}">
-                            <ace:ajax execute="@this" render="@form uploadFileForm"/>
+                            <ace:ajax execute="@all" render="uploadFileForm"/>
                         </ace:pushButton>
                     </h:panelGrid>
 
@@ -91,6 +90,9 @@
                                    rendered="#{!empty userHomeBean.filesTableDataProvider}" >
                         <ace:ajax event="select" execute="@this" render="@this" listener="#{userHomeBean.onRowSelect}"/>
 
+                        <ace:column id="icon" headerText="">
+                            <h:graphicImage id="folderImg" value="/resources/images/fileIcon.jpg" />
+                        </ace:column>
                         <ace:column id="name" headerText="Name">
                             <h:outputText id="nameCell" value="#{managerFATFile.name}"/>
                         </ace:column>
@@ -104,7 +106,7 @@
                             <h:outputText id="checksumCell" value="#{managerFATFile.checksum}"/>
                         </ace:column>
                         <ace:column headerText="Download">
-                            <h:outputLink id="downloadButton2"  value="/datastorage/downloadFile" >
+                            <h:outputLink id="downloadButton2" value="/datastorage/downloadFile" >
                                 <h:outputText value="Download"/>
                                 <f:param name="filePath"  value="#{managerFATFile.path}" />
                                 <f:param name="redirectTo"  value="/datastorage/pages/user/userHome.xhtml" />
@@ -116,7 +118,7 @@
             </h:form>
 
             <h:form id="uploadFileForm">
-                <ace:dialog id="uploadFileDialog" closable="true" draggable="false" closeOnEscape="true"
+                <ace:dialog id="uploadFileDialog" closable="false" draggable="false" closeOnEscape="false"
                             header="Upload file to folder #{userHomeBean.currentNode.label}"
                             modal="true" resizable="false" position="center" showEffect="fade" hideEffect="fade"
                             visible="#{userHomeBean.showUploadDialog}"
@@ -137,7 +139,7 @@
                                                maxFileSizeMessage="Submitted file is too large."
                                                maxTotalSize="18874368"
                                                maxTotalSizeMessage="Total size of submitted files is too large."
-                                               required="true"
+                                               required="false"
                                                requiredMessage="The file is required to submit this form."
                                                useOriginalFilename="true"
                                                useSessionSubdir="true"
@@ -153,6 +155,7 @@
                     </h:panelGroup>
                 </ace:dialog>
             </h:form>
+
         </ui:define>
 </ui:composition>
 

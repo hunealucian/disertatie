@@ -18,9 +18,9 @@ import java.util.List;
  */
 public class StorageNodesLoadBalancer {
 
-    public static ChainInfo makeChain(FileInfo fileInfo) {
+    public static synchronized ChainInfo makeChain(FileInfo fileInfo) {
         ChainInfo chainInfo = new ChainInfo();
-        List<Node> nodesList = new LinkedList<>(ClusterSystemInfo.getNODES_TABLE());
+        List<Node> nodesList = Collections.synchronizedList(ClusterSystemInfo.getNODES_TABLE());
 
         List<Node> selectedNodes = new LinkedList<>();
         selectCompatibleNodes(selectedNodes, nodesList, fileInfo.getReplication(), fileInfo.getSize(), ManagerAppUtil.MAX_THREADS);
@@ -34,8 +34,8 @@ public class StorageNodesLoadBalancer {
         return chainInfo;
     }
 
-    public static Node getNode(FileInfo fileInfo){
-        List<Node> nodesList = new LinkedList<>(ClusterSystemInfo.getNODES_TABLE());
+    public static synchronized Node getNode(FileInfo fileInfo){
+        List<Node> nodesList = Collections.synchronizedList(ClusterSystemInfo.getNODES_TABLE());
 
         FATFile nodeFile = null;
         Node foundNode = null;
@@ -50,13 +50,14 @@ public class StorageNodesLoadBalancer {
         return foundNode;
     }
 
-    public static ChainInfo makeChainForReplication(ManagerFATFile fatFile){
+    public static synchronized ChainInfo makeChainForReplication(ManagerFATFile fatFile){
         ChainInfo chainInfo = new ChainInfo();
         List<Node> nodesList = new LinkedList<>(ClusterSystemInfo.getNODES_TABLE());
+        List<Node> currentReplicatedNodes = new LinkedList<>(fatFile.getReplicationsNode());
 
         List<Node> selectedNodes = new LinkedList<>();
 
-        for (Node node : fatFile.getReplicationsNode()) {
+        for (Node node : currentReplicatedNodes) {
             for (Node nodet : nodesList) {
                 //TODO use IP
                 if( node.getName().equalsIgnoreCase(nodet.getName()) && node.getId().equalsIgnoreCase(nodet.getId()) )
@@ -64,18 +65,18 @@ public class StorageNodesLoadBalancer {
             }
         }
 
-        selectCompatibleNodes(selectedNodes, nodesList, fatFile.getReplication(), fatFile.getSize(), ManagerAppUtil.MAX_THREADS);
+        selectCompatibleNodes(selectedNodes, nodesList, fatFile.getReplication() - fatFile.getReplicationsNode().size(), fatFile.getSize(), ManagerAppUtil.MAX_THREADS);
 
         ChainLink chainLink;
         for (Node selectedNode : selectedNodes) {
-            chainLink = new ChainLink(selectedNode.getIpAddr(), selectedNode.getReceiveMessagesPort(), new FileInfo(fatFile.getName(), fatFile.getPath(), fatFile.getChecksum(), fatFile.getSize(), fatFile.getReplication()));
+            chainLink = new ChainLink(selectedNode.getIpAddr(), selectedNode.getReceiveMessagesPort(), new FileInfo(fatFile.getName(), fatFile.getPath().replace(fatFile.getName(), ""), fatFile.getChecksum(), fatFile.getSize(), fatFile.getReplication()));
             chainInfo.addNode(chainLink);
         }
 
         return chainInfo;
     }
 
-    private static void selectCompatibleNodes(List<Node> selectedNodes, List<Node> nodesList, int replication, long fileSize, int openedThreads) {
+    private static synchronized void selectCompatibleNodes(List<Node> selectedNodes, List<Node> nodesList, int replication, long fileSize, int openedThreads) {
         if (selectedNodes != null && selectedNodes.size() == replication)
             return;
 

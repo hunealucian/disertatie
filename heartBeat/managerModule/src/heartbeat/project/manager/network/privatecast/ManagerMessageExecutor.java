@@ -64,7 +64,7 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
 
     //Returns a list with all active Nodes
     private void returnNodesList(StreamReader streamReader) throws IOException {
-        NodesListInfo nodesList = new NodesListInfo(new LinkedList<>(ClusterSystemInfo.getNODES_TABLE()));
+        NodesListInfo nodesList = new NodesListInfo(new LinkedList<>(ClusterSystemInfo.getNODES_TABLE()), new LinkedList<>(ClusterSystemInfo.getDEAD_NODES_TABLE()));
 
         StreamWriter<NodesListInfo> write = new StreamWriter<NodesListInfo>(streamReader.getSocket(), HeaderMessage.OK, nodesList);
         write.push();
@@ -139,7 +139,7 @@ public class ManagerMessageExecutor extends SocketReaderMessageExecutor {
 
         String userPath = received.getUserPath();
 
-        StreamWriter<UserFATInfo> write = new StreamWriter<>(streamReader.getSocket(), HeaderMessage.OK, new UserFATInfo(userPath, ClusterSystemInfo.FATSystem.getTreeOfUser(userPath)));
+        StreamWriter<UserFATInfo> write = new StreamWriter<>(streamReader.getSocket(), HeaderMessage.OK, new UserFATInfo(userPath, ClusterSystemInfo.getFATSystem().getTreeOfUser(userPath)));
         write.push();
         write.closeConnection();
     }

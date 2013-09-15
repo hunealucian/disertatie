@@ -1,0 +1,42 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ace="http://www.icefaces.org/icefaces/components"
+                template="/WEB-INF/templates/adminTemplate.xhtml">
+
+    <ui:composition template="/WEB-INF/templates/adminTemplate.xhtml">
+        <ui:define name="content">
+            <h:form id="homeForm">
+                <h:panelGrid columns="1" width="100%">
+                    <ace:panel id="nodeListPanel" header="Alive nodes list">
+                        <ace:dataTable id="filesDataTable"
+                                       value="#{adminNodesInfoBean.nodesTableDataProvider.dataModel}"
+                                       var="node"
+                                       stateMap="#{adminNodesInfoBean.nodesTableDataProvider.rowStateMap}"
+                                       selectionMode="single">
+
+                            <ace:column id="icon" headerText="">
+                                <h:graphicImage id="folderImg" value="/resources/images/storageIcon.png"/>
+                            </ace:column>
+                            <ace:column id="name" headerText="Machine Name">
+                                <h:outputText id="nameCell" value="#{node.name}"/>
+                            </ace:column>
+                            <ace:column id="ip" headerText="Machine IP">
+                                <h:outputText id="ipCell" value="#{node.ipAddr}"/>
+                            </ace:column>
+                            <ace:column id="freeSpace" headerText="Free space">
+                                <h:outputText id="freeSpaceCell" value="#{node.machineInfoSystem.freeSpaceMB}"/>
+                            </ace:column>
+                            <ace:column id="usedSpace" headerText="Used space">
+                                <h:outputText id="usedSpaceCell" value="#{node.machineInfoSystem.usedSpaceMB}"/>
+                            </ace:column>
+                            <ace:column id="threads" headerText="Opened Threads">
+                                <h:outputText id="threadsCell" value="#{node.machineInfoSystem.openedThreads}"/>
+                            </ace:column>
+
+                        </ace:dataTable>
+                    </ace:panel>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</ui:composition>
+

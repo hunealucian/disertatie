@@ -1,5 +1,7 @@
 package heartbeat.project.commons.model;
 
+import heartbeat.project.commons.utils.FileUtils;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.nio.file.FileSystems;
@@ -49,6 +51,10 @@ public class MachineInfoSystem implements Serializable {
 	public Long getUsedSpace() {
 		return usedSpace;
 	}
+    public String getUsedSpaceMB() {
+		return FileUtils.getFormatedToMb(usedSpace);
+	}
+
 
 	public void setUsedSpace(Long usedSpace) {
 		this.usedSpace = usedSpace;
@@ -57,6 +63,10 @@ public class MachineInfoSystem implements Serializable {
 	public Long getFreeSpace() {
 		return freeSpace;
 	}
+    public String getFreeSpaceMB() {
+		return FileUtils.getFormatedToMb(freeSpace);
+	}
+
 
 	public void setFreeSpace(Long freeSpace) {
 		this.freeSpace = freeSpace;

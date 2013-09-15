@@ -55,11 +55,11 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
                     saveFile(streamReader);
                 } else if (headerMessage == HeaderMessage.SAVE_CHAIN) {
                     saveChain(streamReader);
-                } else if( headerMessage == HeaderMessage.DELETE_FILE ){
+                } else if (headerMessage == HeaderMessage.DELETE_FILE) {
                     deleteFile(streamReader);
-                } else if( headerMessage == HeaderMessage.SEND_FILE ){
+                } else if (headerMessage == HeaderMessage.SEND_FILE) {
                     sendFile(streamReader);
-                } else if( headerMessage == HeaderMessage.SEND_FILE_TO_CHAIN ){
+                } else if (headerMessage == HeaderMessage.SEND_FILE_TO_CHAIN) {
                     sendFileToChain(streamReader);
                 }
 
@@ -77,7 +77,7 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
         FileInfo fileInfo = (FileInfo) messageInfo;
 
         FATFile f = currentNode.getMachineFAT().getLeaf(fileInfo.getUserPath(), fileInfo.getName());
-        if( f != null ){
+        if (f != null) {
             fileInfo.setName(f.getName());
             fileInfo.setChecksum(f.getChecksum());
             fileInfo.setSize(f.getSize());
@@ -102,7 +102,7 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
 
         File fileTodelete = new File(currentNode.getNodePath() + "/" + fileInfo.getUserPath() + "/" + fileInfo.getName());
 
-        if( FileUtils.deleteFile(fileTodelete) ){
+        if (FileUtils.deleteFile(fileTodelete)) {
             System.out.println("File <" + fileTodelete.getAbsolutePath() + "> has been deleted successfully");
         } else {
             System.out.println("A problem appeared while trying to delete file : " + fileTodelete.getAbsolutePath());
@@ -178,25 +178,22 @@ public class NodeMessageExecutor extends SocketReaderMessageExecutor {
         System.out.println("Sending file to chain...");
         ChainInfo chainInfo = (ChainInfo) messageInfo;
 
-        ChainLink chainLink = chainInfo.getFirstNode();
+        ChainLink chainLink = chainInfo.getNextNode();
 
-        ChainLink nextChain = null;
         SendData<ChainInfo> sendDataToNextNode = null;
-        if (chainInfo.leftChains() >= 1) {
-            System.out.println("\rInitializing connection with next node from chain...");
-            // make new connection with next chain node
-            nextChain = chainInfo.getNextNode();
+
+        System.out.println("\rInitializing connection with next node from chain...");
+        // make new connection with next chain node
 
 
-            FileInfo fileInfo = chainLink.getFileInfo();
-            String filePath = currentNode.getNodePath() + "/" + fileInfo.getUserPath() + "/" + fileInfo.getName();
-            sendDataToNextNode = new SendData<ChainInfo>(nextChain.getNodeIpAddrs(), nextChain.getNodePort(), headerMessage, chainInfo, new File(filePath));
-            sendDataToNextNode.send();
+        FileInfo fileInfo = chainLink.getFileInfo();
+        String filePath = currentNode.getNodePath() + "/" + fileInfo.getUserPath() + fileInfo.getName();
+        sendDataToNextNode = new SendData<ChainInfo>(chainLink.getNodeIpAddrs(), chainLink.getNodePort(), HeaderMessage.SAVE_CHAIN, chainInfo, new File(filePath));
+        sendDataToNextNode.send();
 
-            System.out.println("\rConnection established with " + nextChain.getNodeIpAddrs() + " on port " + nextChain.getNodePort());
+        System.out.println("\rConnection established with " + chainLink.getNodeIpAddrs() + " on port " + chainLink.getNodePort());
 
-            sendDataToNextNode.closeConnection();
-        }
+        sendDataToNextNode.closeConnection();
 
         streamReader.closeConnection();
 

@@ -1,9 +1,38 @@
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ace="http://www.icefaces.org/icefaces/components"
                 template="/WEB-INF/templates/adminTemplate.xhtml">
 
     <ui:composition template="/WEB-INF/templates/adminTemplate.xhtml" >
         <ui:define name="content">
-            Welcome admin to Center
+            <h:form id="homeForm" >
+                <h:panelGrid columns="2" width="100%">
+
+                    <ace:panel id="pieChartPanel" header="Alive and failed nodes, pie chart" style="width:100%">
+                        <ace:chart id="pieChart" width="300"
+                                   animated="true"
+                                   value="#{adminHomeBean.pieData}"
+                                   widgetVar="pieChart"/>
+
+                    </ace:panel>
+
+                    <ace:panel id="barChartPanel" header="Alive nodes storage, bar chart" style="width:100%">
+                        <ace:chart id="barChart"
+                                   animated="false"
+                                   value="#{adminHomeBean.barChart}"
+                                   xAxis="#{adminHomeBean.xAxis}"
+                                   yAxes="#{adminHomeBean.yAxes}"
+                                   stackSeries="false"
+                                   legend="true"
+                                   legendPlacement="OUTSIDE_GRID"
+                                   highlighter="true"
+                                   highlighterLocation="N"
+                                   highlighterShowMarker="false"
+                                   highlighterBringSeriesToFront="true"
+                                   widgetVar="barChart" />
+                    </ace:panel>
+
+                </h:panelGrid>
+            </h:form>
         </ui:define>
     </ui:composition>
 </ui:composition>

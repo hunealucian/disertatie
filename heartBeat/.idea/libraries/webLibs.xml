@@ -42,6 +42,7 @@
       <root url="jar://$PROJECT_DIR$/lib/webLibs/icefaces/icefaces.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/webLibs/icefaces/icepush.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/webLibs/commons-collections-3.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/webLibs/icefaces/icefaces-compat.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/lib/webLibs/spring/spring-aop-3.2.2.RELEASE-javadoc.jar!/" />

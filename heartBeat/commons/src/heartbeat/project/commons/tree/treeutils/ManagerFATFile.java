@@ -51,7 +51,16 @@ public class ManagerFATFile extends FATFile {
         }
     }
 
-    public List<Node> getReplicationsNode() {
+    public synchronized List<Node> getReplicationsNode() {
         return replicationsNode;
+    }
+
+    public synchronized String getNodesAsString(){
+        String result = "";
+        for (Node node : replicationsNode) {
+            result += node.getIpAddr() +" ";
+        }
+
+        return result;
     }
 }
